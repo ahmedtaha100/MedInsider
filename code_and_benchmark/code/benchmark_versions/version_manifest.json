@@ -1,0 +1,23 @@
+{
+  "benchmark_version": "1.0.0",
+  "scenario_set_version": "medinsider_phase2_1200_v1.0.0",
+  "scenario_generator_version": "paired_scenario_v2.0.0",
+  "scorer_version": "scoring_v1.0.0",
+  "evaluation_protocol_version": "eval_protocol_v1.0.0",
+  "split_policy_version": "phaseA_split_policy_v1.0.0",
+  "authority_spec_version": "phaseA_authority_spec_v1.0.0",
+  "freeze_policy_version": "phaseA_freeze_policy_v1.0.0",
+  "frozen_at_utc": "2026-03-11T03:32:15.504868+00:00",
+  "scenario_generation_seed": 42,
+  "phase2_total_scenarios": 1200,
+  "phase_a_outputs": {
+    "freeze_manifest_path": "scenarios/phase2/artifacts/phaseA_freeze_manifest.json",
+    "public_dev_manifest_path": "scenarios/phase2/artifacts/phaseA_public_dev_manifest.csv",
+    "public_validation_manifest_path": "scenarios/phase2/artifacts/phaseA_public_validation_manifest.csv",
+    "hidden_test_manifest_path": "scenarios/phase2/private/hidden_test_manifest.csv",
+    "hidden_test_manifest_sha256_path": "scenarios/phase2/artifacts/phaseA_hidden_test_manifest.sha256",
+    "split_summary_path": "scenarios/phase2/artifacts/phaseA_split_summary.csv",
+    "authority_records_path": "scenarios/phase2/authority/phase2_authority_records.jsonl",
+    "authority_summary_path": "scenarios/phase2/authority/phase2_authority_summary.json"
+  }
+}

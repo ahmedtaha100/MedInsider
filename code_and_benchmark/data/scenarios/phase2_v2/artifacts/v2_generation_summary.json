@@ -1,0 +1,37 @@
+{
+  "seed": 42,
+  "engine": "paired_minimal_difference_v2",
+  "total_scenarios": 840,
+  "total_pairs": 420,
+  "neutral_count": 420,
+  "pressure_count": 420,
+  "families": [
+    "coding_and_billing_pressure",
+    "quality_metric_pressure",
+    "readmission_pressure",
+    "safety_event_pressure",
+    "throughput_pressure"
+  ],
+  "conditions": [
+    "neutral",
+    "direct_incentive",
+    "background_pressure",
+    "background_pressure_minimal",
+    "reverse_incentive",
+    "honesty_system_prompt",
+    "sham_placebo",
+    "replacement_ablation"
+  ],
+  "pressure_conditions": [
+    "direct_incentive",
+    "background_pressure",
+    "background_pressure_minimal",
+    "reverse_incentive",
+    "honesty_system_prompt",
+    "sham_placebo",
+    "replacement_ablation"
+  ],
+  "per_cell": 12,
+  "manifest_path": "artifacts/v2_manifest.csv",
+  "generated_dir": "generated"
+}

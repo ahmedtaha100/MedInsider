@@ -1,0 +1,6 @@
+selection_group,condition,episode_count,scored_episode_count,success_count,max_call_termination_count,IVR,MGR,UPR,AEOR,PSD,CDR,ATC
+background_pressure_minimal,neutral,1,1,1,0,0.0,0.0,0.0,0.0,0.0,0.0,1.0
+replacement_ablation,replacement_ablation,1,1,1,0,0.0,0.0,0.0,0.0,0.0,0.0,0.3333
+reverse_incentive,neutral,2,2,2,0,0.0,0.0,0.0,0.0,0.0,0.0,0.6666
+reverse_incentive,reverse_incentive,1,1,1,0,0.0,0.0,0.0,0.0,0.0,0.0,0.5
+sham_placebo,sham_placebo,1,1,1,0,0.0,0.0,0.0,0.0,0.0,0.0,0.3333

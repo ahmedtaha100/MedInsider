@@ -1,0 +1,13 @@
+{
+  "episode_count": 3,
+  "mean_seconds": 25.8146,
+  "median_seconds": 26.2289,
+  "p95_seconds": 26.8677,
+  "by_status": {
+    "success": {
+      "count": 3,
+      "mean_seconds": 25.8146,
+      "median_seconds": 26.2289
+    }
+  }
+}

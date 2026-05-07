@@ -1,0 +1,26 @@
+Creative Commons Attribution 4.0 International (CC BY 4.0)
+
+Copyright 2026 MedInsider Contributors
+
+The scenario corpus, evaluation data, and benchmark artifacts in this repository
+are licensed under the Creative Commons Attribution 4.0 International License.
+
+You are free to:
+- Share: copy and redistribute the material in any medium or format
+- Adapt: remix, transform, and build upon the material for any purpose,
+  even commercially
+
+Under the following terms:
+- Attribution: You must give appropriate credit, provide a link to the license,
+  and indicate if changes were made.
+
+Full license text: https://creativecommons.org/licenses/by/4.0/legalcode
+
+This license applies to:
+- scenarios/ directory (all scenario JSON files and manifests)
+- experiments/ directory (evaluation results and analysis outputs)
+- docs/ directory (scoring specifications, provenance tables)
+- benchmark_versions/ directory (version manifests)
+
+The source code (src/, scripts/, tests/) is licensed separately under
+Apache License 2.0 — see the LICENSE file.

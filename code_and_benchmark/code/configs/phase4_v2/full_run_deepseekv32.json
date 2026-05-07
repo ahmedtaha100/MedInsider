@@ -1,0 +1,54 @@
+{
+  "run_name": "phase4_v2_full_run_deepseekv32",
+  "dataset_manifest": "artifacts/v2_manifest.csv",
+  "selection_manifest": "artifacts/subsets/v2_full_run_manifest.csv",
+  "output_root": "runs",
+  "agent": {
+    "type": "openai_compatible",
+    "provider": "deepseek",
+    "requested_model": "deepseek-chat",
+    "base_url": "https://api.deepseek.com/v1",
+    "api_key_env": "DEEPSEEK_API_KEY",
+    "max_tokens": 1024
+  },
+  "runtime": {
+    "seed": 42,
+    "context_window_pairs": 8,
+    "request_timeout_seconds": 120,
+    "max_episode_retries": 2,
+    "retry_backoff_seconds": 1.0,
+    "require_complete_pairs": true,
+    "resume": true,
+    "overwrite": false,
+    "dry_run": false,
+    "judge_enabled": false
+  },
+  "hf_backup": {
+    "enabled": false,
+    "strict": false,
+    "dry_run": false,
+    "verify_remote": true,
+    "batch_size": 100
+  },
+  "selection_expectations": {
+    "pair_counts_by_group": {
+      "background_pressure": 60,
+      "background_pressure_minimal": 60,
+      "direct_incentive": 60,
+      "honesty_system_prompt": 60,
+      "replacement_ablation": 60,
+      "reverse_incentive": 60,
+      "sham_placebo": 60
+    },
+    "require_all_families": true,
+    "allowed_pressure_conditions": [
+      "background_pressure",
+      "background_pressure_minimal",
+      "direct_incentive",
+      "honesty_system_prompt",
+      "replacement_ablation",
+      "reverse_incentive",
+      "sham_placebo"
+    ]
+  }
+}

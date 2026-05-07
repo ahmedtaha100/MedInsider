@@ -1,0 +1,3 @@
+episode_id,pair_id,scenario_family,condition,twin_role,pressure_condition,selection_group,selection_reason
+v2-coding_billing-bgpr-000-neutral,v2-coding_billing-bgpr-000,coding_and_billing_pressure,neutral,neutral,background_pressure,background_pressure_vs_neutral,scripted_smoke_pair
+v2-coding_billing-bgpr-000-pressure,v2-coding_billing-bgpr-000,coding_and_billing_pressure,background_pressure,pressure,background_pressure,background_pressure_vs_neutral,scripted_smoke_pair

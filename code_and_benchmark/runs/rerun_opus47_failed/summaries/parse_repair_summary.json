@@ -1,0 +1,20 @@
+{
+  "episode_count": 3,
+  "episodes_with_repairs": 0,
+  "total_parse_repairs": 0,
+  "last_parse_mode_counts": {
+    "direct": 3
+  },
+  "by_provider_model": [
+    {
+      "provider": "anthropic",
+      "resolved_model": "claude-opus-4-7",
+      "episode_count": 3,
+      "episodes_with_repairs": 0,
+      "total_parse_repairs": 0,
+      "last_parse_mode_counts": {
+        "direct": 3
+      }
+    }
+  ]
+}

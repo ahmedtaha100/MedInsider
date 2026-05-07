@@ -1,0 +1,159 @@
+{
+  "@context": {
+    "@language": "en",
+    "@vocab": "https://schema.org/",
+    "cr": "http://mlcommons.org/croissant/",
+    "rai": "http://mlcommons.org/croissant/RAI/"
+  },
+  "@type": "sc:Dataset",
+  "name": "MedInsider",
+  "description": "A synthetic, FHIR-shaped benchmark for evaluating documentation integrity under institutional pressure in tool-mediated medical LLM agents.",
+  "conformsTo": "http://mlcommons.org/croissant/1.0",
+  "license": "https://creativecommons.org/licenses/by/4.0/",
+  "creator": [
+    {
+      "@type": "Person",
+      "name": "Anonymous Authors"
+    }
+  ],
+  "citeAs": "Anonymous Authors. MedInsider: A FHIR-Compatible Benchmark for Integrity Under Institutional Pressure in Medical LLM Agents. NeurIPS 2026 submission.",
+  "keywords": [
+    "medical agents",
+    "benchmark",
+    "FHIR",
+    "integrity",
+    "synthetic data"
+  ],
+  "distribution": [
+    {
+      "@type": "cr:FileObject",
+      "@id": "v2_manifest",
+      "name": "v2_manifest.csv",
+      "contentUrl": "data/manifests/v2_manifest.csv",
+      "encodingFormat": "text/csv"
+    },
+    {
+      "@type": "cr:FileObject",
+      "@id": "v2_full_run_manifest",
+      "name": "v2_full_run_manifest.csv",
+      "contentUrl": "data/manifests/subsets/v2_full_run_manifest.csv",
+      "encodingFormat": "text/csv"
+    },
+    {
+      "@type": "cr:FileSet",
+      "@id": "full_scenarios",
+      "name": "full scenario JSON files",
+      "containedIn": {
+        "@id": "reviewer_bundle"
+      },
+      "encodingFormat": "application/json",
+      "includes": "data/scenarios/phase2_v2/generated/*.json"
+    }
+  ],
+  "recordSet": [
+    {
+      "@type": "cr:RecordSet",
+      "@id": "episodes",
+      "name": "MedInsider episodes",
+      "description": "One row per benchmark episode in the full manifest.",
+      "field": [
+        {
+          "@type": "cr:Field",
+          "@id": "episodes/episode_id",
+          "name": "episode_id",
+          "dataType": "sc:Text",
+          "source": {
+            "fileObject": {
+              "@id": "v2_manifest"
+            },
+            "extract": {
+              "column": "episode_id"
+            }
+          }
+        },
+        {
+          "@type": "cr:Field",
+          "@id": "episodes/family",
+          "name": "scenario_family",
+          "dataType": "sc:Text",
+          "source": {
+            "fileObject": {
+              "@id": "v2_manifest"
+            },
+            "extract": {
+              "column": "scenario_family"
+            }
+          }
+        },
+        {
+          "@type": "cr:Field",
+          "@id": "episodes/condition",
+          "name": "condition",
+          "dataType": "sc:Text",
+          "source": {
+            "fileObject": {
+              "@id": "v2_manifest"
+            },
+            "extract": {
+              "column": "condition"
+            }
+          }
+        },
+        {
+          "@type": "cr:Field",
+          "@id": "episodes/pair_id",
+          "name": "pair_id",
+          "dataType": "sc:Text",
+          "source": {
+            "fileObject": {
+              "@id": "v2_manifest"
+            },
+            "extract": {
+              "column": "pair_id"
+            }
+          }
+        },
+        {
+          "@type": "cr:Field",
+          "@id": "episodes/twin_role",
+          "name": "twin_role",
+          "dataType": "sc:Text",
+          "source": {
+            "fileObject": {
+              "@id": "v2_manifest"
+            },
+            "extract": {
+              "column": "twin_role"
+            }
+          }
+        },
+        {
+          "@type": "cr:Field",
+          "@id": "episodes/path",
+          "name": "path",
+          "dataType": "sc:Text",
+          "source": {
+            "fileObject": {
+              "@id": "v2_manifest"
+            },
+            "extract": {
+              "column": "path"
+            }
+          }
+        }
+      ]
+    }
+  ],
+  "rai:dataCollection": "Synthetic scenario generation; no real patient records are included.",
+  "rai:dataCollectionType": "synthetic",
+  "rai:personalSensitiveInformation": "No real patient data or human-subject records are included.",
+  "rai:contentWarning": "Scenarios include clinical documentation pressure and integrity-failure opportunities for evaluation only.",
+  "rai:useCases": "Benchmark review, method inspection, local smoke testing, and research on integrity evaluation.",
+  "rai:limitations": "Synthetic, descriptive, and not a deployment-realism or human-validated certification dataset.",
+  "rai:intendedUse": "MedInsider is intended for evaluating documentation-integrity behavior of tool-mediated medical LLM agents in synthetic, pressure-conditioned clinical workflow episodes.",
+  "rai:outOfScopeUse": "The dataset is not intended for clinical decision support, patient care, billing submission, provider credentialing, model safety certification, or claims about real-world deployment performance without additional validation.",
+  "rai:knownLimitations": "The corpus is synthetic, scoped to documentation-integrity failure modes, and descriptive over the executed model panel. It does not include real patient records, direct-care safety validation, or full deployment-realism coverage.",
+  "rai:misuseRisks": "Potential misuse includes treating synthetic benchmark results as clinical certification, using pressure prompts as operational guidance, or overgeneralizing model rankings beyond the documented scenario families and conditions.",
+  "rai:sensitiveDataStatus": "No real patient records, protected health information, or human-subject clinical records are included. Scenario chart states are synthetic.",
+  "rai:dataCollectionMethodology": "Scenario chart states and paired pressure conditions were template-authored for MedInsider and packaged with deterministic manifests. The reviewer bundle contains manifests and sample scenarios for local inspection and smoke testing."
+}

@@ -1,0 +1,50 @@
+{
+  "benchmark_version": "2.0.0",
+  "previous_version": "1.0.0",
+  "scenario_set_version": "medinsider_fhir_v2.0.0",
+  "scenario_generator_version": "phase2_fhir_generation_v2.0.0",
+  "scorer_version": "fhir_scoring_v2.0.0",
+  "evaluation_protocol_version": "eval_protocol_v2.0.0",
+  "split_policy_version": "phaseA_split_policy_v2.0.0",
+  "authority_spec_version": "phaseA_authority_spec_v2.0.0",
+  "freeze_policy_version": "phaseA_freeze_policy_v2.0.0",
+  "formal_scoring_spec": "docs/scoring/formal_scoring_spec_v1.md",
+  "provenance_table": "docs/provenance/scenario_provenance_table.md",
+  "condition_matrix": {
+    "total_conditions": 8,
+    "conditions": [
+      "neutral",
+      "direct_incentive",
+      "background_pressure",
+      "background_pressure_minimal",
+      "reverse_incentive",
+      "honesty_system_prompt",
+      "sham_placebo",
+      "replacement_ablation"
+    ],
+    "headline_condition": "background_pressure"
+  },
+  "scenario_design": {
+    "paired_twin": true,
+    "total_scenarios": 840,
+    "total_pairs": 420,
+    "families": 5,
+    "tier_stratification": ["A_clean", "B_borderline", "C_clean_negatives"],
+    "dual_kappa_floor": 0.7
+  },
+  "fhir_architecture": {
+    "server": "hapiproject/hapi:v6.10.0",
+    "persistence": "H2_in_memory",
+    "tools": [
+      "read_chart", "read_note", "write_note", "place_order",
+      "update_problem_list", "submit_billing", "quality_report",
+      "message_staff", "discharge_plan", "inbox_read"
+    ]
+  },
+  "v1_archive_paths": {
+    "scenarios": "scenarios/phase2_v0_archive/generated/",
+    "experiments": "experiments/phase4_simulated_baseline/results/"
+  },
+  "migration_status": "in_progress",
+  "frozen_at_utc": null
+}

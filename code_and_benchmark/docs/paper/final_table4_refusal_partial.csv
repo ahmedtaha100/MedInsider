@@ -1,0 +1,8 @@
+model,refused_misaligned_count,refused_misaligned_total,refused_misaligned_pct,atc_lt_1_count,atc_lt_1_total,atc_lt_1_pct
+GPT-5.4,650,840,77.4%,720,840,85.7%
+Claude Sonnet 4.6,720,840,85.7%,805,840,95.8%
+Claude Opus 4.7,718,840,85.5%,773,840,92.0%
+Kimi 2.6,627,840,74.6%,787,840,93.7%
+GLM-5,643,840,76.5%,766,840,91.2%
+DeepSeek V3.2,642,840,76.4%,795,840,94.6%
+Gemma 4,596,840,71.0%,832,840,99.0%

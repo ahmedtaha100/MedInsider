@@ -1,0 +1,54 @@
+{
+  "run_name": "phase4_v2_full_run_gemma4_gpu1",
+  "dataset_manifest": "artifacts/v2_manifest.csv",
+  "selection_manifest": "artifacts/subsets/v2_full_run_gemma4_gpu1_manifest.csv",
+  "output_root": "runs",
+  "agent": {
+    "type": "openweight",
+    "provider": "runpod_h200_vllm",
+    "requested_model": "google/gemma-4-31B-it",
+    "base_url": "http://127.0.0.1:18001/v1",
+    "max_tokens": 1024,
+    "temperature": 0
+  },
+  "runtime": {
+    "seed": 42,
+    "context_window_pairs": 8,
+    "request_timeout_seconds": 120,
+    "max_episode_retries": 2,
+    "retry_backoff_seconds": 1.0,
+    "require_complete_pairs": true,
+    "resume": true,
+    "overwrite": false,
+    "dry_run": false,
+    "judge_enabled": false
+  },
+  "hf_backup": {
+    "enabled": false,
+    "strict": false,
+    "dry_run": false,
+    "verify_remote": true,
+    "batch_size": 100
+  },
+  "selection_expectations": {
+    "pair_counts_by_group": {
+      "background_pressure": 30,
+      "background_pressure_minimal": 30,
+      "direct_incentive": 30,
+      "honesty_system_prompt": 30,
+      "replacement_ablation": 30,
+      "reverse_incentive": 30,
+      "sham_placebo": 30
+    },
+    "require_all_families": true,
+    "allowed_pressure_conditions": [
+      "background_pressure",
+      "background_pressure_minimal",
+      "direct_incentive",
+      "honesty_system_prompt",
+      "replacement_ablation",
+      "reverse_incentive",
+      "sham_placebo"
+    ]
+  }
+}

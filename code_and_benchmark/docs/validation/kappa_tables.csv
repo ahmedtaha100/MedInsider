@@ -1,0 +1,31 @@
+question,question_label,comparison_type,comparison,reviewer_group,kappa,landis_koch,n_episodes,agreement_count,agreement_rate,agreement_pct
+Q1,Scenario validity,pairwise,R1-R2,pair,-0.023,Poor,120,113,0.941667,94.2%
+Q1,Scenario validity,pairwise,R1-R3,pair,-0.017,Poor,120,115,0.958333,95.8%
+Q1,Scenario validity,pairwise,R1-R4,pair,-0.011,Poor,120,116,0.966667,96.7%
+Q1,Scenario validity,pairwise,R2-R3,pair,-0.020,Poor,120,114,0.950000,95.0%
+Q1,Scenario validity,pairwise,R2-R4,pair,-0.012,Poor,120,115,0.958333,95.8%
+Q1,Scenario validity,pairwise,R3-R4,pair,-0.011,Poor,120,117,0.975000,97.5%
+Q1,Scenario validity,fleiss,all_4_reviewers,all,-0.018,Poor,120,690,0.958333,95.8%
+Q1,Scenario validity,intra_profession,R1-R2,IM-IM,-0.023,Poor,120,113,0.941667,94.2%
+Q1,Scenario validity,intra_profession,R3-R4,CPMA-CPMA,-0.011,Poor,120,117,0.975000,97.5%
+Q1,Scenario validity,inter_profession_average,R1-R3;R1-R4;R2-R3;R2-R4,IM-vs-CPMA mean,-0.015,Poor,120.0,,0.958333,95.8%
+Q2,Integrity violation,pairwise,R1-R2,pair,0.875,Almost perfect,120,114,0.950000,95.0%
+Q2,Integrity violation,pairwise,R1-R3,pair,0.915,Almost perfect,120,116,0.966667,96.7%
+Q2,Integrity violation,pairwise,R1-R4,pair,0.935,Almost perfect,120,117,0.975000,97.5%
+Q2,Integrity violation,pairwise,R2-R3,pair,0.875,Almost perfect,120,114,0.950000,95.0%
+Q2,Integrity violation,pairwise,R2-R4,pair,0.895,Almost perfect,120,115,0.958333,95.8%
+Q2,Integrity violation,pairwise,R3-R4,pair,0.935,Almost perfect,120,117,0.975000,97.5%
+Q2,Integrity violation,fleiss,all_4_reviewers,all,0.905,Almost perfect,120,693,0.962500,96.2%
+Q2,Integrity violation,intra_profession,R1-R2,IM-IM,0.875,Almost perfect,120,114,0.950000,95.0%
+Q2,Integrity violation,intra_profession,R3-R4,CPMA-CPMA,0.935,Almost perfect,120,117,0.975000,97.5%
+Q2,Integrity violation,inter_profession_average,R1-R3;R1-R4;R2-R3;R2-R4,IM-vs-CPMA mean,0.905,Almost perfect,120.0,,0.962500,96.2%
+Q3,Scorer agreement,pairwise,R1-R2,pair,-0.021,Poor,119,114,0.957983,95.8%
+Q3,Scorer agreement,pairwise,R1-R3,pair,-0.017,Poor,120,116,0.966667,96.7%
+Q3,Scorer agreement,pairwise,R1-R4,pair,-0.011,Poor,120,117,0.975000,97.5%
+Q3,Scorer agreement,pairwise,R2-R3,pair,-0.021,Poor,119,114,0.957983,95.8%
+Q3,Scorer agreement,pairwise,R2-R4,pair,-0.013,Poor,119,115,0.966387,96.6%
+Q3,Scorer agreement,pairwise,R3-R4,pair,-0.011,Poor,120,117,0.975000,97.5%
+Q3,Scorer agreement,fleiss,all_4_reviewers,all,-0.017,Poor,119,690,0.966387,96.6%
+Q3,Scorer agreement,intra_profession,R1-R2,IM-IM,-0.021,Poor,119,114,0.957983,95.8%
+Q3,Scorer agreement,intra_profession,R3-R4,CPMA-CPMA,-0.011,Poor,120,117,0.975000,97.5%
+Q3,Scorer agreement,inter_profession_average,R1-R3;R1-R4;R2-R3;R2-R4,IM-vs-CPMA mean,-0.015,Poor,119.5,,0.966509,96.7%

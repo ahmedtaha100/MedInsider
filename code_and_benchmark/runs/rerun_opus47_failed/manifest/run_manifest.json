@@ -1,0 +1,78 @@
+{
+  "run_id": "rerun_opus47_failed",
+  "run_name": "rerun_opus47_failed",
+  "git_sha": "dc8e7dff9957d7097e31c03d760725d74d976350",
+  "config_path": "<bundle-root>/configs/phase4_v2/rerun_opus47_failed.json",
+  "config_hash": "73d782d4cbc29577ef04e9c38972e7c7a01ca143f9ca05ac448ee00f9055bc21",
+  "dataset_manifest": "<bundle-root>/artifacts/v2_manifest.csv",
+  "dataset_manifest_hash": "ad0dad8c7dea1ea7c46e5771b7b6d2e1c98de77dc1ff9febc014c7b44b21322e",
+  "selection_manifest": "<bundle-root>/artifacts/subsets/rerun_opus47_failed_manifest.csv",
+  "selection_manifest_hash": "77d0eba0ba47b2242a67e10782f107e30803bf00bc049ad01a076cc683a4d603",
+  "output_dir": "<bundle-root>/runs/rerun_opus47_failed",
+  "agent": {
+    "type": "claude",
+    "provider": "anthropic",
+    "requested_model": "claude-opus-4-7",
+    "max_tokens": 1024
+  },
+  "runtime": {
+    "seed": 42,
+    "context_window_pairs": 8,
+    "request_timeout_seconds": 60,
+    "max_episode_retries": 2,
+    "retry_backoff_seconds": 1.0,
+    "require_complete_pairs": false,
+    "resume": false,
+    "overwrite": false,
+    "dry_run": false,
+    "judge_enabled": false
+  },
+  "selected_summary": {
+    "episode_count": 3,
+    "pair_count": 3,
+    "families": [
+      "safety_event_pressure"
+    ],
+    "pair_counts_by_group": {
+      "background_pressure": 3
+    }
+  },
+  "manifest_files": {
+    "effective_run_config_json": "<bundle-root>/runs/rerun_opus47_failed/manifest/effective_run_config.json",
+    "effective_run_config_redacted_json": "<bundle-root>/runs/rerun_opus47_failed/manifest/effective_run_config_redacted.json",
+    "preflight_report_json": "<bundle-root>/runs/rerun_opus47_failed/manifest/preflight_report.json",
+    "resolved_selection_csv": "<bundle-root>/runs/rerun_opus47_failed/manifest/resolved_selection.csv",
+    "dataset_manifest_csv": "<bundle-root>/runs/rerun_opus47_failed/manifest/dataset_manifest.csv",
+    "selection_manifest_csv": "<bundle-root>/runs/rerun_opus47_failed/manifest/selection_manifest.csv"
+  },
+  "resume_fingerprint": {
+    "dataset_manifest_hash": "ad0dad8c7dea1ea7c46e5771b7b6d2e1c98de77dc1ff9febc014c7b44b21322e",
+    "selection_manifest_hash": "77d0eba0ba47b2242a67e10782f107e30803bf00bc049ad01a076cc683a4d603",
+    "agent_type": "claude",
+    "requested_model": "claude-opus-4-7",
+    "seed": 42,
+    "request_timeout_seconds": 60.0,
+    "max_episode_retries": 2,
+    "retry_backoff_seconds": 1.0,
+    "min_calls": 6,
+    "max_calls": 20,
+    "context_window_pairs": 8,
+    "structural_mitigation": ""
+  },
+  "resume_warnings": [],
+  "dry_run": false,
+  "status_counts": {
+    "success": 3
+  },
+  "scored_episode_count": 3,
+  "output_files": {
+    "episode_results_csv": "<bundle-root>/runs/rerun_opus47_failed/artifacts/episode_results.csv",
+    "scored_episode_results_csv": "<bundle-root>/runs/rerun_opus47_failed/artifacts/scored_episode_results.csv",
+    "aggregate_scores_csv": "<bundle-root>/runs/rerun_opus47_failed/artifacts/aggregate_scores.csv",
+    "pair_summary_csv": "<bundle-root>/runs/rerun_opus47_failed/summaries/pair_summary.csv",
+    "failure_summary_json": "<bundle-root>/runs/rerun_opus47_failed/summaries/failure_summary.json",
+    "latency_summary_json": "<bundle-root>/runs/rerun_opus47_failed/summaries/latency_summary.json",
+    "token_usage_summary_json": "<bundle-root>/runs/rerun_opus47_failed/summaries/token_usage_summary.json",
+    "parse_repair_summary_json": "<bundle-root>/runs/rerun_opus47_failed/summaries/parse_repair_summary.json"
+  }
+}

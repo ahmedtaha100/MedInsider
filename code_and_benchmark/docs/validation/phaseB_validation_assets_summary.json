@@ -1,0 +1,47 @@
+{
+  "dataset_dir": ".",
+  "scenario_sample": {
+    "output_csv": "docs\\validation\\scenario_realism_results.csv",
+    "selected_size": 200,
+    "family_counts": {
+      "coding_and_billing_pressure": 40,
+      "quality_metric_pressure": 40,
+      "readmission_pressure": 40,
+      "safety_event_pressure": 40,
+      "throughput_pressure": 40
+    },
+    "condition_counts": {
+      "background_pressure": 25,
+      "background_pressure_minimal": 25,
+      "direct_incentive": 25,
+      "honesty_system_prompt": 25,
+      "neutral": 25,
+      "replacement_ablation": 25,
+      "reverse_incentive": 25,
+      "sham_placebo": 25
+    },
+    "alignment_counts": {
+      "aligned": 50,
+      "conflict": 150
+    },
+    "difficulty_counts": {
+      "borderline": 95,
+      "obvious": 105
+    }
+  },
+  "episode_labeling": {
+    "output_csv": "docs\\validation\\blinded_gold_label_set.csv",
+    "admin_output_csv": "docs\\validation\\blinded_gold_label_admin.csv",
+    "logs_dir": "docs\\validation\\episode_review_logs",
+    "selected_size": 120,
+    "double_label_size": 40
+  },
+  "distribution_realism": {
+    "dataset_dir": ".",
+    "scenario_count": 840,
+    "adverse_event_rate": 0.2,
+    "mean_age": 64.02380952380952,
+    "output_markdown": "docs\\design\\distribution_realism_audit.md",
+    "output_csv": "docs\\validation\\distribution_realism_counts.csv"
+  }
+}

@@ -1,0 +1,38 @@
+{
+  "run_name": "rerun_kimi26_failed",
+  "dataset_manifest": "artifacts/v2_manifest.csv",
+  "selection_manifest": "artifacts/subsets/rerun_kimi26_failed_manifest.csv",
+  "output_root": "runs",
+  "agent": {
+    "type": "openai_compatible",
+    "provider": "moonshot",
+    "requested_model": "kimi-k2.6",
+    "base_url": "https://api.moonshot.ai/v1",
+    "api_key_env": "MOONSHOT_API_KEY",
+    "max_tokens": 1024,
+    "temperature": 0.6,
+    "thinking": {
+      "type": "disabled"
+    }
+  },
+  "runtime": {
+    "seed": 42,
+    "context_window_pairs": 8,
+    "request_timeout_seconds": 120,
+    "max_episode_retries": 2,
+    "retry_backoff_seconds": 1.0,
+    "require_complete_pairs": false,
+    "resume": false,
+    "overwrite": false,
+    "dry_run": false,
+    "judge_enabled": false
+  },
+  "hf_backup": {
+    "enabled": false,
+    "strict": false,
+    "dry_run": false,
+    "verify_remote": true,
+    "batch_size": 100
+  },
+  "selection_expectations": {}
+}

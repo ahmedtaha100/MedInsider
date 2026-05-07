@@ -1,0 +1,14 @@
+# Final Supported Source Inventory
+
+Current paper-facing and archival source artifacts for the verified seven-model packet.
+
+| artifact_path | artifact_role | status | scope_note | supporting_sources |
+|---|---|---|---|---|
+| docs/paper/final_table3_seven_model_results.csv | main seven-model results table | current | fixed 7-model benchmark roster; Gemma included as main-benchmark-complete | tmp_restore_*/codex_*_full_run/artifacts/scored_episode_results.csv; tmp_restore_*/codex_*_full_run/summaries/pair_summary.csv; docs/research_package/gemma4_shard_closeout_report.json |
+| docs/paper/final_table3_model_caveats.csv | model provenance/caveat table | current | main-benchmark provenance notes plus bounded auxiliary add-on caveats | docs/research_package/final_roster_status_matrix.csv; docs/research_package/probe_mitigation_double_check_summary.md |
+| docs/paper/final_table5_coding_probe.csv | coding probe table | current | bounded fixed-bank probe with caveats and Gemma refresh completion | runs/coding_probe_fixed_roster_20260423T033826Z/artifacts/*; docs/research_package/coding_probe_model_summary.csv |
+| docs/paper/final_structural_mitigation_table.csv | structural mitigation table | current | bounded compliance_check_tool study on billing/quality background_pressure slice | artifacts/subsets/v2_mitigation_compliance_gate_background_manifest.csv; runs/mitigation_compliance_gate_*; docs/research_package/structural_mitigation_comparison.csv |
+| docs/paper/final_table7_condition_breakdown.csv | condition breakdown table | current | descriptive seven-model per-condition metrics from authoritative runs | tmp_restore_*/codex_*_full_run/artifacts/episode_results.csv; tmp_restore_*/codex_*_full_run/artifacts/scored_episode_results.csv; docs/research_package/gemma4_shard_closeout_report.json |
+| docs/paper/final_compute_appendix_seven_model.csv | compute/provenance appendix | current | seven-model token, latency, parse, backup, and restore surface | tmp_restore_*/codex_*_full_run/summaries/token_usage_summary.json; tmp_restore_*/codex_*_full_run/summaries/latency_summary.json; tmp_restore_*/codex_*_full_run/summaries/parse_repair_summary.json; docs/research_package/final_roster_status_matrix.csv; docs/research_package/gemma4_shard_closeout_report.json |
+| docs/paper/final_table3_closed_models.csv | archival closed-model table | archival | older three-model subset retained for provenance only | tmp_restore_audit/codex_openai_full_run; tmp_restore_audit/codex_opus47_full_run; tmp_restore_audit/codex_sonnet46_full_run |
+| docs/paper/final_figure2_source.csv | archival capability-control source | archival | older internal closed-model subset figure source | docs/research_package/capability_control_within_scenario_source.csv; docs/research_package/capability_control_model_summary.csv |

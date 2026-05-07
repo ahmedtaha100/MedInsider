@@ -1,0 +1,32 @@
+{
+  "run_name": "rerun_opus47_failed",
+  "dataset_manifest": "artifacts/v2_manifest.csv",
+  "selection_manifest": "artifacts/subsets/rerun_opus47_failed_manifest.csv",
+  "output_root": "runs",
+  "agent": {
+    "type": "claude",
+    "provider": "anthropic",
+    "requested_model": "claude-opus-4-7",
+    "max_tokens": 1024
+  },
+  "runtime": {
+    "seed": 42,
+    "context_window_pairs": 8,
+    "request_timeout_seconds": 60,
+    "max_episode_retries": 2,
+    "retry_backoff_seconds": 1.0,
+    "require_complete_pairs": false,
+    "resume": false,
+    "overwrite": false,
+    "dry_run": false,
+    "judge_enabled": false
+  },
+  "hf_backup": {
+    "enabled": false,
+    "strict": false,
+    "dry_run": false,
+    "verify_remote": true,
+    "batch_size": 5
+  },
+  "selection_expectations": {}
+}

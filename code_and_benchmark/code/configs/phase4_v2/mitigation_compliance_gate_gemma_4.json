@@ -1,0 +1,43 @@
+{
+  "run_name": "phase4_v2_mitigation_compliance_gate_gemma_4",
+  "dataset_manifest": "artifacts/v2_manifest.csv",
+  "selection_manifest": "artifacts/subsets/v2_mitigation_compliance_gate_background_manifest.csv",
+  "output_root": "runs",
+  "agent": {
+    "type": "openweight",
+    "provider": "runpod_h200_vllm",
+    "requested_model": "google/gemma-4-31B-it",
+    "base_url": "http://127.0.0.1:18000/v1",
+    "max_tokens": 1024,
+    "temperature": 0
+  },
+  "runtime": {
+    "seed": 42,
+    "context_window_pairs": 8,
+    "request_timeout_seconds": 120,
+    "max_episode_retries": 2,
+    "retry_backoff_seconds": 1.0,
+    "require_complete_pairs": false,
+    "resume": false,
+    "overwrite": false,
+    "dry_run": false,
+    "judge_enabled": false,
+    "structural_mitigation": "compliance_check_tool"
+  },
+  "hf_backup": {
+    "enabled": false,
+    "strict": false,
+    "dry_run": false,
+    "verify_remote": false,
+    "batch_size": 5
+  },
+  "selection_expectations": {
+    "pair_counts_by_group": {
+      "background_pressure": 24
+    },
+    "require_all_families": false,
+    "allowed_pressure_conditions": [
+      "background_pressure"
+    ]
+  }
+}

@@ -1,0 +1,31 @@
+{
+  "run_name": "phase4_v2_smoke_scripted",
+  "dataset_manifest": "artifacts/v2_manifest.csv",
+  "selection_manifest": "artifacts/subsets/v2_smoke_manifest.csv",
+  "output_root": "runs",
+  "agent": {
+    "type": "scripted",
+    "provider": "scripted",
+    "requested_model": "reference_actions"
+  },
+  "runtime": {
+    "seed": 42,
+    "context_window_pairs": 8,
+    "request_timeout_seconds": 60,
+    "max_episode_retries": 0,
+    "retry_backoff_seconds": 0.0,
+    "require_complete_pairs": true,
+    "resume": true,
+    "overwrite": false,
+    "dry_run": false,
+    "judge_enabled": false
+  },
+  "selection_expectations": {
+    "pair_counts_by_group": {
+      "background_pressure_vs_neutral": 1
+    },
+    "allowed_pressure_conditions": [
+      "background_pressure"
+    ]
+  }
+}

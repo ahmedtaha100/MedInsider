@@ -1,0 +1,89 @@
+{
+  "run_id": "rerun_kimi26_failed",
+  "run_name": "rerun_kimi26_failed",
+  "git_sha": "dc8e7dff9957d7097e31c03d760725d74d976350",
+  "config_path": "<bundle-root>/configs/phase4_v2/rerun_kimi26_failed.json",
+  "config_hash": "079b9442d07808023a64cb173232bf2aa5c8206f3bd56900c4d8d96e930b27fd",
+  "dataset_manifest": "<bundle-root>/artifacts/v2_manifest.csv",
+  "dataset_manifest_hash": "ad0dad8c7dea1ea7c46e5771b7b6d2e1c98de77dc1ff9febc014c7b44b21322e",
+  "selection_manifest": "<bundle-root>/artifacts/subsets/rerun_kimi26_failed_manifest.csv",
+  "selection_manifest_hash": "4783b707f745c544d55c6e14af75a0ffb262ca6b15b5295a43d6adc00df3f93f",
+  "output_dir": "<bundle-root>/runs/rerun_kimi26_failed",
+  "agent": {
+    "type": "openai_compatible",
+    "provider": "moonshot",
+    "requested_model": "kimi-k2.6",
+    "base_url": "https://api.moonshot.ai/v1",
+    "api_key_env": "MOONSHOT_API_KEY",
+    "max_tokens": 1024,
+    "temperature": 0.6,
+    "thinking": {
+      "type": "disabled"
+    }
+  },
+  "runtime": {
+    "seed": 42,
+    "context_window_pairs": 8,
+    "request_timeout_seconds": 120,
+    "max_episode_retries": 2,
+    "retry_backoff_seconds": 1.0,
+    "require_complete_pairs": false,
+    "resume": false,
+    "overwrite": false,
+    "dry_run": false,
+    "judge_enabled": false
+  },
+  "selected_summary": {
+    "episode_count": 6,
+    "pair_count": 6,
+    "families": [
+      "coding_and_billing_pressure",
+      "quality_metric_pressure",
+      "readmission_pressure"
+    ],
+    "pair_counts_by_group": {
+      "reverse_incentive": 3,
+      "replacement_ablation": 1,
+      "sham_placebo": 1,
+      "background_pressure_minimal": 1
+    }
+  },
+  "manifest_files": {
+    "effective_run_config_json": "<bundle-root>/runs/rerun_kimi26_failed/manifest/effective_run_config.json",
+    "effective_run_config_redacted_json": "<bundle-root>/runs/rerun_kimi26_failed/manifest/effective_run_config_redacted.json",
+    "preflight_report_json": "<bundle-root>/runs/rerun_kimi26_failed/manifest/preflight_report.json",
+    "resolved_selection_csv": "<bundle-root>/runs/rerun_kimi26_failed/manifest/resolved_selection.csv",
+    "dataset_manifest_csv": "<bundle-root>/runs/rerun_kimi26_failed/manifest/dataset_manifest.csv",
+    "selection_manifest_csv": "<bundle-root>/runs/rerun_kimi26_failed/manifest/selection_manifest.csv"
+  },
+  "resume_fingerprint": {
+    "dataset_manifest_hash": "ad0dad8c7dea1ea7c46e5771b7b6d2e1c98de77dc1ff9febc014c7b44b21322e",
+    "selection_manifest_hash": "4783b707f745c544d55c6e14af75a0ffb262ca6b15b5295a43d6adc00df3f93f",
+    "agent_type": "openai_compatible",
+    "requested_model": "kimi-k2.6",
+    "seed": 42,
+    "request_timeout_seconds": 120.0,
+    "max_episode_retries": 2,
+    "retry_backoff_seconds": 1.0,
+    "min_calls": 6,
+    "max_calls": 20,
+    "context_window_pairs": 8,
+    "structural_mitigation": ""
+  },
+  "resume_warnings": [],
+  "dry_run": false,
+  "status_counts": {
+    "success": 6
+  },
+  "scored_episode_count": 6,
+  "output_files": {
+    "episode_results_csv": "<bundle-root>/runs/rerun_kimi26_failed/artifacts/episode_results.csv",
+    "scored_episode_results_csv": "<bundle-root>/runs/rerun_kimi26_failed/artifacts/scored_episode_results.csv",
+    "aggregate_scores_csv": "<bundle-root>/runs/rerun_kimi26_failed/artifacts/aggregate_scores.csv",
+    "pair_summary_csv": "<bundle-root>/runs/rerun_kimi26_failed/summaries/pair_summary.csv",
+    "failure_summary_json": "<bundle-root>/runs/rerun_kimi26_failed/summaries/failure_summary.json",
+    "latency_summary_json": "<bundle-root>/runs/rerun_kimi26_failed/summaries/latency_summary.json",
+    "token_usage_summary_json": "<bundle-root>/runs/rerun_kimi26_failed/summaries/token_usage_summary.json",
+    "parse_repair_summary_json": "<bundle-root>/runs/rerun_kimi26_failed/summaries/parse_repair_summary.json"
+  }
+}

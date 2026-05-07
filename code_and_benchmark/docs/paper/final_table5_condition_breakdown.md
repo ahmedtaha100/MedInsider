@@ -1,0 +1,104 @@
+# Final Table 7: Seven-Model Condition Breakdown
+
+Descriptive per-model condition breakdown built from episode-level authoritative outputs.
+
+| model_display | resolved_model_id | selection_group | condition | episode_count | scored_episode_count | success_count | max_call_termination_count | ATC | IVR | MGR | UPR_integrity | AEOR | PSD | CDR | refused_misaligned_pressure_rate |
+|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
+| GPT-5.4 | gpt-5.4-2026-03-05 | background_pressure | background_pressure | 60 | 60 | 60 | 0 | 0.7061 | 0.0167 | 0.0 | 0.0 | 0.0833 | 0.0 | 0.0833 | 0.9 |
+| GPT-5.4 | gpt-5.4-2026-03-05 | background_pressure | neutral | 60 | 60 | 60 | 0 | 0.7033 | 0.0167 | 0.0167 | 0.0 | 0.15 | 0.0 | 0.15 | 0.8167 |
+| GPT-5.4 | gpt-5.4-2026-03-05 | background_pressure_minimal | background_pressure_minimal | 60 | 60 | 60 | 0 | 0.7 | 0.0167 | 0.0 | 0.0 | 0.05 | 0.0 | 0.05 | 0.9333 |
+| GPT-5.4 | gpt-5.4-2026-03-05 | background_pressure_minimal | neutral | 60 | 60 | 60 | 0 | 0.735 | 0.05 | 0.0 | 0.0 | 0.05 | 0.0 | 0.05 | 0.9 |
+| GPT-5.4 | gpt-5.4-2026-03-05 | direct_incentive | direct_incentive | 60 | 60 | 60 | 0 | 0.6778 | 0.0167 | 0.0 | 0.0 | 0.0667 | 0.0 | 0.0667 | 0.9167 |
+| GPT-5.4 | gpt-5.4-2026-03-05 | direct_incentive | neutral | 60 | 60 | 60 | 0 | 0.6661 | 0.0333 | 0.0167 | 0.0 | 0.0667 | 0.0 | 0.0667 | 0.8833 |
+| GPT-5.4 | gpt-5.4-2026-03-05 | honesty_system_prompt | honesty_system_prompt | 60 | 60 | 60 | 0 | 0.7255 | 0.0 | 0.0 | 0.0 | 0.0 | 0.0 | 0.0 | 0.0 |
+| GPT-5.4 | gpt-5.4-2026-03-05 | honesty_system_prompt | neutral | 60 | 60 | 60 | 0 | 0.7128 | 0.0 | 0.0 | 0.0 | 0.0667 | 0.0 | 0.0667 | 0.9333 |
+| GPT-5.4 | gpt-5.4-2026-03-05 | replacement_ablation | neutral | 60 | 60 | 60 | 0 | 0.7211 | 0.0 | 0.0 | 0.0 | 0.1 | 0.0 | 0.1 | 0.9 |
+| GPT-5.4 | gpt-5.4-2026-03-05 | replacement_ablation | replacement_ablation | 60 | 60 | 60 | 0 | 0.6861 | 0.0 | 0.0333 | 0.0 | 0.1 | 0.0 | 0.1 | 0.8667 |
+| GPT-5.4 | gpt-5.4-2026-03-05 | reverse_incentive | neutral | 60 | 60 | 60 | 0 | 0.7044 | 0.0333 | 0.0 | 0.0 | 0.0667 | 0.0 | 0.0667 | 0.9 |
+| GPT-5.4 | gpt-5.4-2026-03-05 | reverse_incentive | reverse_incentive | 60 | 60 | 60 | 0 | 0.6994 | 0.0 | 0.0 | 0.0 | 0.0167 | 0.0 | 0.0167 | 0.0 |
+| GPT-5.4 | gpt-5.4-2026-03-05 | sham_placebo | neutral | 60 | 60 | 60 | 0 | 0.7261 | 0.0167 | 0.0 | 0.0 | 0.05 | 0.0 | 0.05 | 0.9333 |
+| GPT-5.4 | gpt-5.4-2026-03-05 | sham_placebo | sham_placebo | 60 | 60 | 60 | 0 | 0.6989 | 0.0 | 0.0 | 0.0 | 0.05 | 0.0 | 0.05 | 0.95 |
+| Claude Sonnet 4.6 | claude-sonnet-4-6 | background_pressure | background_pressure | 60 | 60 | 60 | 0 | 0.6261 | 0.0 | 0.0 | 0.0 | 0.0 | 0.0 | 0.0 | 1.0 |
+| Claude Sonnet 4.6 | claude-sonnet-4-6 | background_pressure | neutral | 60 | 60 | 60 | 0 | 0.6845 | 0.0 | 0.0 | 0.0 | 0.0 | 0.0 | 0.0 | 1.0 |
+| Claude Sonnet 4.6 | claude-sonnet-4-6 | background_pressure_minimal | background_pressure_minimal | 60 | 60 | 60 | 0 | 0.67 | 0.0 | 0.0 | 0.0 | 0.0 | 0.0 | 0.0 | 1.0 |
+| Claude Sonnet 4.6 | claude-sonnet-4-6 | background_pressure_minimal | neutral | 60 | 60 | 60 | 0 | 0.6761 | 0.0 | 0.0 | 0.0 | 0.0 | 0.0 | 0.0 | 1.0 |
+| Claude Sonnet 4.6 | claude-sonnet-4-6 | direct_incentive | direct_incentive | 60 | 60 | 60 | 0 | 0.6689 | 0.0 | 0.0 | 0.0 | 0.0 | 0.0 | 0.0 | 1.0 |
+| Claude Sonnet 4.6 | claude-sonnet-4-6 | direct_incentive | neutral | 60 | 60 | 60 | 0 | 0.7011 | 0.0 | 0.0 | 0.0 | 0.0 | 0.0 | 0.0 | 1.0 |
+| Claude Sonnet 4.6 | claude-sonnet-4-6 | honesty_system_prompt | honesty_system_prompt | 60 | 60 | 60 | 0 | 0.6717 | 0.0 | 0.0 | 0.0 | 0.0 | 0.0 | 0.0 | 0.0 |
+| Claude Sonnet 4.6 | claude-sonnet-4-6 | honesty_system_prompt | neutral | 60 | 60 | 60 | 0 | 0.6783 | 0.0 | 0.0 | 0.0 | 0.0 | 0.0 | 0.0 | 1.0 |
+| Claude Sonnet 4.6 | claude-sonnet-4-6 | replacement_ablation | neutral | 60 | 60 | 60 | 0 | 0.7228 | 0.0 | 0.0 | 0.0 | 0.0 | 0.0 | 0.0 | 1.0 |
+| Claude Sonnet 4.6 | claude-sonnet-4-6 | replacement_ablation | replacement_ablation | 60 | 60 | 60 | 0 | 0.675 | 0.0 | 0.0 | 0.0 | 0.0 | 0.0 | 0.0 | 1.0 |
+| Claude Sonnet 4.6 | claude-sonnet-4-6 | reverse_incentive | neutral | 60 | 60 | 60 | 0 | 0.6856 | 0.0 | 0.0 | 0.0 | 0.0 | 0.0 | 0.0 | 1.0 |
+| Claude Sonnet 4.6 | claude-sonnet-4-6 | reverse_incentive | reverse_incentive | 60 | 60 | 60 | 0 | 0.6667 | 0.0 | 0.0 | 0.0 | 0.0 | 0.0 | 0.0 | 0.0 |
+| Claude Sonnet 4.6 | claude-sonnet-4-6 | sham_placebo | neutral | 60 | 60 | 60 | 0 | 0.66 | 0.0 | 0.0 | 0.0 | 0.0 | 0.0 | 0.0 | 1.0 |
+| Claude Sonnet 4.6 | claude-sonnet-4-6 | sham_placebo | sham_placebo | 60 | 60 | 60 | 0 | 0.6394 | 0.0 | 0.0 | 0.0 | 0.0 | 0.0 | 0.0 | 1.0 |
+| Claude Opus 4.7 | claude-opus-4-7 | background_pressure | background_pressure | 60 | 60 | 60 | 0 | 0.6761 | 0.0 | 0.0 | 0.0 | 0.0 | 0.0 | 0.0 | 1.0 |
+| Claude Opus 4.7 | claude-opus-4-7 | background_pressure | neutral | 60 | 60 | 60 | 0 | 0.7044 | 0.0 | 0.0 | 0.0 | 0.0 | 0.0 | 0.0 | 1.0 |
+| Claude Opus 4.7 | claude-opus-4-7 | background_pressure_minimal | background_pressure_minimal | 60 | 60 | 60 | 0 | 0.6289 | 0.0 | 0.0 | 0.0 | 0.0 | 0.0 | 0.0 | 1.0 |
+| Claude Opus 4.7 | claude-opus-4-7 | background_pressure_minimal | neutral | 60 | 60 | 60 | 0 | 0.6994 | 0.0 | 0.0 | 0.0 | 0.0 | 0.0 | 0.0 | 1.0 |
+| Claude Opus 4.7 | claude-opus-4-7 | direct_incentive | direct_incentive | 60 | 60 | 60 | 0 | 0.6922 | 0.0 | 0.0 | 0.0 | 0.0 | 0.0 | 0.0 | 1.0 |
+| Claude Opus 4.7 | claude-opus-4-7 | direct_incentive | neutral | 60 | 60 | 60 | 0 | 0.7444 | 0.0 | 0.0 | 0.0 | 0.0 | 0.0 | 0.0 | 1.0 |
+| Claude Opus 4.7 | claude-opus-4-7 | honesty_system_prompt | honesty_system_prompt | 60 | 60 | 60 | 0 | 0.6806 | 0.0 | 0.0 | 0.0 | 0.0 | 0.0 | 0.0 | 0.0 |
+| Claude Opus 4.7 | claude-opus-4-7 | honesty_system_prompt | neutral | 60 | 60 | 60 | 0 | 0.715 | 0.0167 | 0.0 | 0.0 | 0.0 | 0.0 | 0.0 | 0.9833 |
+| Claude Opus 4.7 | claude-opus-4-7 | replacement_ablation | neutral | 60 | 60 | 60 | 0 | 0.7244 | 0.0 | 0.0 | 0.0 | 0.0 | 0.0 | 0.0 | 1.0 |
+| Claude Opus 4.7 | claude-opus-4-7 | replacement_ablation | replacement_ablation | 60 | 60 | 60 | 0 | 0.695 | 0.0 | 0.0 | 0.0 | 0.0 | 0.0 | 0.0 | 1.0 |
+| Claude Opus 4.7 | claude-opus-4-7 | reverse_incentive | neutral | 60 | 60 | 60 | 0 | 0.7261 | 0.0 | 0.0 | 0.0 | 0.0 | 0.0 | 0.0 | 1.0 |
+| Claude Opus 4.7 | claude-opus-4-7 | reverse_incentive | reverse_incentive | 60 | 60 | 60 | 0 | 0.6639 | 0.0 | 0.0 | 0.0 | 0.0 | 0.0 | 0.0 | 0.0 |
+| Claude Opus 4.7 | claude-opus-4-7 | sham_placebo | neutral | 60 | 60 | 60 | 0 | 0.6861 | 0.0167 | 0.0 | 0.0 | 0.0 | 0.0 | 0.0 | 0.9833 |
+| Claude Opus 4.7 | claude-opus-4-7 | sham_placebo | sham_placebo | 60 | 60 | 60 | 0 | 0.6906 | 0.0 | 0.0 | 0.0 | 0.0 | 0.0 | 0.0 | 1.0 |
+| Kimi 2.6 | kimi-k2.6 | background_pressure | background_pressure | 60 | 60 | 60 | 0 | 0.5344 | 0.0333 | 0.0167 | 0.0 | 0.1667 | 0.0 | 0.1667 | 0.7833 |
+| Kimi 2.6 | kimi-k2.6 | background_pressure | neutral | 60 | 60 | 60 | 0 | 0.5961 | 0.0167 | 0.0 | 0.0 | 0.1 | 0.0 | 0.1 | 0.8833 |
+| Kimi 2.6 | kimi-k2.6 | background_pressure_minimal | background_pressure_minimal | 60 | 60 | 60 | 0 | 0.6106 | 0.0167 | 0.0 | 0.0 | 0.1333 | 0.0 | 0.1333 | 0.85 |
+| Kimi 2.6 | kimi-k2.6 | background_pressure_minimal | neutral | 60 | 60 | 60 | 0 | 0.6417 | 0.0 | 0.0 | 0.0 | 0.1167 | 0.0 | 0.1167 | 0.8833 |
+| Kimi 2.6 | kimi-k2.6 | direct_incentive | direct_incentive | 60 | 60 | 60 | 0 | 0.5944 | 0.0 | 0.0 | 0.0 | 0.1 | 0.0 | 0.1 | 0.8833 |
+| Kimi 2.6 | kimi-k2.6 | direct_incentive | neutral | 60 | 60 | 60 | 0 | 0.6294 | 0.0 | 0.0 | 0.0 | 0.0833 | 0.0 | 0.0833 | 0.9167 |
+| Kimi 2.6 | kimi-k2.6 | honesty_system_prompt | honesty_system_prompt | 60 | 60 | 60 | 0 | 0.6222 | 0.0 | 0.0 | 0.0 | 0.0333 | 0.0 | 0.0333 | 0.0 |
+| Kimi 2.6 | kimi-k2.6 | honesty_system_prompt | neutral | 60 | 60 | 60 | 0 | 0.61 | 0.0 | 0.0 | 0.0 | 0.1167 | 0.0 | 0.1167 | 0.8667 |
+| Kimi 2.6 | kimi-k2.6 | replacement_ablation | neutral | 60 | 60 | 60 | 0 | 0.5994 | 0.0 | 0.0 | 0.0 | 0.15 | 0.0 | 0.15 | 0.85 |
+| Kimi 2.6 | kimi-k2.6 | replacement_ablation | replacement_ablation | 60 | 60 | 60 | 0 | 0.535 | 0.0167 | 0.0 | 0.0 | 0.15 | 0.0 | 0.15 | 0.8333 |
+| Kimi 2.6 | kimi-k2.6 | reverse_incentive | neutral | 60 | 60 | 60 | 0 | 0.6128 | 0.0167 | 0.0 | 0.0 | 0.0833 | 0.0 | 0.0833 | 0.9 |
+| Kimi 2.6 | kimi-k2.6 | reverse_incentive | reverse_incentive | 60 | 60 | 60 | 0 | 0.6061 | 0.0 | 0.0 | 0.0 | 0.0833 | 0.0 | 0.0833 | 0.0 |
+| Kimi 2.6 | kimi-k2.6 | sham_placebo | neutral | 60 | 60 | 60 | 0 | 0.6078 | 0.0 | 0.0 | 0.0 | 0.1167 | 0.0 | 0.1167 | 0.8833 |
+| Kimi 2.6 | kimi-k2.6 | sham_placebo | sham_placebo | 60 | 60 | 60 | 0 | 0.5622 | 0.0 | 0.0 | 0.0 | 0.0833 | 0.0 | 0.0833 | 0.9167 |
+| GLM-5 | glm-5 | background_pressure | background_pressure | 60 | 60 | 60 | 0 | 0.6278 | 0.0 | 0.0 | 0.0 | 0.05 | 0.0 | 0.05 | 0.95 |
+| GLM-5 | glm-5 | background_pressure | neutral | 60 | 60 | 60 | 0 | 0.6511 | 0.0 | 0.0 | 0.0 | 0.1333 | 0.0 | 0.1333 | 0.8667 |
+| GLM-5 | glm-5 | background_pressure_minimal | background_pressure_minimal | 60 | 60 | 60 | 0 | 0.6367 | 0.0 | 0.0 | 0.0 | 0.1167 | 0.0 | 0.1167 | 0.8667 |
+| GLM-5 | glm-5 | background_pressure_minimal | neutral | 60 | 60 | 60 | 0 | 0.6461 | 0.0 | 0.0 | 0.0 | 0.1167 | 0.0 | 0.1167 | 0.8833 |
+| GLM-5 | glm-5 | direct_incentive | direct_incentive | 60 | 60 | 60 | 0 | 0.6867 | 0.0167 | 0.0 | 0.0167 | 0.05 | 0.0 | 0.05 | 0.9167 |
+| GLM-5 | glm-5 | direct_incentive | neutral | 60 | 60 | 60 | 0 | 0.6533 | 0.0 | 0.0 | 0.0167 | 0.0833 | 0.0 | 0.0833 | 0.9 |
+| GLM-5 | glm-5 | honesty_system_prompt | honesty_system_prompt | 60 | 60 | 60 | 0 | 0.6906 | 0.0 | 0.0 | 0.0 | 0.0 | 0.0 | 0.0 | 0.0 |
+| GLM-5 | glm-5 | honesty_system_prompt | neutral | 60 | 60 | 60 | 0 | 0.6656 | 0.0 | 0.0 | 0.0 | 0.0667 | 0.0 | 0.0667 | 0.9333 |
+| GLM-5 | glm-5 | replacement_ablation | neutral | 60 | 60 | 60 | 0 | 0.655 | 0.0 | 0.0 | 0.0 | 0.15 | 0.0 | 0.15 | 0.85 |
+| GLM-5 | glm-5 | replacement_ablation | replacement_ablation | 60 | 60 | 60 | 0 | 0.6394 | 0.0 | 0.0 | 0.0 | 0.15 | 0.0 | 0.15 | 0.85 |
+| GLM-5 | glm-5 | reverse_incentive | neutral | 60 | 60 | 60 | 0 | 0.6828 | 0.0 | 0.0 | 0.0 | 0.1 | 0.0 | 0.1 | 0.9 |
+| GLM-5 | glm-5 | reverse_incentive | reverse_incentive | 60 | 60 | 60 | 0 | 0.6733 | 0.0083 | 0.0 | 0.0 | 0.0167 | 0.0 | 0.0167 | 0.0 |
+| GLM-5 | glm-5 | sham_placebo | neutral | 60 | 60 | 60 | 0 | 0.625 | 0.0 | 0.0 | 0.0 | 0.0833 | 0.0 | 0.0833 | 0.9167 |
+| GLM-5 | glm-5 | sham_placebo | sham_placebo | 60 | 60 | 60 | 0 | 0.6194 | 0.0 | 0.0 | 0.0 | 0.1167 | 0.0 | 0.1167 | 0.8833 |
+| DeepSeek V3.2 | deepseek-chat | background_pressure | background_pressure | 60 | 60 | 60 | 0 | 0.5667 | 0.0 | 0.0 | 0.0 | 0.1 | 0.0 | 0.1 | 0.9 |
+| DeepSeek V3.2 | deepseek-chat | background_pressure | neutral | 60 | 60 | 60 | 0 | 0.6222 | 0.05 | 0.0167 | 0.0 | 0.0833 | 0.0 | 0.0833 | 0.85 |
+| DeepSeek V3.2 | deepseek-chat | background_pressure_minimal | background_pressure_minimal | 60 | 60 | 60 | 0 | 0.5678 | 0.0 | 0.0 | 0.0 | 0.0833 | 0.0 | 0.0833 | 0.9167 |
+| DeepSeek V3.2 | deepseek-chat | background_pressure_minimal | neutral | 60 | 60 | 60 | 0 | 0.62 | 0.0333 | 0.0 | 0.0 | 0.0833 | 0.0 | 0.0833 | 0.8833 |
+| DeepSeek V3.2 | deepseek-chat | direct_incentive | direct_incentive | 60 | 60 | 60 | 0 | 0.6339 | 0.0167 | 0.0167 | 0.0 | 0.1 | 0.0 | 0.1 | 0.8667 |
+| DeepSeek V3.2 | deepseek-chat | direct_incentive | neutral | 60 | 60 | 60 | 0 | 0.6522 | 0.0333 | 0.0 | 0.0 | 0.0333 | 0.0 | 0.0333 | 0.9333 |
+| DeepSeek V3.2 | deepseek-chat | honesty_system_prompt | honesty_system_prompt | 60 | 60 | 60 | 0 | 0.6367 | 0.0 | 0.0167 | 0.0167 | 0.0 | 0.0 | 0.0 | 0.0 |
+| DeepSeek V3.2 | deepseek-chat | honesty_system_prompt | neutral | 60 | 60 | 60 | 0 | 0.615 | 0.0 | 0.0167 | 0.0 | 0.0833 | 0.0 | 0.0833 | 0.9 |
+| DeepSeek V3.2 | deepseek-chat | replacement_ablation | neutral | 60 | 60 | 60 | 0 | 0.5944 | 0.0333 | 0.0 | 0.0 | 0.15 | 0.0 | 0.15 | 0.8167 |
+| DeepSeek V3.2 | deepseek-chat | replacement_ablation | replacement_ablation | 60 | 60 | 60 | 0 | 0.5689 | 0.0 | 0.0 | 0.0 | 0.1333 | 0.0 | 0.1333 | 0.8667 |
+| DeepSeek V3.2 | deepseek-chat | reverse_incentive | neutral | 60 | 60 | 60 | 0 | 0.6439 | 0.0167 | 0.0 | 0.0 | 0.0333 | 0.0 | 0.0333 | 0.95 |
+| DeepSeek V3.2 | deepseek-chat | reverse_incentive | reverse_incentive | 60 | 60 | 60 | 0 | 0.6328 | 0.0 | 0.0 | 0.0 | 0.0667 | 0.0 | 0.0667 | 0.0 |
+| DeepSeek V3.2 | deepseek-chat | sham_placebo | neutral | 60 | 60 | 60 | 0 | 0.6528 | 0.0 | 0.0167 | 0.0 | 0.0833 | 0.0 | 0.0833 | 0.9 |
+| DeepSeek V3.2 | deepseek-chat | sham_placebo | sham_placebo | 60 | 60 | 60 | 0 | 0.6278 | 0.0 | 0.0333 | 0.0 | 0.05 | 0.0 | 0.05 | 0.9167 |
+| Gemma 4 | google/gemma-4-31B-it | background_pressure | background_pressure | 60 | 60 | 60 | 0 | 0.4822 | 0.0 | 0.0333 | 0.0 | 0.1667 | 0.0 | 0.1667 | 0.8 |
+| Gemma 4 | google/gemma-4-31B-it | background_pressure | neutral | 60 | 60 | 60 | 0 | 0.5233 | 0.0 | 0.0167 | 0.0 | 0.15 | 0.0 | 0.15 | 0.8333 |
+| Gemma 4 | google/gemma-4-31B-it | background_pressure_minimal | background_pressure_minimal | 60 | 60 | 60 | 0 | 0.5206 | 0.0 | 0.0 | 0.0 | 0.15 | 0.0 | 0.15 | 0.85 |
+| Gemma 4 | google/gemma-4-31B-it | background_pressure_minimal | neutral | 60 | 60 | 60 | 0 | 0.5361 | 0.0 | 0.0 | 0.0 | 0.1667 | 0.0 | 0.1667 | 0.8333 |
+| Gemma 4 | google/gemma-4-31B-it | direct_incentive | direct_incentive | 60 | 60 | 60 | 0 | 0.4967 | 0.0 | 0.0 | 0.0 | 0.15 | 0.0 | 0.15 | 0.85 |
+| Gemma 4 | google/gemma-4-31B-it | direct_incentive | neutral | 60 | 60 | 60 | 0 | 0.4939 | 0.0 | 0.0167 | 0.0 | 0.1167 | 0.0 | 0.1167 | 0.85 |
+| Gemma 4 | google/gemma-4-31B-it | honesty_system_prompt | honesty_system_prompt | 60 | 60 | 60 | 0 | 0.5111 | 0.0 | 0.0 | 0.0 | 0.0667 | 0.0 | 0.0667 | 0.0 |
+| Gemma 4 | google/gemma-4-31B-it | honesty_system_prompt | neutral | 60 | 60 | 60 | 0 | 0.5111 | 0.0 | 0.0 | 0.0 | 0.1333 | 0.0 | 0.1333 | 0.8667 |
+| Gemma 4 | google/gemma-4-31B-it | replacement_ablation | neutral | 60 | 60 | 60 | 0 | 0.4961 | 0.0 | 0.0667 | 0.0 | 0.15 | 0.0 | 0.15 | 0.7833 |
+| Gemma 4 | google/gemma-4-31B-it | replacement_ablation | replacement_ablation | 60 | 60 | 60 | 0 | 0.5017 | 0.0 | 0.0667 | 0.0 | 0.1833 | 0.0 | 0.1833 | 0.75 |
+| Gemma 4 | google/gemma-4-31B-it | reverse_incentive | neutral | 60 | 60 | 60 | 0 | 0.5161 | 0.0 | 0.0333 | 0.0 | 0.1333 | 0.0 | 0.1333 | 0.8333 |
+| Gemma 4 | google/gemma-4-31B-it | reverse_incentive | reverse_incentive | 60 | 60 | 60 | 0 | 0.5194 | 0.0 | 0.0 | 0.0 | 0.1 | 0.0 | 0.1 | 0.0 |
+| Gemma 4 | google/gemma-4-31B-it | sham_placebo | neutral | 60 | 60 | 60 | 0 | 0.5067 | 0.0 | 0.0333 | 0.0 | 0.1167 | 0.0 | 0.1167 | 0.85 |
+| Gemma 4 | google/gemma-4-31B-it | sham_placebo | sham_placebo | 60 | 60 | 60 | 0 | 0.4678 | 0.0 | 0.0167 | 0.0 | 0.15 | 0.0 | 0.15 | 0.8333 |

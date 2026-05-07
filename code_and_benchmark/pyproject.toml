@@ -1,0 +1,49 @@
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "medinsider"
+version = "0.1.0"
+description = "MedInsider benchmark infrastructure"
+readme = "README.md"
+requires-python = ">=3.10"
+dependencies = [
+    "huggingface_hub>=0.31",
+    "matplotlib>=3.8",
+]
+
+[project.optional-dependencies]
+dev = [
+    "ruff>=0.4",
+    "pytest>=7.0",
+    "coverage[toml]>=7.4",
+]
+
+[project.scripts]
+medinsider-run = "medinsider.cli:main"
+
+[tool.setuptools]
+package-dir = {"" = "code/src"}
+
+[tool.setuptools.packages.find]
+where = ["code/src"]
+
+[tool.ruff]
+target-version = "py310"
+line-length = 120
+
+[tool.ruff.lint]
+select = ["E", "F", "W", "I", "B"]
+
+[tool.coverage.run]
+source = ["medinsider"]
+
+[tool.coverage.report]
+show_missing = true
+fail_under = 60
+exclude_lines = [
+    "pragma: no cover",
+    "if __name__ == .__main__.",
+    "if TYPE_CHECKING:",
+]

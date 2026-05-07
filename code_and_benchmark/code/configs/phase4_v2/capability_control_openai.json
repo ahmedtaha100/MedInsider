@@ -1,0 +1,39 @@
+{
+  "run_name": "phase4_v2_capability_control_openai",
+  "dataset_manifest": "artifacts/v2_manifest.csv",
+  "selection_manifest": "artifacts/subsets/capability_control_closed_model_manifest.csv",
+  "output_root": "runs",
+  "agent": {
+    "type": "openai",
+    "provider": "openai",
+    "requested_model": "gpt-5.4-2026-03-05"
+  },
+  "runtime": {
+    "seed": 42,
+    "context_window_pairs": 8,
+    "request_timeout_seconds": 60,
+    "max_episode_retries": 2,
+    "retry_backoff_seconds": 1.0,
+    "require_complete_pairs": true,
+    "resume": true,
+    "overwrite": false,
+    "dry_run": false,
+    "judge_enabled": false
+  },
+  "hf_backup": {
+    "enabled": false,
+    "strict": true,
+    "dry_run": false,
+    "verify_remote": true,
+    "batch_size": 5
+  },
+  "selection_expectations": {
+    "pair_counts_by_group": {
+      "background_pressure": 49
+    },
+    "require_all_families": true,
+    "allowed_pressure_conditions": [
+      "background_pressure"
+    ]
+  }
+}
