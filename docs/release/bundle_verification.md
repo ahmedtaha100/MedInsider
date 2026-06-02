@@ -6,7 +6,7 @@ PASS. The packaged reviewer bundle installed in a fresh Python 3.11 virtual envi
 
 ## Fresh-Copy Smoke Evidence
 
-- Verification copy: `.verification_tmp/code_and_benchmark_check` under the submission build directory.
+- Verification copy: `.verification_tmp/reviewer_bundle_check` under the submission build directory.
 - Install command: `python -m pip install -e ".[dev]"`.
 - Reproduction command: `make reproduce`.
 - Preflight: `ok=true`, 2 selected episodes, 1 validated pair, HF backup disabled.
@@ -27,7 +27,7 @@ PASS. The packaged reviewer bundle installed in a fresh Python 3.11 virtual envi
 Required grep commands returned no matches:
 
 ```bash
-identity/path grep over code_and_benchmark
+identity/path grep over repository root
 identity/path grep over dataset_release
 ```
 

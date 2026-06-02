@@ -1,17 +1,19 @@
 # MedInsider
 
-This repository hosts the MedInsider code and benchmark bundle. The runnable
-benchmark lives in `code_and_benchmark/`; that folder contains the benchmark
-implementation, the 840-episode v2 scenario corpus, locked manifests, final
-table CSVs, validation artifacts, and licenses.
+**Anonymous hosted dataset:** https://huggingface.co/datasets/anon-submission7979/medinsider-neurips2026
+
+This repository is the anonymized reviewer supplementary bundle for
+MedInsider. It contains the benchmark implementation, the 840-episode v2
+scenario corpus, locked manifests, final table CSVs, validation artifacts, and
+licenses.
 
 ## Reviewer Quick Start
 
-Run this from the repository root. The smoke path is provider-free: it does not
-call OpenAI, Anthropic, Hugging Face, or any other external model API.
+Run these commands from the repository root. The smoke path is provider-free:
+it does not call OpenAI, Anthropic, Hugging Face, or any other external model
+API.
 
 ```bash
-cd code_and_benchmark
 python3.11 -m venv .venv
 . .venv/bin/activate
 python -m pip install --upgrade pip
@@ -49,7 +51,7 @@ and may incur provider costs.
 
 ## Running With Your Own API
 
-From `code_and_benchmark/`, use the smallest smoke manifest first.
+Use the smallest smoke manifest first.
 
 OpenAI:
 
@@ -94,37 +96,37 @@ Outputs are written to `code/runs/<run_id>/`; the main scored file is
 
 Corpus and manifests:
 
-- Full scenario corpus: `code_and_benchmark/data/scenarios/phase2_v2/generated/`
-- Main manifest: `code_and_benchmark/data/manifests/v2_manifest.csv`
-- Full-run manifest: `code_and_benchmark/data/manifests/subsets/v2_full_run_manifest.csv`
-- Smoke manifest: `code_and_benchmark/data/manifests/subsets/v2_smoke_manifest.csv`
+- Full scenario corpus: `data/scenarios/phase2_v2/generated/`
+- Main manifest: `data/manifests/v2_manifest.csv`
+- Full-run manifest: `data/manifests/subsets/v2_full_run_manifest.csv`
+- Smoke manifest: `data/manifests/subsets/v2_smoke_manifest.csv`
 
 Count scenario JSON files under the `generated/` directory above. The broader
-`code_and_benchmark/data/scenarios/` tree also contains non-scenario artifact
-JSON, including the generation summary.
+`data/scenarios/` tree also contains non-scenario artifact JSON, including the
+generation summary.
 
 Table backing CSVs:
 
-- Table 2 kappa statistics: `code_and_benchmark/docs/validation/kappa_tables.csv`
-- Table 3 scorer agreement: `code_and_benchmark/docs/validation/validation_summary_120.csv`
-- Table 4 seven-model results: `code_and_benchmark/docs/paper/final_table3_seven_model_results.csv`
-- Table 5 refusal/partial results: `code_and_benchmark/docs/paper/final_table4_refusal_partial.csv`
-- Table 6 condition breakdown: `code_and_benchmark/docs/paper/final_table5_condition_breakdown.csv`
-- Table 7 coding probe: `code_and_benchmark/docs/paper/final_table6_coding_probe.csv`
-- Table 8 mitigation: `code_and_benchmark/docs/paper/final_table7_mitigation.csv`
+- Table 2 kappa statistics: `docs/validation/kappa_tables.csv`
+- Table 3 scorer agreement: `docs/validation/validation_summary_120.csv`
+- Table 4 seven-model results: `docs/paper/final_table3_seven_model_results.csv`
+- Table 5 refusal/partial results: `docs/paper/final_table4_refusal_partial.csv`
+- Table 6 condition breakdown: `docs/paper/final_table5_condition_breakdown.csv`
+- Table 7 coding probe: `docs/paper/final_table6_coding_probe.csv`
+- Table 8 mitigation: `docs/paper/final_table7_mitigation.csv`
 
 Per-episode scored outputs:
 
-- Seven-model scored CSVs: `code_and_benchmark/data/scored_outputs/per_episode/`
-- Directory guide: `code_and_benchmark/data/scored_outputs/per_episode/README.md`
+- Seven-model scored CSVs: `data/scored_outputs/per_episode/`
+- Directory guide: `data/scored_outputs/per_episode/README.md`
 
 Validation artifacts:
 
-- Validation summary: `code_and_benchmark/docs/validation/validation_results.md`
-- 120-row Table 3 label summary: `code_and_benchmark/docs/validation/validation_summary_120.csv`
-- Expert panel description: `code_and_benchmark/docs/validation/expert_panel.md`
-- Review protocols: `code_and_benchmark/docs/validation/metric_validation_protocol.md`
-- Validation tool source: `code_and_benchmark/validation/medinsider_validation_space/`
+- Validation summary: `docs/validation/validation_results.md`
+- 120-row Table 3 label summary: `docs/validation/validation_summary_120.csv`
+- Expert panel description: `docs/validation/expert_panel.md`
+- Review protocols: `docs/validation/metric_validation_protocol.md`
+- Validation tool source: `validation/medinsider_validation_space/`
 
 ## Validation Tool Smoke Test
 
@@ -132,7 +134,7 @@ The Streamlit validation tool can be inspected locally without Hugging Face
 write credentials:
 
 ```bash
-cd code_and_benchmark/validation/medinsider_validation_space
+cd validation/medinsider_validation_space
 python3.11 -m venv .venv
 . .venv/bin/activate
 python -m pip install -r requirements.txt
@@ -143,24 +145,26 @@ Then open `http://localhost:8502/`.
 
 ## Evaluating A New Model
 
-See `code_and_benchmark/docs/release/new_model_onboarding.md`. The short path is:
+See `docs/release/new_model_onboarding.md`. The short path is:
 
-1. Copy `code_and_benchmark/code/configs/phase4_v2/smoke_scripted.json`.
+1. Copy `code/configs/phase4_v2/smoke_scripted.json`.
 2. Change the model identifier and adapter settings in the copied config.
 3. Run the documented preflight command.
 4. Run the smoke benchmark and inspect the scored CSV under the new run id.
 
 ## Dataset Release
 
-This repository contains the runnable code-and-benchmark bundle. The standalone
-dataset release is maintained as a separate dataset-host artifact: it contains
-the scenario corpus, dataset manifests, Croissant metadata, datasheet, licenses,
-and dataset documentation. Locked scored outputs, validation summaries,
-reproduction scripts, and reviewer smoke tests live in this code bundle.
+The anonymous hosted dataset is available at
+https://huggingface.co/datasets/anon-submission7979/medinsider-neurips2026.
+It contains the standalone scenario corpus, dataset manifests, Croissant
+metadata, datasheet, licenses, and dataset documentation.
+
+This GitHub repository contains the runnable code-and-benchmark bundle. Locked
+scored outputs, validation summaries, reproduction scripts, and reviewer smoke
+tests live here.
 
 ## Licenses
 
-Code is Apache 2.0 (`code_and_benchmark/LICENSE`). Data and documentation
-artifacts are CC BY 4.0 (`code_and_benchmark/DATA_LICENSE`). Third-party asset
-notes are in `code_and_benchmark/docs/asset_licenses.md`. Post-freeze citation
-metadata notes are in `code_and_benchmark/docs/citation_metadata_notes.md`.
+Code is Apache 2.0 (`LICENSE`). Data and documentation artifacts are CC BY 4.0
+(`DATA_LICENSE`). Third-party asset notes are in `docs/asset_licenses.md`.
+Post-freeze citation metadata notes are in `docs/citation_metadata_notes.md`.

@@ -33,7 +33,7 @@ The manuscript source/PDF was not edited.
 Reviewer setup and smoke:
 
 ```bash
-cd /tmp/medinsider_remediation_20260601/code_and_benchmark
+cd /tmp/medinsider_remediation_20260601
 python3.11 -m venv .venv
 . .venv/bin/activate
 python -m pip install -e ".[dev]"
