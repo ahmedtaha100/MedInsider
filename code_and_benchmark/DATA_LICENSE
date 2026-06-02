@@ -16,11 +16,16 @@ Under the following terms:
 
 Full license text: https://creativecommons.org/licenses/by/4.0/legalcode
 
-This license applies to:
-- scenarios/ directory (all scenario JSON files and manifests)
-- experiments/ directory (evaluation results and analysis outputs)
-- docs/ directory (scoring specifications, provenance tables)
-- benchmark_versions/ directory (version manifests)
+This license applies to the MedInsider dataset and documentation artifacts,
+including:
 
-The source code (src/, scripts/, tests/) is licensed separately under
-Apache License 2.0 — see the LICENSE file.
+- data/scenarios/ and scenario JSON files
+- data/manifests/ and subset manifests
+- data/scored_outputs/ released scored-output CSVs
+- validation/medinsider_validation_space/data/ released validation payload files
+- docs/ dataset documentation, validation summaries, paper-table backing CSVs,
+  datasheets, and release notes
+- croissant.json and dataset metadata files
+
+The source code under code/, scripts/, tests/, and package implementation files
+is licensed separately under Apache License 2.0; see LICENSE.

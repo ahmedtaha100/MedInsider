@@ -6,8 +6,8 @@ This inventory is for release review. It separates locally distributed assets fr
 
 | Asset | Location | License status |
 |---|---|---|
-| Source code | `src/`, `scripts/`, `tests/` | Apache License 2.0, root `LICENSE` |
-| Scenario corpus and benchmark data | `scenarios/`, `artifacts/`, `docs/`, `benchmark_versions/` where present | CC BY 4.0, root `DATA_LICENSE` |
+| Source code | `code/`, `scripts/`, `tests/`, and package implementation files where present | Apache License 2.0, `LICENSE` |
+| Scenario corpus and benchmark data | `data/scenarios/`, `data/manifests/`, `data/scored_outputs/`, `validation/medinsider_validation_space/data/`, `docs/`, and `croissant.json` where present | CC BY 4.0, `DATA_LICENSE` |
 | Reviewer bundle code | `submission/reviewer_bundle/code/` | Apache License 2.0 copy included in bundle |
 | Reviewer bundle data | `submission/reviewer_bundle/data/` | CC BY 4.0 copy included in bundle |
 | Validation tool source | `validation/medinsider_validation_space/` | Covered by repository code license unless otherwise separated before release |
