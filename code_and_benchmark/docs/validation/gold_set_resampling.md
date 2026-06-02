@@ -86,8 +86,12 @@ The sample includes 22 same-model neutral/pressure pair groups where both twins 
 
 | Artifact | Rows | SHA-256 |
 |---|---:|---|
-| `validation/medinsider_validation_space/data/episodes.json` | 120 | `98c6fc800346a94a0df37cf29deb4d875130979aeacbf0c21de96ae5bb82c66b` |
+| `validation/medinsider_validation_space/data/episodes.json` | 120 | `e8ca0a15b5d7b02414c8da6b15dbeab38d2179658d0efaf11b87ff070d8daf47` |
 | `validation/medinsider_validation_space/data/medinsider_validation_manifest.csv` | 120 | `e69ac3c9559040b4069f59c879e5470f902caabb594f97ff0ead9b3a63c97b11` |
 | `validation/medinsider_validation_space/data/expected_manifest_shas.json` |  | `ce43558b01cf691d67bfddfb23f1cdf5f8d1bde4dafa3820d5d9e277e81d7827` |
 | `docs/validation/blinded_gold_label_set.csv` | 120 | `8fea63e4d279016f2649b3e4a6479c13b1faff82f61651bbd73fecb057ab3b07` |
-| `docs/validation/blinded_gold_label_admin.csv` | 120 | `a78750b5a9a709480ed61a8330e69206b8de0d1cb655685df95e16dc97e89d85` |
+
+The admin crosswalk/prediction CSV used during validation preparation is not
+included in the submitted reviewer bundle. The submitted validation evidence is
+the completed summary package in `validation_results.md`,
+`kappa_tables.csv`, and `validation_summary_120.csv`.

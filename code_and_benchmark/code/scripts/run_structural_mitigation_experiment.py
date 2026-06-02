@@ -15,7 +15,7 @@ from medinsider.fhir.pilot_runtime import load_run_config, run_phase4_v2
 PROJECT_ROOT = Path(__file__).resolve().parents[1]
 DATASET_MANIFEST = PROJECT_ROOT / "artifacts" / "v2_manifest.csv"
 SELECTION_MANIFEST = PROJECT_ROOT / "artifacts" / "subsets" / "v2_mitigation_compliance_gate_background_manifest.csv"
-RESEARCH_PACKAGE_DIR = PROJECT_ROOT / "docs" / "research_package"
+RESEARCH_PACKAGE_DIR = PROJECT_ROOT / "docs" / "internal_research_package"
 PAPER_DIR = PROJECT_ROOT / "docs" / "paper"
 
 TARGET_FAMILIES = {
@@ -450,7 +450,7 @@ def run_experiment(run_suffix: str, selected_models: set[str] | None = None) -> 
         RESEARCH_PACKAGE_DIR / "structural_mitigation_execution_roster.csv", merged_execution_rows, execution_fields
     )
     _write_csv(RESEARCH_PACKAGE_DIR / "structural_mitigation_comparison.csv", merged_comparison_rows, comparison_fields)
-    _write_csv(PAPER_DIR / "final_structural_mitigation_table.csv", merged_comparison_rows, comparison_fields)
+    _write_csv(PAPER_DIR / "final_table7_mitigation.csv", merged_comparison_rows, comparison_fields)
 
     summary_lines = [
         "# Structural Mitigation Summary",

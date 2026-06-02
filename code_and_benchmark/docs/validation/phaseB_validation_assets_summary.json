@@ -2,6 +2,7 @@
   "dataset_dir": ".",
   "scenario_sample": {
     "output_csv": "docs\\validation\\scenario_realism_results.csv",
+    "status": "optional pending worksheet; not submitted validation evidence",
     "selected_size": 200,
     "family_counts": {
       "coding_and_billing_pressure": 40,
@@ -31,7 +32,7 @@
   },
   "episode_labeling": {
     "output_csv": "docs\\validation\\blinded_gold_label_set.csv",
-    "admin_output_csv": "docs\\validation\\blinded_gold_label_admin.csv",
+    "admin_output_csv": "not included in submitted reviewer bundle",
     "logs_dir": "docs\\validation\\episode_review_logs",
     "selected_size": 120,
     "double_label_size": 40

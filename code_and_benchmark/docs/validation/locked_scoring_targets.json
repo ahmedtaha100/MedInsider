@@ -1,311 +1,268 @@
 {
-  "lock_id": "post_rerun_scoring_targets",
-  "policy": "Do not modify authoritative scored outputs or regenerated paper table CSVs before validation completes; if a change is unavoidable, create a new lock file and note the invalidated reviewer target.",
-  "source_manifest": "artifacts/subsets/v2_full_run_manifest.csv",
-  "single_run_scored_outputs": [
+  "lock_id": "submitted_bundle_scoring_targets_20260601",
+  "policy": "This lock file hashes tracked submitted-bundle artifacts only. Do not add untracked provider-run restore roots or stale internal research-package paths.",
+  "source_manifest": "data/manifests/subsets/v2_full_run_manifest.csv",
+  "dataset_manifests": [
     {
-      "path": "tmp_restore_audit/codex_openai_full_run/artifacts/scored_episode_results.csv",
-      "role": "authoritative scored output",
-      "sha256": "52ed1b6f877aea512dd70292451b1279e965fb2bed69d4b13c8342317fc418ae",
-      "bytes": 668838,
+      "path": "data/manifests/v2_manifest.csv",
+      "role": "dataset manifest",
+      "sha256": "ad0dad8c7dea1ea7c46e5771b7b6d2e1c98de77dc1ff9febc014c7b44b21322e",
+      "bytes": 180023,
+      "rows": 840
+    },
+    {
+      "path": "data/manifests/subsets/v2_full_run_manifest.csv",
+      "role": "full-run selection manifest",
+      "sha256": "823a32bf9f1c692dda400859f489897da95403ef05bafc60cb1e48e7e9ff3e34",
+      "bytes": 151343,
+      "rows": 840
+    },
+    {
+      "path": "data/scenarios/phase2_v2/artifacts/v2_generation_summary.json",
+      "role": "scenario generation summary",
+      "sha256": "58619874dc13fc840844d3fab1b0522853594b942348446234e2949b23225b86",
+      "bytes": 869
+    }
+  ],
+  "scored_outputs": [
+    {
+      "path": "data/scored_outputs/per_episode/gpt5-4_scored_episodes.csv",
+      "role": "bundled per-episode scored output",
+      "sha256": "2442d06d5169e654b87156f9e31f6dd182cd9162d7c6d6ef4276fcaf0a064c84",
+      "bytes": 635238,
+      "rows": 840,
       "model_display": "GPT-5.4",
-      "rows": 840,
-      "run_dir": "tmp_restore_audit/codex_openai_full_run",
+      "resolved_model_id": "gpt-5.4-2026-03-05",
+      "resolved_models": [
+        "gpt-5.4-2026-03-05"
+      ],
       "episode_count": 840,
       "scored_episode_count": 840,
+      "fully_scored_pairs": 420,
       "status_counts": {
         "success": 840
       }
     },
     {
-      "path": "tmp_restore_audit/codex_sonnet46_full_run/artifacts/scored_episode_results.csv",
-      "role": "authoritative scored output",
-      "sha256": "40cd5c8a8daf8fc665f6ede287de51179a3973b93bdb00dc0d914d11690b84f9",
-      "bytes": 673418,
+      "path": "data/scored_outputs/per_episode/claude_sonnet_4-6_scored_episodes.csv",
+      "role": "bundled per-episode scored output",
+      "sha256": "69c2bcefe789ca004a647f065432649545bb4aeb5f066700aa854587516040ea",
+      "bytes": 639818,
+      "rows": 840,
       "model_display": "Claude Sonnet 4.6",
-      "rows": 840,
-      "run_dir": "tmp_restore_audit/codex_sonnet46_full_run",
+      "resolved_model_id": "claude-sonnet-4-6",
+      "resolved_models": [
+        "claude-sonnet-4-6"
+      ],
       "episode_count": 840,
       "scored_episode_count": 840,
+      "fully_scored_pairs": 420,
       "status_counts": {
         "success": 840
       }
     },
     {
-      "path": "tmp_restore_audit/codex_opus47_full_run/artifacts/scored_episode_results.csv",
-      "role": "authoritative scored output",
-      "sha256": "c79703058cf7270ffc8b6d317d67f6fef8b803bd447620d7f39a923fb24a054f",
-      "bytes": 667991,
+      "path": "data/scored_outputs/per_episode/claude_opus_4-7_scored_episodes.csv",
+      "role": "bundled per-episode scored output",
+      "sha256": "6301d4a10293356bd791dd3c1f9cf3b0cd9d760c04b8c3e3527da2aefb1da74a",
+      "bytes": 633496,
+      "rows": 840,
       "model_display": "Claude Opus 4.7",
-      "rows": 840,
-      "run_dir": "tmp_restore_audit/codex_opus47_full_run",
+      "resolved_model_id": "claude-opus-4-7",
+      "resolved_models": [
+        "claude-opus-4-7"
+      ],
       "episode_count": 840,
       "scored_episode_count": 840,
+      "fully_scored_pairs": 420,
       "status_counts": {
         "success": 840
       }
     },
     {
-      "path": "tmp_restore_kimi_closeout/codex_kimi26_full_run/artifacts/scored_episode_results.csv",
-      "role": "authoritative scored output",
-      "sha256": "116a949d2f6854e8f2d55633ab0febc3415a528dc3fe3a40eeb1fd45b80fe026",
-      "bytes": 680031,
+      "path": "data/scored_outputs/per_episode/kimi_2-6_scored_episodes.csv",
+      "role": "bundled per-episode scored output",
+      "sha256": "06dd7a181a8ff74800fd1dd997b6014eccca026d54f15aa675830084d367a217",
+      "bytes": 645482,
+      "rows": 840,
       "model_display": "Kimi 2.6",
-      "rows": 840,
-      "run_dir": "tmp_restore_kimi_closeout/codex_kimi26_full_run",
+      "resolved_model_id": "kimi-k2.6",
+      "resolved_models": [
+        "kimi-k2.6"
+      ],
       "episode_count": 840,
       "scored_episode_count": 840,
+      "fully_scored_pairs": 420,
       "status_counts": {
         "success": 840
       }
     },
     {
-      "path": "tmp_restore_glm5_closeout/codex_glm5_full_run/artifacts/scored_episode_results.csv",
-      "role": "authoritative scored output",
-      "sha256": "1bc031e5eaf663b3382b892be4c51bd5ac426a9bbf73250f776d32e073c1cf9e",
-      "bytes": 669145,
+      "path": "data/scored_outputs/per_episode/glm-5_scored_episodes.csv",
+      "role": "bundled per-episode scored output",
+      "sha256": "58b8f56213063b79ae746d00ba24d2531a6a71ff3200d1dac2d3f552d699596c",
+      "bytes": 634542,
+      "rows": 840,
       "model_display": "GLM-5",
-      "rows": 840,
-      "run_dir": "tmp_restore_glm5_closeout/codex_glm5_full_run",
+      "resolved_model_id": "glm-5",
+      "resolved_models": [
+        "glm-5"
+      ],
       "episode_count": 840,
       "scored_episode_count": 840,
+      "fully_scored_pairs": 420,
       "status_counts": {
         "success": 840
       }
     },
     {
-      "path": "tmp_restore_deepseek_closeout/codex_deepseekv32_full_run/artifacts/scored_episode_results.csv",
-      "role": "authoritative scored output",
-      "sha256": "499a7bb0c8c399a2487fb60de61f464f61e55db15b71e9a24f0cd3f9975b6298",
-      "bytes": 701028,
+      "path": "data/scored_outputs/per_episode/deepseek_v3-2_scored_episodes.csv",
+      "role": "bundled per-episode scored output",
+      "sha256": "1f03cd2327eeb45354d0f2b8f9bca5b4c830db48f234124f6ff7e98199892b77",
+      "bytes": 667428,
+      "rows": 840,
       "model_display": "DeepSeek V3.2",
-      "rows": 840,
-      "run_dir": "tmp_restore_deepseek_closeout/codex_deepseekv32_full_run",
+      "resolved_model_id": "deepseek-chat",
+      "resolved_models": [
+        "deepseek-chat"
+      ],
       "episode_count": 840,
       "scored_episode_count": 840,
+      "fully_scored_pairs": 420,
+      "status_counts": {
+        "success": 840
+      }
+    },
+    {
+      "path": "data/scored_outputs/per_episode/gemma_4_scored_episodes.csv",
+      "role": "bundled per-episode scored output",
+      "sha256": "251a7254b5fea12ce4dce7aa5b149d9c2f29b6a4b8df8867b463e69b6383c7ee",
+      "bytes": 736176,
+      "rows": 840,
+      "model_display": "Gemma 4",
+      "resolved_model_id": "google/gemma-4-31B-it",
+      "resolved_models": [
+        "google/gemma-4-31B-it"
+      ],
+      "episode_count": 840,
+      "scored_episode_count": 840,
+      "fully_scored_pairs": 420,
       "status_counts": {
         "success": 840
       }
     }
   ],
-  "gemma_shard_scored_outputs": [
-    {
-      "path": "tmp_restore_gemma4/phase4_v2_full_run_gemma4_gpu0_quality_8cff78/artifacts/scored_episode_results.csv",
-      "role": "authoritative Gemma shard scored output",
-      "sha256": "024f1c94a57ebee76ade1861b67d5e12e9c399780343dbc2bb4a6488efa3227f",
-      "bytes": 78409,
-      "model_display": "Gemma 4",
-      "rows": 84,
-      "run_dir": "tmp_restore_gemma4/phase4_v2_full_run_gemma4_gpu0_quality_8cff78",
-      "run_id": "phase4_v2_full_run_gemma4_gpu0_quality_8cff78",
-      "episode_count": 84,
-      "scored_episode_count": 84,
-      "status_counts": {
-        "success": 84
-      }
-    },
-    {
-      "path": "tmp_restore_gemma4/phase4_v2_full_run_gemma4_gpu0_readmission_d4cd1d/artifacts/scored_episode_results.csv",
-      "role": "authoritative Gemma shard scored output",
-      "sha256": "309e8323f37ce90203277532a03538ab6dad0d473a737233a57a7bfcfca6eb5d",
-      "bytes": 77162,
-      "model_display": "Gemma 4",
-      "rows": 84,
-      "run_dir": "tmp_restore_gemma4/phase4_v2_full_run_gemma4_gpu0_readmission_d4cd1d",
-      "run_id": "phase4_v2_full_run_gemma4_gpu0_readmission_d4cd1d",
-      "episode_count": 84,
-      "scored_episode_count": 84,
-      "status_counts": {
-        "success": 84
-      }
-    },
-    {
-      "path": "tmp_restore_gemma4/phase4_v2_full_run_gemma4_gpu0_safety_6aac91/artifacts/scored_episode_results.csv",
-      "role": "authoritative Gemma shard scored output",
-      "sha256": "94cd077f8644a7faf09d610b622d8cc73ca5e74af1e9dcc7658dcd732f478bf9",
-      "bytes": 77129,
-      "model_display": "Gemma 4",
-      "rows": 84,
-      "run_dir": "tmp_restore_gemma4/phase4_v2_full_run_gemma4_gpu0_safety_6aac91",
-      "run_id": "phase4_v2_full_run_gemma4_gpu0_safety_6aac91",
-      "episode_count": 84,
-      "scored_episode_count": 84,
-      "status_counts": {
-        "success": 84
-      }
-    },
-    {
-      "path": "tmp_restore_gemma4/phase4_v2_full_run_gemma4_gpu0_throughput_e3aa97/artifacts/scored_episode_results.csv",
-      "role": "authoritative Gemma shard scored output",
-      "sha256": "92648982438d800bb583c6ecc90232739202c261a3fae189d3ff22a8d6d03d0c",
-      "bytes": 76384,
-      "model_display": "Gemma 4",
-      "rows": 84,
-      "run_dir": "tmp_restore_gemma4/phase4_v2_full_run_gemma4_gpu0_throughput_e3aa97",
-      "run_id": "phase4_v2_full_run_gemma4_gpu0_throughput_e3aa97",
-      "episode_count": 84,
-      "scored_episode_count": 84,
-      "status_counts": {
-        "success": 84
-      }
-    },
-    {
-      "path": "tmp_restore_gemma4/phase4_v2_full_run_gemma4_gpu1_coding_6f5c39/artifacts/scored_episode_results.csv",
-      "role": "authoritative Gemma shard scored output",
-      "sha256": "64cd0619a6c357dbd6b8800105352043e1c27ec16e85acf731982ea0085de28e",
-      "bytes": 78182,
-      "model_display": "Gemma 4",
-      "rows": 84,
-      "run_dir": "tmp_restore_gemma4/phase4_v2_full_run_gemma4_gpu1_coding_6f5c39",
-      "run_id": "phase4_v2_full_run_gemma4_gpu1_coding_6f5c39",
-      "episode_count": 84,
-      "scored_episode_count": 84,
-      "status_counts": {
-        "success": 84
-      }
-    },
-    {
-      "path": "tmp_restore_gemma4/phase4_v2_full_run_gemma4_gpu1_quality_f4d4a3/artifacts/scored_episode_results.csv",
-      "role": "authoritative Gemma shard scored output",
-      "sha256": "febe3f6aedd089b5eb869661482b190ce152358c9e51f5e612a4a966ae5555fd",
-      "bytes": 78428,
-      "model_display": "Gemma 4",
-      "rows": 84,
-      "run_dir": "tmp_restore_gemma4/phase4_v2_full_run_gemma4_gpu1_quality_f4d4a3",
-      "run_id": "phase4_v2_full_run_gemma4_gpu1_quality_f4d4a3",
-      "episode_count": 84,
-      "scored_episode_count": 84,
-      "status_counts": {
-        "success": 84
-      }
-    },
-    {
-      "path": "tmp_restore_gemma4/phase4_v2_full_run_gemma4_gpu1_readmission_27ce45/artifacts/scored_episode_results.csv",
-      "role": "authoritative Gemma shard scored output",
-      "sha256": "0f16186ee7a7f626698f3e54d7b03517902f11f07a003bf729954e74aaac9e35",
-      "bytes": 77158,
-      "model_display": "Gemma 4",
-      "rows": 84,
-      "run_dir": "tmp_restore_gemma4/phase4_v2_full_run_gemma4_gpu1_readmission_27ce45",
-      "run_id": "phase4_v2_full_run_gemma4_gpu1_readmission_27ce45",
-      "episode_count": 84,
-      "scored_episode_count": 84,
-      "status_counts": {
-        "success": 84
-      }
-    },
-    {
-      "path": "tmp_restore_gemma4/phase4_v2_full_run_gemma4_gpu1_safety_f8329e/artifacts/scored_episode_results.csv",
-      "role": "authoritative Gemma shard scored output",
-      "sha256": "0b2d67dd057c2a172281553cbc0b1730f033f5b107022a0cae3c6d3b94dde9f8",
-      "bytes": 77070,
-      "model_display": "Gemma 4",
-      "rows": 84,
-      "run_dir": "tmp_restore_gemma4/phase4_v2_full_run_gemma4_gpu1_safety_f8329e",
-      "run_id": "phase4_v2_full_run_gemma4_gpu1_safety_f8329e",
-      "episode_count": 84,
-      "scored_episode_count": 84,
-      "status_counts": {
-        "success": 84
-      }
-    },
-    {
-      "path": "tmp_restore_gemma4/phase4_v2_full_run_gemma4_gpu1_throughput_578d7c/artifacts/scored_episode_results.csv",
-      "role": "authoritative Gemma shard scored output",
-      "sha256": "42bc7150297219f6ff6c3e4d43e3c6d70c3b7d3fe77dcd04cf6291f21dbc3c15",
-      "bytes": 76389,
-      "model_display": "Gemma 4",
-      "rows": 84,
-      "run_dir": "tmp_restore_gemma4/phase4_v2_full_run_gemma4_gpu1_throughput_578d7c",
-      "run_id": "phase4_v2_full_run_gemma4_gpu1_throughput_578d7c",
-      "episode_count": 84,
-      "scored_episode_count": 84,
-      "status_counts": {
-        "success": 84
-      }
-    },
-    {
-      "path": "tmp_restore_gemma4_retry/phase4_v2_full_run_gemma4_gpu0_coding_befaf2/artifacts/scored_episode_results.csv",
-      "role": "authoritative Gemma shard scored output",
-      "sha256": "7864235c678416b32f1b8948396c693716d3f81deb213ae64336fbc8086b6bc3",
-      "bytes": 79207,
-      "model_display": "Gemma 4",
-      "rows": 84,
-      "run_dir": "tmp_restore_gemma4_retry/phase4_v2_full_run_gemma4_gpu0_coding_befaf2",
-      "run_id": "phase4_v2_full_run_gemma4_gpu0_coding_befaf2",
-      "episode_count": 84,
-      "scored_episode_count": 84,
-      "status_counts": {
-        "success": 84
-      }
-    }
-  ],
-  "gemma_aggregate": {
-    "model_display": "Gemma 4",
-    "episode_count": 840,
-    "scored_episode_count": 840,
-    "status_counts": {
-      "success": 840
-    },
-    "shard_count": 10
-  },
   "paper_table_targets": [
     {
       "path": "docs/paper/final_table3_seven_model_results.csv",
-      "role": "regenerated paper table target",
+      "role": "paper table target",
       "sha256": "62ba3672f9b442bd0a4d5f1eeaef64950d0920e65decde1dc84a0cda3c37fe9d",
       "bytes": 2632,
       "rows": 7
     },
     {
       "path": "docs/paper/final_table3_model_caveats.csv",
-      "role": "regenerated paper table target",
+      "role": "paper table target",
       "sha256": "0949fca2e6f737e8f4b138b09ea8de607cb097430379e7a3a37cd40983123f33",
       "bytes": 1842,
       "rows": 7
     },
     {
-      "path": "docs/paper/final_table7_condition_breakdown.csv",
-      "role": "regenerated paper table target",
+      "path": "docs/paper/final_table4_refusal_partial.csv",
+      "role": "paper table target",
+      "sha256": "20c124c79bc62aa035ebf95ba3ca31aba0b85fbfea893abe9f427e564d1bbb2d",
+      "bytes": 405,
+      "rows": 7
+    },
+    {
+      "path": "docs/paper/final_table5_condition_breakdown.csv",
+      "role": "paper table target",
       "sha256": "5e997c523091e1af653e57029f395ca3ea50d4c3ebbcb2f00f1246a661fd6081",
       "bytes": 11218,
       "rows": 98
     },
     {
+      "path": "docs/paper/final_table6_coding_probe.csv",
+      "role": "paper table target",
+      "sha256": "e187cb236950582d60270ddec9d459b2a9327447000f965095551f8bfcdf9367",
+      "bytes": 908,
+      "rows": 7
+    },
+    {
+      "path": "docs/paper/final_table7_mitigation.csv",
+      "role": "paper table target",
+      "sha256": "0608b57203748d2c06943dbb8261e237095512449c4eacb47531c730446aa7ed",
+      "bytes": 1397,
+      "rows": 4
+    },
+    {
       "path": "docs/paper/final_compute_appendix_seven_model.csv",
-      "role": "regenerated paper table target",
+      "role": "paper table target",
       "sha256": "b31517d080cf1775a5a178a81c6162377de39c8e705a568d883dfce29a9ad5f1",
       "bytes": 2404,
       "rows": 7
     },
     {
-      "path": "docs/research_package/final_roster_status_matrix.csv",
-      "role": "regenerated paper table target",
-      "sha256": "a3f28b7bf3627a1526905c9e934ea24a59c2549531f6888bcffc7c4a2654afd6",
-      "bytes": 5498,
-      "rows": 11
+      "path": "docs/paper/final_supported_source_inventory.csv",
+      "role": "paper source inventory",
+      "sha256": "c3d3a2b079c8757192d2f3e3f120cf37b44db73595a603f17c5b47cb55c460e2",
+      "bytes": 1913,
+      "rows": 9
     }
   ],
   "validation_assets": [
     {
       "path": "docs/validation/blinded_gold_label_set.csv",
-      "role": "validation asset",
+      "role": "validation target sheet",
       "sha256": "8fea63e4d279016f2649b3e4a6479c13b1faff82f61651bbd73fecb057ab3b07",
       "bytes": 17011,
       "rows": 120
     },
     {
-      "path": "docs/validation/blinded_gold_label_admin.csv",
-      "role": "validation asset",
-      "sha256": "a78750b5a9a709480ed61a8330e69206b8de0d1cb655685df95e16dc97e89d85",
-      "bytes": 36169,
+      "path": "docs/validation/metric_validation_results.json",
+      "role": "metric validation results",
+      "sha256": "eebeeaa3002cf7d0d412f1a385690cbab03f14f5022ac6b799915a002bba9096",
+      "bytes": 885
+    },
+    {
+      "path": "docs/validation/validation_summary_120.csv",
+      "role": "validation summary table",
+      "sha256": "590aaf0118f75536182ba3944d2ecd6a5a6463c3b3e56c6ccff614b2964d0f2e",
+      "bytes": 12671,
       "rows": 120
     },
     {
-      "path": "docs/validation/metric_validation_results.json",
-      "role": "validation asset",
-      "sha256": "9f9e6c44d06f953f9411919a6a582f590481d5390605d56390986832c6ad325d",
-      "bytes": 1666
+      "path": "docs/validation/q2_dissent_adjudications.csv",
+      "role": "Q2 dissent adjudications",
+      "sha256": "8f496e67142d0276c4c7fa71e9b82655f06881d6554c91ee6a1a2d13e776958d",
+      "bytes": 1290,
+      "rows": 9
+    },
+    {
+      "path": "docs/validation/kappa_tables.csv",
+      "role": "validation kappa table",
+      "sha256": "341f2a3ebc12102486dc5fe43500686af471cd6a5daa8caa14f5152695cbd3cf",
+      "bytes": 2739,
+      "rows": 30
+    },
+    {
+      "path": "docs/validation/kappa_tables_20260505.csv",
+      "role": "validation kappa table manuscript-cited filename alias",
+      "sha256": "341f2a3ebc12102486dc5fe43500686af471cd6a5daa8caa14f5152695cbd3cf",
+      "bytes": 2739,
+      "rows": 30
+    },
+    {
+      "path": "docs/validation/validation_results.md",
+      "role": "validation results report",
+      "sha256": "4591ea4f4d597fb87bb5d0f3b13d882abbc1dab376a67f680c0ecda631d24013",
+      "bytes": 7949
+    },
+    {
+      "path": "docs/validation/raw_validation_responses_status.md",
+      "role": "validation raw-response status note",
+      "sha256": "6462c8d6bc19898740400ed8ecfa5f9f299e7e5e490790c8c21cfe27b4028b98",
+      "bytes": 877
     }
   ],
   "validation_assignment": {
@@ -330,23 +287,22 @@
   "validation_tool_assets": [
     {
       "path": "validation/medinsider_validation_space/data/medinsider_validation_manifest.csv",
+      "role": "validation tool assignment manifest",
       "sha256": "e69ac3c9559040b4069f59c879e5470f902caabb594f97ff0ead9b3a63c97b11",
       "bytes": 9831,
-      "rows": 120,
-      "role": "Option A validation tool assignment manifest"
+      "rows": 120
     },
     {
       "path": "validation/medinsider_validation_space/data/episodes.json",
-      "sha256": "98c6fc800346a94a0df37cf29deb4d875130979aeacbf0c21de96ae5bb82c66b",
-      "bytes": 1959374,
-      "rows": 120,
-      "role": "Option A reviewer-facing blinded episode payload"
+      "role": "validation tool episode payload",
+      "sha256": "e8ca0a15b5d7b02414c8da6b15dbeab38d2179658d0efaf11b87ff070d8daf47",
+      "bytes": 1943907
     },
     {
       "path": "validation/medinsider_validation_space/data/expected_manifest_shas.json",
-      "sha256": "ce43558b01cf691d67bfddfb23f1cdf5f8d1bde4dafa3820d5d9e277e81d7827",
-      "bytes": 198,
-      "role": "validation tool manifest SHA lock"
+      "role": "validation tool expected hashes",
+      "sha256": "50142170a2d36f5e6c002bf46c775ecd680222fb6d1ad19ebd8c4db3b6200ec3",
+      "bytes": 198
     }
   ]
 }

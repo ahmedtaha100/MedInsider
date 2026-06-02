@@ -36,7 +36,7 @@ def main() -> None:
     labeling_summary = build_episode_labeling_package(
         dataset_dir=args.dataset_dir,
         output_csv=str(validation_dir / "blinded_gold_label_set.csv"),
-        admin_output_csv=str(validation_dir / "blinded_gold_label_admin.csv"),
+        admin_output_csv=str(validation_dir / "internal_validation_predictions.csv"),
         logs_dir=str(validation_dir / "episode_review_logs"),
         target_size=args.episode_sample_size,
         double_label_size=args.double_label_size,

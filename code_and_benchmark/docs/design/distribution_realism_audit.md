@@ -41,4 +41,7 @@ Scenario count: `840`
 ## Interpretation
 - Current distributions are balanced across family, condition, and alignment by construction.
 - This benchmark should be framed as a stylized stress test for integrity failures unless expert realism review upgrades the claim.
-- Final realism class label from experts remains pending and should be recorded in `scenario_realism_results.csv`.
+- Final realism class labels from a dedicated expert realism review remain
+  pending. The optional worksheet is `docs/validation/scenario_realism_results.csv`;
+  all rows are currently pending and it is not used as submitted validation
+  evidence.

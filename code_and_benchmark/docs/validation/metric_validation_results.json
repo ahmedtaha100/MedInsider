@@ -1,97 +1,21 @@
 {
-  "labels_csv": "docs/validation/blinded_gold_label_set.csv",
-  "predictions_csv": "docs/validation/blinded_gold_label_admin.csv",
-  "metrics": {
-    "IVR": {
-      "n": 0,
-      "tp": 0,
-      "tn": 0,
-      "fp": 0,
-      "fn": 0,
-      "precision": 0.0,
-      "recall": 0.0,
-      "f1": 0.0,
-      "accuracy": 0.0
-    },
-    "MGR": {
-      "n": 0,
-      "tp": 0,
-      "tn": 0,
-      "fp": 0,
-      "fn": 0,
-      "precision": 0.0,
-      "recall": 0.0,
-      "f1": 0.0,
-      "accuracy": 0.0
-    },
-    "UPR": {
-      "n": 0,
-      "tp": 0,
-      "tn": 0,
-      "fp": 0,
-      "fn": 0,
-      "precision": 0.0,
-      "recall": 0.0,
-      "f1": 0.0,
-      "accuracy": 0.0
-    },
-    "AEOR": {
-      "n": 0,
-      "tp": 0,
-      "tn": 0,
-      "fp": 0,
-      "fn": 0,
-      "precision": 0.0,
-      "recall": 0.0,
-      "f1": 0.0,
-      "accuracy": 0.0
-    },
-    "PSD": {
-      "n": 0,
-      "tp": 0,
-      "tn": 0,
-      "fp": 0,
-      "fn": 0,
-      "precision": 0.0,
-      "recall": 0.0,
-      "f1": 0.0,
-      "accuracy": 0.0
-    },
-    "CDR": {
-      "n": 0,
-      "tp": 0,
-      "tn": 0,
-      "fp": 0,
-      "fn": 0,
-      "precision": 0.0,
-      "recall": 0.0,
-      "f1": 0.0,
-      "accuracy": 0.0
-    },
-    "ATC": {
-      "n": 0,
-      "tp": 0,
-      "tn": 0,
-      "fp": 0,
-      "fn": 0,
-      "precision": 0.0,
-      "recall": 0.0,
-      "f1": 0.0,
-      "accuracy": 0.0
-    },
-    "AMBIGUITY": {
-      "n": 0,
-      "tp": 0,
-      "tn": 0,
-      "fp": 0,
-      "fn": 0,
-      "precision": 0.0,
-      "recall": 0.0,
-      "f1": 0.0,
-      "accuracy": 0.0
-    }
+  "status": "superseded_by_completed_expert_validation",
+  "superseded_on": "2026-06-01",
+  "note": "The old Phase B zero-row metric-validation schema is not current evidence. Use the completed four-reviewer validation outputs instead.",
+  "current_evidence": {
+    "validation_results": "docs/validation/validation_results.md",
+    "kappa_tables": "docs/validation/kappa_tables.csv",
+    "kappa_tables_manuscript_alias": "docs/validation/kappa_tables_20260505.csv",
+    "validation_summary": "docs/validation/validation_summary_120.csv",
+    "q2_dissent_adjudications": "docs/validation/q2_dissent_adjudications.csv"
   },
-  "evaluated_rows": 0,
-  "min_evaluated_rows": 0,
-  "ambiguity_evaluated_rows": 0
+  "completed_validation_summary": {
+    "episodes": 120,
+    "reviewers": 4,
+    "total_submissions": 480,
+    "q2_adjudicated_positive": 90,
+    "q2_adjudicated_negative": 30,
+    "q2_fleiss_kappa": 0.905,
+    "any_integrity_metric_accuracy": "120/120"
+  }
 }

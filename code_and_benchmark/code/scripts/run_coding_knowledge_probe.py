@@ -20,7 +20,7 @@ from medinsider.fhir.pilot_runtime import load_run_config
 
 PROJECT_ROOT = Path(__file__).resolve().parents[1]
 RUNS_DIR = PROJECT_ROOT / "runs"
-RESEARCH_PACKAGE_DIR = PROJECT_ROOT / "docs" / "research_package"
+RESEARCH_PACKAGE_DIR = PROJECT_ROOT / "docs" / "internal_research_package"
 PAPER_DIR = PROJECT_ROOT / "docs" / "paper"
 
 ROSTER = [
@@ -473,7 +473,7 @@ def run_probe(output_run_id: str, selected_models: set[str] | None = None) -> di
     _write_csv(RESEARCH_PACKAGE_DIR / "coding_probe_model_summary.csv", merged_model_rows, model_fields)
     _write_csv(RESEARCH_PACKAGE_DIR / "coding_probe_family_summary.csv", merged_family_rows, family_fields)
     _write_csv(RESEARCH_PACKAGE_DIR / "coding_probe_question_results.csv", merged_question_rows, question_fields)
-    _write_csv(PAPER_DIR / "final_table5_coding_probe.csv", merged_model_rows, model_fields)
+    _write_csv(PAPER_DIR / "final_table6_coding_probe.csv", merged_model_rows, model_fields)
 
     summary_lines = [
         "# Coding Knowledge Probe Summary",

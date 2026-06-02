@@ -22,7 +22,7 @@ from medinsider.fhir.capability_control import (
 )
 
 DEFAULT_SELECTION_MANIFEST = Path("artifacts/subsets/capability_control_closed_model_manifest.csv")
-DEFAULT_OUTPUT_DIR = Path("docs/research_package")
+DEFAULT_OUTPUT_DIR = Path("docs/internal_research_package")
 
 RUN_SPECS = (
     {

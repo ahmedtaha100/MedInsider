@@ -12,7 +12,7 @@ from medinsider.phaseB_validation import (
 def main() -> None:
     parser = argparse.ArgumentParser(description="Run Phase B metric validation reports from expert labels.")
     parser.add_argument("--labels-csv", default="docs/validation/blinded_gold_label_set.csv")
-    parser.add_argument("--predictions-csv", default="docs/validation/blinded_gold_label_admin.csv")
+    parser.add_argument("--predictions-csv", default="docs/validation/internal_validation_predictions.csv")
     parser.add_argument("--metric-results-md", default="docs/validation/metric_validation_results.md")
     parser.add_argument("--metric-results-json", default="docs/validation/metric_validation_results.json")
     parser.add_argument("--agreement-md", default="docs/validation/inter_rater_agreement.md")

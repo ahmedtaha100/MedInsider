@@ -27,9 +27,16 @@ Expected result:
 - 2/2 smoke episodes are scored successfully;
 - reviewer smoke artifacts are written under `code/runs/reviewer_smoke/`.
 
-The canonical reviewer command is `make reproduce`. A developer test suite is
-available via `make test-all`, but it includes fixture-dependent tests that may
-fail in clean clones; reviewers do not need to run it.
+The canonical reviewer command is `make reproduce`. Additional reviewer-safe
+checks are available as:
+
+- `make reproduce-tables`
+- `make validate-locks`
+- `make validate-validation`
+- `make reviewer-test`
+- `make test-all` (alias for `make reviewer-test`)
+
+The broader fixture-dependent internal pytest suite is `make internal-test`.
 
 ## Reproducibility Scope
 
@@ -92,15 +99,19 @@ Corpus and manifests:
 - Full-run manifest: `code_and_benchmark/data/manifests/subsets/v2_full_run_manifest.csv`
 - Smoke manifest: `code_and_benchmark/data/manifests/subsets/v2_smoke_manifest.csv`
 
+Count scenario JSON files under the `generated/` directory above. The broader
+`code_and_benchmark/data/scenarios/` tree also contains non-scenario artifact
+JSON, including the generation summary.
+
 Table backing CSVs:
 
-- Table 1 kappa statistics: `code_and_benchmark/docs/validation/kappa_tables.csv`
-- Table 2 scorer agreement: `code_and_benchmark/docs/validation/validation_summary_120.csv`
-- Table 3 seven-model results: `code_and_benchmark/docs/paper/final_table3_seven_model_results.csv`
-- Table 4 refusal/partial results: `code_and_benchmark/docs/paper/final_table4_refusal_partial.csv`
-- Table 5 condition breakdown: `code_and_benchmark/docs/paper/final_table5_condition_breakdown.csv`
-- Table 6 coding probe: `code_and_benchmark/docs/paper/final_table6_coding_probe.csv`
-- Table 7 mitigation: `code_and_benchmark/docs/paper/final_table7_mitigation.csv`
+- Table 2 kappa statistics: `code_and_benchmark/docs/validation/kappa_tables.csv`
+- Table 3 scorer agreement: `code_and_benchmark/docs/validation/validation_summary_120.csv`
+- Table 4 seven-model results: `code_and_benchmark/docs/paper/final_table3_seven_model_results.csv`
+- Table 5 refusal/partial results: `code_and_benchmark/docs/paper/final_table4_refusal_partial.csv`
+- Table 6 condition breakdown: `code_and_benchmark/docs/paper/final_table5_condition_breakdown.csv`
+- Table 7 coding probe: `code_and_benchmark/docs/paper/final_table6_coding_probe.csv`
+- Table 8 mitigation: `code_and_benchmark/docs/paper/final_table7_mitigation.csv`
 
 Per-episode scored outputs:
 
@@ -110,7 +121,7 @@ Per-episode scored outputs:
 Validation artifacts:
 
 - Validation summary: `code_and_benchmark/docs/validation/validation_results.md`
-- 120-row Table 2 label summary: `code_and_benchmark/docs/validation/validation_summary_120.csv`
+- 120-row Table 3 label summary: `code_and_benchmark/docs/validation/validation_summary_120.csv`
 - Expert panel description: `code_and_benchmark/docs/validation/expert_panel.md`
 - Review protocols: `code_and_benchmark/docs/validation/metric_validation_protocol.md`
 - Validation tool source: `code_and_benchmark/validation/medinsider_validation_space/`
@@ -141,12 +152,15 @@ See `code_and_benchmark/docs/release/new_model_onboarding.md`. The short path is
 
 ## Dataset Release
 
-This repository contains the runnable code-and-benchmark bundle. The
-standalone dataset release is intended to be hosted separately on Hugging Face
-or another dataset host after review.
+This repository contains the runnable code-and-benchmark bundle. The standalone
+dataset release is maintained as a separate dataset-host artifact: it contains
+the scenario corpus, dataset manifests, Croissant metadata, datasheet, licenses,
+and dataset documentation. Locked scored outputs, validation summaries,
+reproduction scripts, and reviewer smoke tests live in this code bundle.
 
 ## Licenses
 
 Code is Apache 2.0 (`code_and_benchmark/LICENSE`). Data and documentation
 artifacts are CC BY 4.0 (`code_and_benchmark/DATA_LICENSE`). Third-party asset
-notes are in `code_and_benchmark/docs/asset_licenses.md`.
+notes are in `code_and_benchmark/docs/asset_licenses.md`. Post-freeze citation
+metadata notes are in `code_and_benchmark/docs/citation_metadata_notes.md`.

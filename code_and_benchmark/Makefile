@@ -1,10 +1,10 @@
-.PHONY: reproduce preflight-v2 smoke-v2 smoke test-all help
+.PHONY: reproduce preflight-v2 smoke-v2 smoke lint packet-validate reproduce-tables validate-locks validate-validation reviewer-test internal-test test-all help
 
 PYTHON ?= python
 PYTHONPATH := code/src
 
 help:
-	@echo "Targets: reproduce, preflight-v2, smoke-v2, test-all"
+	@echo "Targets: reproduce, reproduce-tables, validate-locks, validate-validation, reviewer-test, internal-test, preflight-v2, smoke-v2"
 
 preflight-v2:
 	PYTHONPATH=$(PYTHONPATH) $(PYTHON) code/scripts/preflight_phase4_v2.py --mode smoke --agent-type scripted
@@ -17,5 +17,25 @@ smoke-v2:
 reproduce: preflight-v2 smoke-v2
 	@echo "Reviewer smoke reproduction complete."
 
-test-all:
+lint:
+	$(PYTHON) -m ruff check code
+
+packet-validate:
+	PYTHONPATH=$(PYTHONPATH) $(PYTHON) code/scripts/build_final_supported_packet.py
+
+reproduce-tables: packet-validate
+
+validate-locks:
+	PYTHONPATH=$(PYTHONPATH) $(PYTHON) code/scripts/validate_locked_scoring_targets.py
+
+validate-validation:
+	PYTHONPATH=$(PYTHONPATH) $(PYTHON) code/scripts/validate_validation_artifacts.py
+
+reviewer-test: lint reproduce-tables validate-locks validate-validation preflight-v2
+	@echo "Reviewer-safe checks complete."
+
+test-all: reviewer-test
+
+internal-test:
+	@echo "Running fixture-dependent internal pytest suite."
 	PYTHONPATH=$(PYTHONPATH):code $(PYTHON) -m pytest code/tests -v

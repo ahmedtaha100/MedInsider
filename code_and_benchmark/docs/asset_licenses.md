@@ -37,9 +37,13 @@ The manuscript cites adjacent benchmarks and policy sources for comparison and m
 | MedAgentBench | Cited related benchmark | Upstream license not vendored here; confirm before reusing artifacts |
 | FHIR-AgentBench | Cited related benchmark | Upstream license not vendored here; confirm before reusing artifacts |
 | HealthBench | Cited related benchmark | Upstream license not vendored here; confirm before reusing artifacts |
-| CARES and other clinical-agent evaluations cited in the manuscript | Related-work citation only | Upstream license not vendored here |
+| EHR-ChatQA | Cited related benchmark | Upstream license not vendored here; confirm before reusing artifacts |
+| CARES | Related-work citation only | Upstream license not vendored here |
+| AgentHarm | Related-work citation only | Upstream license not vendored here |
+| Anthropic Agentic Misalignment | Related-work citation only | External research page/paper; not redistributed as benchmark data |
+| HL7 FHIR Release 5 | Data-model reference and implementation target | External standard; MedInsider uses FHIR-shaped synthetic data but does not redistribute the HL7 specification |
 | DOJ/HHS and CMS source material | Policy/regulatory motivation and scenario-template grounding | U.S. government source material is generally public domain; confirm specific pages before redistributing verbatim excerpts |
-| Joint Commission safety-reporting standards | Scenario motivation and citation | External standards content is not redistributed as benchmark data |
+| Joint Commission safety-reporting standards | Historical scenario motivation only; not a manuscript bibliography entry | External standards content is not redistributed as benchmark data |
 
 ## Direct Python Dependencies
 

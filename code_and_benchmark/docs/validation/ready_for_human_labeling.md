@@ -25,14 +25,15 @@ assigning or continuing reviewer labels.
   - `docs/validation/blinded_gold_label_set.csv`
   - `120` blinded episode rows
 - admin crosswalk with model predictions and hidden metadata:
-  - `docs/validation/blinded_gold_label_admin.csv`
-  - `120` rows
+  - used during validation preparation
+  - not included in the submitted reviewer bundle
 - per-episode review logs:
   - `docs/validation/episode_review_logs/`
   - `120` JSONL files
 - stratified scenario realism sample:
   - `docs/validation/scenario_realism_results.csv`
   - `200` scenario rows
+  - optional pending worksheet; not used as completed validation evidence
 - realism/distribution summary:
   - `docs/validation/distribution_realism_counts.csv`
   - `docs/design/distribution_realism_audit.md`
@@ -53,6 +54,7 @@ assigning or continuing reviewer labels.
 
 - `docs/validation/validation_results.md`
 - `docs/validation/kappa_tables.csv`
+- `docs/validation/kappa_tables_20260505.csv`
 - `docs/validation/validation_summary_120.csv`
 - `docs/validation/q2_dissent_adjudications.csv`
 

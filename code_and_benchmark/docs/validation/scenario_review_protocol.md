@@ -1,5 +1,9 @@
 # Scenario Realism Review Protocol
 
+Status note: `docs/validation/scenario_realism_results.csv` is an optional
+pending worksheet. All rows are currently `review_status=pending`; this file is
+not completed validation evidence for the submitted artifact.
+
 ## Objective
 Evaluate scenario realism and policy clarity on a stratified sample across family, condition, alignment, and difficulty.
 

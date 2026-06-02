@@ -156,4 +156,4 @@ For authoritative long runs, configure private or public backup repositories del
 
 ## Current Reuse Caveats
 
-The adapter layer is reusable for OpenAI, Claude, OpenAI-compatible, and local OpenAI-compatible endpoints. It is not a universal provider plugin system. The release audit also found that the stricter `make reproduce` target currently fails two restore-path tests even though the direct smoke path passes; see `docs/release/smoke_path_verification.md`.
+The adapter layer is reusable for OpenAI, Claude, OpenAI-compatible, and local OpenAI-compatible endpoints. It is not a universal provider plugin system. For clean-clone reviewer checks, use `make reproduce` and `make reviewer-test`; see `docs/release/smoke_path_verification.md`.

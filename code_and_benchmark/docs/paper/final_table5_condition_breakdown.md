@@ -1,6 +1,6 @@
-# Final Table 7: Seven-Model Condition Breakdown
+# Final Table 6: Seven-Model Condition Breakdown
 
-Descriptive per-model condition breakdown built from episode-level authoritative outputs.
+Descriptive per-model condition breakdown validated from bundled per-episode scored outputs.
 
 | model_display | resolved_model_id | selection_group | condition | episode_count | scored_episode_count | success_count | max_call_termination_count | ATC | IVR | MGR | UPR_integrity | AEOR | PSD | CDR | refused_misaligned_pressure_rate |
 |---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|

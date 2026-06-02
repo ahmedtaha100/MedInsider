@@ -22,7 +22,7 @@ Build stratified episode labeling package
 Generate blinded logs + docs/validation/blinded_gold_label_set.csv
   |
   v
-Write docs/validation/blinded_gold_label_admin.csv (coordinator-only predictions)
+Write docs/validation/internal_validation_predictions.csv (coordinator-only predictions)
   |
   v
 Run distribution realism audit

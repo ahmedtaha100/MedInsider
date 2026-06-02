@@ -1,62 +1,104 @@
-# MedInsider Protocol: Current Verified State
+# MedInsider Protocol: Submitted Artifact State
 
-Status note: this file records the repository's current verified execution
-truth as of `2026-04-23`. It is not a future-run plan.
+Status note: this file records the reviewer-facing submitted artifact state as
+of 2026-06-01. It describes the code-and-benchmark bundle at commit
+`cc49e23226d3ba98bdeb3ff81f6bffed6825c412` and the frozen final paper tables.
+It is not a record of older restore trees or pre-final rerun status.
 
-## Fixed executed roster
+## Fixed Executed Roster
 
-The authoritative executed roster for the current cycle is:
+The final benchmark roster is seven models. Each final lane has 840 scored
+episodes and 420 fully scored neutral-pressure pairs in the shipped summary
+tables and per-episode scored outputs.
 
-| Model | Run id(s) | Resolved model id | Final state | Scored episodes | Fully scored pairs |
-|---|---|---|---|---:|---:|
-| GPT-5.4 | `codex_openai_full_run` | `gpt-5.4-2026-03-05` | complete | 840 | 420 |
-| Claude Sonnet 4.6 | `codex_sonnet46_full_run` | `claude-sonnet-4-6` | complete | 840 | 420 |
-| Claude Opus 4.7 | `codex_opus47_full_run` | `claude-opus-4-7` | complete with bounded caveat | 837 | 417 |
-| Kimi 2.6 | `codex_kimi26_full_run` | `kimi-k2.6` | complete with caveats | 834 | 414 |
-| GLM-5 | `codex_glm5_full_run` | `glm-5` | complete with caveats | 832 | 414 |
-| DeepSeek V3.2 | `codex_deepseekv32_full_run` | `deepseek-chat` | complete | 840 | 420 |
-| Gemma 4 | `10` shard runs on recovered `2 x H200` | `google/gemma-4-31B-it` | complete | 840 | 420 |
+| Model | Resolved model id | Final state | Scored episodes | Fully scored pairs |
+|---|---|---|---:|---:|
+| GPT-5.4 | `gpt-5.4-2026-03-05` | complete | 840 | 420 |
+| Claude Sonnet 4.6 | `claude-sonnet-4-6` | complete | 840 | 420 |
+| Claude Opus 4.7 | `claude-opus-4-7` | complete | 840 | 420 |
+| Kimi 2.6 | `kimi-k2.6` | complete | 840 | 420 |
+| GLM-5 | `glm-5` | complete | 840 | 420 |
+| DeepSeek V3.2 | `deepseek-chat` | complete | 840 | 420 |
+| Gemma 4 | `google/gemma-4-31B-it` | complete | 840 | 420 |
 
-Authoritative roster details live in:
+Primary evidence:
 
-- `docs/research_package/final_roster_status_matrix.csv`
-- `docs/research_package/final_roster_status_summary.md`
-- `docs/research_package/final_truth_audit_summary.md`
+- `docs/paper/final_table3_seven_model_results.csv`
+- `docs/paper/final_table3_model_caveats.csv`
+- `docs/paper/model_panel.md`
+- `data/scored_outputs/per_episode/*_scored_episodes.csv`
 
-## Bounded post-run add-ons now on disk
+## Benchmark Corpus
 
-Two dedicated post-run experiments were completed after the full benchmark
-execution freeze:
+The fixed v2 corpus contains 840 generated scenario JSON files and 420
+neutral-pressure pairs. The scenario count is for:
 
-- Coding-knowledge probe:
-  - fixed `15`-question bank
-  - target roster: all `7` final models
-  - completed models: `GPT-5.4`, `DeepSeek V3.2`, `Gemma 4`
-  - caveated models: `Claude Sonnet 4.6`, `Claude Opus 4.7`, `Kimi 2.6`,
-    `GLM-5`
-  - artifacts:
-    - `docs/research_package/coding_probe_model_summary.csv`
-    - `docs/research_package/coding_probe_family_summary.csv`
-    - `docs/research_package/coding_probe_question_results.csv`
-    - `docs/research_package/coding_probe_summary.md`
-    - `docs/paper/final_table5_coding_probe.csv`
+- `data/scenarios/phase2_v2/generated/*.json`
+- `code/scenarios/phase2_v2/generated/*.json`
 
-- Dedicated structural mitigation:
-  - mitigation type: `compliance_check_tool`
-  - scope: `background_pressure` only
-  - families: `coding_and_billing_pressure`, `quality_metric_pressure`
-  - executed models: `GPT-5.4`, `Claude Sonnet 4.6`, `DeepSeek V3.2`,
-    `Gemma 4`
-  - artifacts:
-    - `docs/research_package/structural_mitigation_comparison.csv`
-    - `docs/research_package/structural_mitigation_execution_roster.csv`
-    - `docs/research_package/structural_mitigation_manifest.json`
-    - `docs/research_package/structural_mitigation_summary.md`
-    - `docs/paper/final_structural_mitigation_table.csv`
+A broad recursive count under `data/scenarios/` can include non-scenario
+artifact JSON files, such as the generation summary. Use the generated
+directory when checking the corpus count.
 
-## Excluded and blocked lanes
+Corpus manifests:
 
-These lanes are not part of the current cycle's finished paper scope:
+- `data/manifests/v2_manifest.csv`
+- `data/manifests/subsets/v2_full_run_manifest.csv`
+- `data/scenarios/phase2_v2/artifacts/v2_generation_summary.json`
+
+## Reproducibility Surfaces
+
+The reviewer smoke reproduction is the supported cold-clone entry point:
+
+- `make reproduce`
+
+The smoke path runs preflight, selects a tiny fixed subset, and exercises the
+runner without token-backed model calls.
+
+The full per-episode locked scored outputs are shipped under:
+
+- `data/scored_outputs/per_episode/`
+
+The final paper CSVs are shipped under:
+
+- `docs/paper/`
+
+The reviewer package also includes:
+
+- `DATASHEET.md`
+- `croissant.json`
+- `LICENSE`
+- `DATA_LICENSE`
+
+## Validation Evidence
+
+The submitted validation summaries are:
+
+- `docs/validation/validation_results.md`
+- `docs/validation/kappa_tables.csv`
+- `docs/validation/validation_summary_120.csv`
+- `docs/validation/inter_rater_agreement.md`
+- `docs/validation/adjudication_protocol.md`
+- `docs/validation/q2_dissent_adjudications.csv`
+
+These files document 120 validation episodes, four reviewers, 480 submissions,
+and the reported agreement summaries.
+
+## Auxiliary Analyses
+
+The coding probe is a bounded 15-question auxiliary analysis, not a standalone
+clinical capability benchmark. Its shipped paper table is:
+
+- `docs/paper/final_table6_coding_probe.csv`
+
+The structural mitigation analysis is a bounded four-model slice with one
+intervention family. Its shipped paper table is:
+
+- `docs/paper/final_table7_mitigation.csv`
+
+## Excluded Lanes
+
+These lanes are not part of the submitted seven-model roster:
 
 | Lane | State | Reason |
 |---|---|---|
@@ -65,83 +107,23 @@ These lanes are not part of the current cycle's finished paper scope:
 | Gemini | excluded before authoritative execution | not part of final roster |
 | Scout | excluded before authoritative execution | not part of final roster |
 
-## Backup and restore truth
+## What This Protocol Does Not Claim
 
-- Every completed or caveated lane has local manifests, logs, episode artifacts,
-  score artifacts, summaries, and recorded HF backup state on disk.
-- Every completed or caveated lane has recorded successful verify state on both
-  HF mirrors.
-- Every completed or caveated lane has restore validation on disk with restored
-  counts matching local counts exactly.
-- Current HF conclusions are based on recorded run metadata and retained restore
-  trees, not a fresh live Hub requery in this shell.
+This submitted bundle does not claim:
 
-## Important caveats that must travel with the manuscript
+- provider API reruns are possible without external credentials
+- Hugging Face dataset-host artifacts include scored outputs or validation
+  response rows
+- the bounded mitigation slice generalizes beyond the tested scenarios, models,
+  and intervention
+- the coding probe measures broad model capability outside its fixed 15-question
+  bank
+- old local provider-run restore roots are part of the submitted reviewer
+  package
 
-- `Claude Opus 4.7`: `3` persistent `malformed_action_json` episodes remained
-  after targeted recovery.
-- `Kimi 2.6`: `6` explicit Moonshot overload `api_failure` episodes remained
-  unscored.
-- `GLM-5`: `7` `api_failure`, `1` `timeout`, and `1`
-  `max_call_termination`; the max-call episode was preserved and scored rather
-  than silently dropped.
-- `GPT-5.4`: backup provenance is posthoc rather than launch-time mirrored.
-- `Gemma 4`: prelaunch infra recovery happened before authoritative shard
-  execution and does not invalidate the final shard package.
-- `Gemma 4` auxiliary add-ons: coding probe completed `15/15`, and the bounded
-  structural-mitigation run completed on the restored dual-endpoint H200
-  runtime. These remain auxiliary because the probe still carries non-Gemma
-  provider caveats and the mitigation itself is a bounded four-model slice.
+## Manuscript-Use Rule
 
-## Current code-path note
-
-If any remaining judge-based helper flows are used, current code no longer
-routes Anthropic calibration through `gpt-oss-120b`. The active code path uses
-DeepSeek as the Anthropic calibration judge and requires explicit base URLs for
-`openai_compatible` routes.
-
-## Reproducibility surfaces that are real now
-
-- authoritative runner: `scripts/run_phase4_v2.py`
-- authoritative preflight: `scripts/preflight_phase4_v2.py`
-- frozen dataset manifest: `artifacts/v2_manifest.csv`
-- frozen full-run selection manifest: `artifacts/subsets/v2_full_run_manifest.csv`
-- bounded mitigation selection manifest:
-  - `artifacts/subsets/v2_mitigation_compliance_gate_background_manifest.csv`
-- local smoke reproduction: `make reproduce`
-- per-run provenance: `runs/*/manifest/run_manifest.json`
-- optional HF backup metadata:
-  - `runs/*/manifest/hf_backup_state.json`
-  - `runs/*/summaries/hf_backup_summary.json`
-
-## What this protocol does not claim
-
-This repository does not currently have completed evidence for:
-
-- expert validation with nonzero evaluated rows
-- inter-rater kappa outputs
-- uncaveated full-roster coding-probe coverage
-- a broader structural mitigation suite beyond the one bounded compliance-check
-  study
-- a finished reviewer smoke bundle
-- finished release metadata or Croissant packaging
-
-## Manuscript-use rule
-
-Safe to claim now:
-
-- the executed seven-model run inventory
-- run-level descriptive integrity-under-pressure reporting
-- FHIR-native, action-log-verifiable benchmark design
-- compliance-versus-integrity separation
-- ATC as a co-primary metric
-- one bounded coding-knowledge probe with explicit caveats
-- one bounded dedicated structural mitigation experiment with explicit scope
-
-Not safe to claim now without explicit narrowing:
-
-- completed expert validation
-- uncaveated coding-probe coverage across all seven models
-- a broader structural mitigation suite or full-roster mitigation evidence
-- reviewer/release packaging completion
-- any broader scope inherited from the older proposal text
+Use the final shipped CSVs, validation summaries, scenario manifests, and
+per-episode scored outputs listed above as the artifact evidence. Do not use
+obsolete restore-root paths, old pre-final model counts, or missing internal
+research-package paths as final-paper support.

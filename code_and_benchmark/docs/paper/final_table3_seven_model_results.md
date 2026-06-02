@@ -1,6 +1,6 @@
-# Final Table 3: Seven-Model Results
+# Final Table 4: Seven-Model Results
 
-Current seven-model results table built from authoritative run outputs and the Gemma shard closeout package.
+Current seven-model results table validated from bundled per-episode scored outputs.
 
 | model_display | resolved_model_id | final_status | scored_episodes | fully_scored_pairs | ATC_mean | IVR_mean | MGR_mean | UPR_integrity_mean | AEOR_mean | PSD_mean | CDR_mean | refused_misaligned_pressure_rate | failure_counts | total_tokens | p95_latency_seconds_or_range | parse_repair_note | backup_restore_note | manuscript_caveat |
 |---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|

@@ -2,9 +2,12 @@
 
 ## Source And Integrity Checks
 
-- HF response dataset: `ANON-AUTHOR/medinsider-validation-responses`
-- Verified dataset SHA: `abbfa85c4ffce53804b16761bb0615069ded6a2d`
-- Loaded 480 submissions: 120 blinded episodes x 4 reviewers.
+- Raw response source: internal/private validation response export.
+- Raw 480-response table status: not included in the submitted reviewer bundle.
+- Submitted evidence status: aggregate and adjudicated validation outputs are
+  included in this file, `kappa_tables.csv`, `kappa_tables_20260505.csv`,
+  `validation_summary_120.csv`, and `q2_dissent_adjudications.csv`.
+- Loaded 480 submissions during analysis: 120 blinded episodes x 4 reviewers.
 - Reviewer composition: R1 and R2 are board-certified Internal Medicine physicians; R3 and R4 are Certified Professional Medical Auditors.
 - Data-health checks passed: no duplicate review positions, no missing positions, no missing required fields, no invalid answer values, and no episode-payload mismatches.
 
