@@ -95,7 +95,7 @@ Live HF status check:
 ```bash
 PYENV_VERSION=3.11.8 python - <<'PY'
 from huggingface_hub import HfApi
-info = HfApi().repo_info("anon-submission7979/medinsider-neurips2026", repo_type="dataset")
+info = HfApi().repo_info("anon-submission7979/medinsider", repo_type="dataset")
 print(info.sha)
 print(any(s.rfilename == "docs/manuscript.pdf" for s in info.siblings))
 print(any(s.rfilename == "data/medinsider_scenarios.jsonl" for s in info.siblings))
@@ -136,7 +136,7 @@ Proposed fix: replace the submitted PDF through the submission system if allowed
 
 The local HF package is repaired, but live HF main still has the stale PDF and does not have the JSONL viewer file. Upload attempts failed with 403 even with `--create-pr`.
 
-Proposed fix: use a token with write permission to `anon-submission7979/medinsider-neurips2026`, then upload `/tmp/medinsider_hf_remediation_20260601` with deletion of `docs/manuscript.pdf`.
+Proposed fix: use a token with write permission to `anon-submission7979/medinsider`, then upload `/tmp/medinsider_hf_remediation_20260601` with deletion of `docs/manuscript.pdf`.
 
 ### MAJOR - Raw validation response rows are not shipped
 

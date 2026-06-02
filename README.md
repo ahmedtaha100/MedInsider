@@ -1,6 +1,6 @@
 # MedInsider
 
-**Anonymous hosted dataset:** https://huggingface.co/datasets/anon-submission7979/medinsider-neurips2026
+**Anonymous hosted dataset:** https://huggingface.co/datasets/anon-submission7979/medinsider
 
 This repository is the anonymized reviewer supplementary bundle for
 MedInsider. It contains the benchmark implementation, the 840-episode v2
@@ -155,7 +155,7 @@ See `docs/release/new_model_onboarding.md`. The short path is:
 ## Dataset Release
 
 The anonymous hosted dataset is available at
-https://huggingface.co/datasets/anon-submission7979/medinsider-neurips2026.
+https://huggingface.co/datasets/anon-submission7979/medinsider.
 It contains the standalone scenario corpus, dataset manifests, Croissant
 metadata, datasheet, licenses, and dataset documentation.
 
