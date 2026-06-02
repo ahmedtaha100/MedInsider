@@ -1,7 +1,8 @@
 # Citation Metadata Notes
 
 This note records citation metadata cleanups identified after manuscript freeze.
-It does not modify the frozen manuscript, bibliography source, or submitted PDF.
+It does not modify the frozen manuscript, bibliography source, or submitted
+manuscript artifact.
 
 ## Anthropic Agentic Misalignment
 

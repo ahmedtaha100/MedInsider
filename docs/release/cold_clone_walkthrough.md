@@ -2,8 +2,8 @@
 
 ## Method
 
-A clean remediation clone was set up with Python 3.11, installed with dev extras,
-and tested without provider credentials.
+A clean clone was set up with Python 3.11, installed with dev extras, and
+tested without provider credentials.
 
 ## Working Reviewer Commands
 

@@ -12,8 +12,8 @@ The canonical Python dependency manifest is `pyproject.toml`.
 | Dev dependencies | `ruff>=0.4`, `pytest>=7.0`, `coverage[toml]>=7.4` |
 | Console entry point | `medinsider-run = medinsider.cli:main` |
 
-Fresh editable install with dev extras completed successfully in the remediation
-clone using Python 3.11.
+Fresh editable install with dev extras completed successfully in a clean clone
+using Python 3.11.
 
 ## Validation Tool Dependencies
 

@@ -2,10 +2,9 @@
 
 ## Scope
 
-This note records the submitted code-and-benchmark bundle reproducibility
-surface after the artifact-audit remediation pass. The check verifies that
-reviewer-facing reproduction and paper-table validation use tracked files in a
-cold clone, not untracked provider-run restore roots.
+This note records the code-and-benchmark bundle reproducibility surface. The
+check verifies that reviewer-facing reproduction and paper-table validation use
+tracked files in a cold clone, not untracked provider-run restore roots.
 
 ## Manifests
 
@@ -25,7 +24,7 @@ The supported cold-clone reviewer command is:
 make reproduce
 ```
 
-In the remediation clone this command completed successfully with Python 3.11:
+In clean-clone verification this command completed successfully with Python 3.11:
 
 - preflight returned `ok=true`
 - smoke selected 2 episodes and 1 validated pair

@@ -1,13 +1,13 @@
 # External User Friction Inventory 20260601
 
-## Resolved In This Remediation Pass
+## Reviewer-Facing Status
 
-| Issue | Resolution |
+| Area | Status |
 |---|---|
-| `make reproduce` previously failed before smoke execution. | `make reproduce` now runs only the reviewer smoke path and passes in the remediation clone. |
-| Final paper-packet builder previously required untracked run roots. | Builder now validates from bundled per-episode scored outputs. |
-| Reviewer-facing docs referenced missing research-package files. | Docs now point to shipped `docs/paper`, `docs/validation`, `data/manifests`, and `data/scored_outputs` paths. |
-| Validation docs exposed stale zero-row/admin-crosswalk artifacts. | Legacy Phase B artifacts are marked superseded; current evidence points to completed validation summaries and kappa tables. |
+| Reviewer smoke path | `make reproduce` runs the provider-free smoke path. |
+| Paper-packet builder | Validates from bundled per-episode scored outputs. |
+| Reviewer-facing evidence paths | Point to shipped `docs/paper`, `docs/validation`, `data/manifests`, and `data/scored_outputs` paths. |
+| Validation summaries | Current evidence points to completed validation summaries, kappa tables, and adjudication files. |
 
 ## Remaining Friction
 
@@ -16,7 +16,6 @@
 | `--agent-type` CLI choices expose only `scripted`, `openai`, and `claude`. | Users may need `--run-config` for `openai_compatible` and `openweight` lanes. | Documented in `docs/release/new_model_onboarding.md`. |
 | Full provider-backed reproduction requires external API keys and quota. | Expected limitation for model reruns. | Documented provider requirement. |
 | Local open-weight reproduction requires a compatible inference server and hardware. | Expected limitation for open-weight lanes. | Documented in onboarding guide. |
-| HF dataset release still needs separate metadata/path/PDF/viewer remediation. | Dataset-host surface can still confuse reviewers until updated. | Tracked as HF remediation work. |
 
 ## Currently Working
 

@@ -10,8 +10,8 @@ The canonical reviewer command is:
 make reproduce
 ```
 
-In the remediation clone, the command passed with Python 3.11. It ran preflight,
-selected 2 episodes / 1 pair, and completed the provider-free scripted smoke run
+In clean-clone verification with Python 3.11, the command runs preflight,
+selects 2 episodes / 1 pair, and completes the provider-free scripted smoke run
 with 2 / 2 successful scored rows.
 
 ## Reviewer-Safe Test Target
@@ -55,4 +55,3 @@ non-OpenAI-compatible API still requires adapter code.
 |---|---|
 | Provider/model terms | External terms should still be re-confirmed before public release. |
 | Full provider-backed reruns | Require API credentials, provider quota, and hardware for local open-weight lanes. |
-| HF dataset release | Requires the separate HF remediation/upload pass. |

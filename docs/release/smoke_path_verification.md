@@ -2,8 +2,8 @@
 
 ## Scope
 
-This verification tested the provider-free local reviewer path in the
-remediation clone. No provider credentials were used.
+This verification tested the provider-free local reviewer path in a clean
+clone. No provider credentials were used.
 
 ## `make reproduce`
 
