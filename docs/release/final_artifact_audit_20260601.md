@@ -1,4 +1,4 @@
-# NeurIPS 2026 Final Artifact Audit - 2026-06-01
+# Final Artifact Audit - 2026-06-01
 
 ## Scope
 
@@ -8,7 +8,7 @@ Audit run by Codex as an adversarial reviewer/reproducibility engineer.
 - Local repaired HF package: `/tmp/medinsider_hf_remediation_20260601`
 - Live HF dataset revision checked: `626e58ca5566e9eea703c37056ba6a3d6305889b`
 - Base GitHub commit: `cc49e23226d3ba98bdeb3ff81f6bffed6825c412`
-- Branch with repaired code-bundle files: `fix/neurips-artifact-audit-20260601`
+- Branch with repaired code-bundle files: `fix/artifact-audit-20260601`
 - Environment: macOS Darwin 25.4.0 arm64; Python 3.11.8 for reviewer checks
 
 The manuscript source/PDF was not edited.
@@ -130,7 +130,7 @@ The string appears in extracted text on pages 2 and 17. This is a critical manus
 
 The final PDF at `/Users/ahmedtaeha/Desktop/General/GitHub/MedInsider/3756_MedInsider_A_Benchmark_fo.pdf` contains prompt-injection text in `pdftotext` extraction on pages 2 and 17. This cannot be fixed by code/data metadata alone.
 
-Proposed fix: replace the submitted PDF through the submission system if allowed. Do not ship this PDF in GitHub or HF artifacts. The repaired local HF package removes the PDF and says the manuscript is available through NeurIPS/OpenReview only.
+Proposed fix: replace the submitted PDF through the submission system if allowed. Do not ship this PDF in GitHub or HF artifacts. The repaired local HF package removes the PDF and says the manuscript is available through the submitted manuscript record only.
 
 ### BLOCKER - Live HF dataset remains stale because upload is permission-blocked
 

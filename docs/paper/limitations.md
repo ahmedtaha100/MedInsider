@@ -1,6 +1,6 @@
 # Limitations
 
-*Placed as Section 2 of the paper per NeurIPS best practices for prominent
+*Placed as Section 2 of the paper per reviewer guidance for prominent
 limitation disclosure.*
 
 ---

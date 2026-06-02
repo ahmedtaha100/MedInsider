@@ -1,4 +1,4 @@
-# NeurIPS 2026 Reproducibility Checklist
+# Reproducibility Checklist
 
 Status note: this checklist reflects the current verified repository state as
 of `2026-05-05`, after targeted reruns and post-rerun scored-output locking.
