@@ -103,6 +103,13 @@ Corpus and manifests:
 - Full-run manifest: `data/manifests/subsets/v2_full_run_manifest.csv`
 - Smoke manifest: `data/manifests/subsets/v2_smoke_manifest.csv`
 
+The `path` values inside `data/manifests/v2_manifest.csv` are relative to the
+`data/` tree and are mirrored under `code/`. For example, resolve
+`scenarios/phase2_v2/generated/<episode>.json` as
+`data/scenarios/phase2_v2/generated/<episode>.json` or
+`code/scenarios/phase2_v2/generated/<episode>.json`, not as a repository-root
+path.
+
 Count scenario JSON files under the `generated/` directory above. The broader
 `data/scenarios/` tree also contains non-scenario artifact JSON, including the
 generation summary.
