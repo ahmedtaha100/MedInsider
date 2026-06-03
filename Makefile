@@ -4,7 +4,7 @@ PYTHON ?= python
 PYTHONPATH := code/src
 
 help:
-	@echo "Targets: reproduce, reproduce-tables, validate-locks, validate-validation, reviewer-test, internal-test, preflight-v2, smoke-v2"
+	@echo "Targets: reproduce, reproduce-tables, validate-locks, validate-validation, reviewer-test, preflight-v2, smoke-v2"
 
 preflight-v2:
 	PYTHONPATH=$(PYTHONPATH) $(PYTHON) code/scripts/preflight_phase4_v2.py --mode smoke --agent-type scripted
@@ -37,5 +37,5 @@ reviewer-test: lint reproduce-tables validate-locks validate-validation prefligh
 test-all: reviewer-test
 
 internal-test:
-	@echo "Running fixture-dependent internal pytest suite."
-	PYTHONPATH=$(PYTHONPATH):code $(PYTHON) -m pytest code/tests -v
+	@echo "Historical internal pytest tests require non-public fixture roots and are not part of this public reviewer bundle."
+	@echo "Use 'make reviewer-test' for public clean-clone verification."

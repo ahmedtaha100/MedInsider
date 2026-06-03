@@ -1,9 +1,9 @@
 # MedInsider Protocol: Submitted Artifact State
 
 Status note: this file records the reviewer-facing submitted artifact state as
-of 2026-06-01. It describes the code-and-benchmark bundle at commit
-`cc49e23226d3ba98bdeb3ff81f6bffed6825c412` and the frozen final paper tables.
-It is not a record of older restore trees or pre-final rerun status.
+of 2026-06-03. It describes the public release on `main` and the frozen final
+paper tables. It is not a record of older restore trees or pre-final rerun
+status.
 
 ## Fixed Executed Roster
 

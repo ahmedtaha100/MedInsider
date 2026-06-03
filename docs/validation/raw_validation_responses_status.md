@@ -14,8 +14,8 @@ Included validation evidence:
 - `validation/medinsider_validation_space/data/medinsider_validation_manifest.csv`
 - `validation/medinsider_validation_space/data/episodes.json`
 
-Open release blocker:
+Documented limitation:
 
-- Add a de-identified 480-row response table or provide an accessible anonymous
-  dataset-host release for the raw responses before claiming row-level raw
-  validation response availability.
+- The public reviewer bundle should not claim row-level raw validation response
+  availability unless a de-identified 480-row response table or an accessible
+  anonymous dataset-host release for the raw responses is added.

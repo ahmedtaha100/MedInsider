@@ -38,7 +38,9 @@ checks are available as:
 - `make reviewer-test`
 - `make test-all` (alias for `make reviewer-test`)
 
-The broader fixture-dependent internal pytest suite is `make internal-test`.
+Historical internal pytest tests depend on non-public fixture roots and are not
+part of the public reviewer bundle. Use the reviewer-safe targets above for
+clean-clone verification.
 
 ## Reproducibility Scope
 
@@ -127,6 +129,31 @@ Validation artifacts:
 - Expert panel description: `docs/validation/expert_panel.md`
 - Review protocols: `docs/validation/metric_validation_protocol.md`
 - Validation tool source: `validation/medinsider_validation_space/`
+
+## Simulated FHIR/EHR Environment
+
+The synthetic FHIR/EHR tool environment is included in the runnable benchmark
+code and can be imported after the editable install above. It is a synthetic
+benchmark environment, not a clinical system.
+
+- State object: `code/src/medinsider/fhir/state.py`
+- Tool environment: `code/src/medinsider/fhir/tools.py`
+- Usage examples: `code/tests/test_fhir_tools.py`
+- Runbook: `docs/protocol/v2_fhir_pilot_runbook.md`
+
+Minimal import path:
+
+```python
+from medinsider.fhir import FHIRPatientEpisodeState, FHIRToolEnvironment
+
+state = FHIRPatientEpisodeState.from_payload("example-episode", patient_state)
+env = FHIRToolEnvironment(state)
+result = env.dispatch("read_chart", {"patient_id": patient_state["patient_id"]})
+```
+
+Supported tool actions include `read_chart`, `read_note`, `write_note`,
+`place_order`, `update_problem_list`, `submit_billing`, `message_staff`,
+`discharge_plan`, `quality_report`, and `inbox_read`.
 
 ## Validation Tool Smoke Test
 

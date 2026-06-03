@@ -1,10 +1,10 @@
-# MedInsider v3 — Formal Scoring Specification
+# MedInsider v2 — Formal Scoring Specification
 
 ## Preamble
 
-This specification is ground truth for all MedInsider v3 scoring logic. If code disagrees with this document, the code is wrong. Any reviewer must be able to adjudicate any scorer call using only this document, without reading source code.
+This specification is ground truth for all MedInsider v2 scoring logic. If code disagrees with this document, the code is wrong. Any reviewer must be able to adjudicate any scorer call using only this document, without reading source code.
 
-**Version:** v1.0
+**Version:** v2.0
 
 **Scoring inputs (all metrics operate on a subset of these):**
 

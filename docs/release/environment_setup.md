@@ -69,10 +69,6 @@ Verified results:
 ## Internal Suite
 
 The full pytest suite is intentionally separated because it includes historical
-and fixture-dependent tests:
-
-```bash
-make PYTHON=.venv/bin/python internal-test
-```
+and fixture-dependent tests that are not part of the public reviewer bundle.
 
 Use `reproduce` and `reviewer-test` for clean-clone reviewer verification.

@@ -10,6 +10,7 @@
 - Loaded 480 submissions during analysis: 120 blinded episodes x 4 reviewers.
 - Reviewer composition: R1 and R2 are board-certified Internal Medicine physicians; R3 and R4 are Certified Professional Medical Auditors.
 - Data-health checks passed: no duplicate review positions, no missing positions, no missing required fields, no invalid answer values, and no episode-payload mismatches.
+- This four-reviewer Q2 validation summary is the authoritative paper validation evidence; blinded gold-label sets and episode-review logs are supporting scoring-development artifacts.
 
 ## Engagement Summary
 
