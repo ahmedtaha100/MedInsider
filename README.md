@@ -54,6 +54,7 @@ python code/scripts/run_phase4_v2.py --mode smoke --agent-type scripted --run-id
 python code/scripts/build_final_supported_packet.py --output-root reports/paper
 python code/scripts/validate_locked_scoring_targets.py
 python code/scripts/validate_validation_artifacts.py
+python code/scripts/validation/compute_kappa.py --pattern-counts data/validation/rating_pattern_counts.csv --output-dir reports/validation
 python -m pytest -q
 python -m ruff check code
 ```
@@ -71,29 +72,40 @@ asserts equality with their released counterparts, and writes the packet under
 `data/scored_outputs/probes/coding_probe_question_results.csv`, using the frozen
 probe bank and scorer. Original provider-payload extraction cannot be checked
 from these parsed answers; token counts and other run metadata remain frozen.
-The mitigation table is copied from its frozen summary; its 96 treatment logs
-are not included. `make validate-locks` checks the original 29 artifact hashes and sizes.
+The mitigation table is copied from its frozen summary by this command;
+the supplement replay below reconstructs it from the 96 original treatment logs
+and their scored rows. `make validate-locks` checks the original 29 artifact hashes and sizes.
 `make validate-validation` checks the 120-row majority-label summary against the
-released aggregate validation evidence. The original 480 individual reviewer
-responses are not included.
+released aggregate validation evidence and reconstructs all 30 kappa rows from
+20 anonymous joint-rating pattern counts derived from the original 480 responses.
+Identifying exports and payload-linked individual ratings are not included.
 
 These checks do not regenerate model responses. Model aliases, provider
 implementations, and sampling can change new outputs. A provider-backed run
 requires your own credentials and may incur costs. The experiment's recorded
 results and scorer semantics remain frozen.
 
-The anonymous supplement includes 5,862 of the 5,880 original tool-action logs.
+The anonymous supplement includes all 5,880 original main-run tool-action logs.
 After extracting its `action_logs/` directory, independently rescore them with:
 
 ```bash
-python code/scripts/replay_action_logs.py --logs action_logs --allow-missing
+python code/scripts/replay_action_logs.py --logs action_logs
 ```
 
-Expected output is `"status": "incomplete"`, with 5,862 matches, 18 missing
-logs, and zero score or hash mismatches. Without `--allow-missing`, incomplete
-coverage exits with status 1. The missing logs belong to final targeted retries;
-older attempts are not substituted. These are tool-action logs, not full
-provider conversations.
+Expected output is `"status": "complete"`, with 5,880 matches, no missing
+logs, and zero score or hash mismatches. These are tool-action logs, not full
+provider conversations. The separate `mitigation_logs/` directory supplies all
+96 original treatment logs and their frozen score columns:
+
+```bash
+python code/scripts/replay_action_logs.py --logs mitigation_logs --mitigation
+```
+
+This command checks all 96 treatment episodes and reconstructs all 68 numeric
+fields of the mitigation table from baseline and treatment scores. Missing
+evidence or any mismatch makes replay fail. No provider credentials are needed.
+To write the reconstructed mitigation table into the table packet, run
+`python code/scripts/build_final_supported_packet.py --mitigation-supplement mitigation_logs --output-root reports/paper`.
 
 To reproduce the archived descriptive pair-bootstrap intervals and aggregate
 agreement sensitivity values from frozen outputs:

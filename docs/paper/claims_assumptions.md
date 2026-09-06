@@ -28,10 +28,11 @@ resampling of the fixed benchmark pairs, not provider or between-run variability
 The release supports exact reconstruction of the main, legacy-tradeoff, and
 condition tables from frozen score rows and coding-probe accuracy from retained
 parsed answers. Probe token counts and other run metadata remain frozen, and
-original provider-payload extraction cannot be checked. The mitigation table
-is copied from its frozen summary; its 96 treatment logs are unavailable.
-The anonymous supplement supplies
-5,862 of 5,880 original action logs for independent rescoring; 18 final retry
-logs and the original 480-response reviewer export remain unavailable.
+original provider-payload extraction cannot be checked. The anonymous supplement
+supplies all 5,880 main-run and 96 mitigation action logs for frozen rescoring;
+the mitigation replay also reconstructs its table from the original scored rows.
+Twenty anonymous joint-rating frequency rows, derived from the 480 original
+reviewer responses, reproduce all 30 kappa rows and response marginals.
+Identifying exports and payload-linked individual ratings remain private.
 See the [reproduction checklist](reproducibility_checklist.md) and
 [limitations](limitations.md).

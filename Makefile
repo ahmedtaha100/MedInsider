@@ -29,6 +29,7 @@ validate-locks:
 
 validate-validation:
 	$(PYTHON) code/scripts/validate_validation_artifacts.py
+	$(PYTHON) code/scripts/validation/compute_kappa.py --pattern-counts data/validation/rating_pattern_counts.csv --output-dir reports/validation
 
 unit-test:
 	$(PYTHON) -m pytest -q

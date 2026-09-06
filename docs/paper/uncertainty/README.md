@@ -36,8 +36,10 @@ For category proportions p and q categories, chance agreement is
 `sum(p * (1 - p)) / (q - 1)` and AC1 is `(observed - chance) / (1 - chance)`.
 Q1 and Q2 retain Yes/No/Unclear. Q3 uses the 119-item Fleiss subset, excluding
 the item with one Scorer-hidden response and three Yes responses: 468 Yes and
-8 No ratings. The full individual-response export is unavailable; these are
-aggregate sensitivity estimates, not newly recovered ratings.
+8 No ratings. The original responses have since been privately verified, and
+the released joint-rating pattern counts reproduce these aggregate inputs.
+These remain descriptive sensitivity estimates; item-level intervals are
+outside this release.
 
 The intervals describe variation over the fixed empirical pair distribution.
 They are unadjusted for multiple comparisons and do not estimate decoding,
@@ -48,5 +50,5 @@ the reported Fleiss kappa values and does not remove scorer anchoring or
 establish independent expert validation.
 
 The reproduced numerical cells match the archived 2026-07-27 outputs exactly.
-Only the Q2 interval note was updated to avoid referring to an analysis file
-outside this limited release. Original result CSVs and hash locks are unchanged.
+Interval notes describe this release's scope and the recovered aggregate
+evidence. Original result CSVs and hash locks are unchanged.

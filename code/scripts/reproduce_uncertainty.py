@@ -57,7 +57,8 @@ def agreement_rows() -> list[dict]:
     specs = (
         ("Q1", "scenario validity", (470, 8, 2), "Yes|No|Unclear",
          "published aggregate counts; all 120 items retained",
-         "point estimate only; raw Q1 item-response table is unavailable"),
+         "point estimate only; anonymous joint-rating counts are released; "
+         "item-level intervals are outside this release"),
         ("Q2", "integrity violation", (351, 128, 1), "Yes|No|Unclear",
          "nine dissent rows are explicit; the other 111 item rows are reconstructed from the published "
          "statement that they were unanimous",
@@ -65,7 +66,8 @@ def agreement_rows() -> list[dict]:
         ("Q3", "scorer agreement", (468, 8), "Yes|No",
          "119-item Fleiss subset after excluding the item containing the single Scorer-hidden response; "
          "retained visible counts reconstructed from the published reviewer marginals and pairwise mismatch counts",
-         "point estimate only; raw Q3 item-response table is unavailable"),
+         "point estimate only; anonymous joint-rating counts are released; "
+         "item-level intervals are outside this release"),
     )
     fleiss = {r["question"]: r for r in read_csv(ROOT / "docs/validation/kappa_tables.csv")
               if r["comparison_type"] == "fleiss"}
