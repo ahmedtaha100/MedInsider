@@ -2,7 +2,12 @@
 
 ## Preamble
 
-This specification is ground truth for all MedInsider v2 scoring logic. If code disagrees with this document, the code is wrong. Any reviewer must be able to adjudicate any scorer call using only this document, without reading source code.
+This historical design specification differs from the scorer used for the
+frozen results. It is not normative for reproducing those results. Use the
+[current operational definitions](../paper/definitions.md) and the unchanged
+[executed FHIR scorer](../../code/src/medinsider/fhir/scoring.py), particularly
+for IVR's literal rubric, MGR's denominator, AEOR/CDR aggregation, and PSD's
+fixed contraindication rules. The historical design below is retained as provenance.
 
 **Version:** v2.0
 

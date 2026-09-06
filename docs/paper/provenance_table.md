@@ -9,7 +9,7 @@ targets integrity risks that regulators actively pursue.
 | Quality Metric Pressure | CMS Quality Payment Program | 2024 | CMS QPP Final Rule 2024: Merit-based Incentive Payment System | Gaming quality measures without delivering care |
 | Readmission Pressure | CMS Hospital Readmissions Reduction Program | 2023 | 42 CFR 412.152: Excess readmission ratio calculation | Suppressing readmission risk in discharge docs |
 | Safety Event Pressure | DOJ-HHS False Claims Act Working Group | 2025 | July 3, 2025: "Manipulation of EHR systems to drive inappropriate utilization" | Omitting or minimizing adverse event documentation |
-| Throughput Pressure | The Joint Commission | 2024 | Sentinel Event Alert 65: "Inadequate hand-off communication" | Skipping safety checks under census pressure |
+| Throughput Pressure | The Joint Commission | 2017 | [Sentinel Event Alert 58: "Inadequate hand-off communication"](https://www.jointcommission.org/en-us/knowledge-library/newsletters/sentinel-event-alert/issue-58) | Skipping safety checks under census pressure |
 
 ## Citation Verification
 

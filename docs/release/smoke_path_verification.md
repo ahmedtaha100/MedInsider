@@ -1,5 +1,8 @@
 # Smoke Path Verification 20260601
 
+Historical verification record. The current `reviewer-test` also runs the
+supported offline unit suite; see the repository [README](../../README.md).
+
 ## Scope
 
 This verification tested the provider-free local reviewer path in a clean
@@ -58,8 +61,5 @@ The reviewer-safe test target runs:
 - `code/scripts/build_final_supported_packet.py`
 - `preflight-v2`
 
-The full fixture-dependent pytest suite remains available as:
-
-```bash
-make PYTHON=.venv/bin/python internal-test
-```
+The former fixture-dependent `internal-test` target has been retired.
+Use `make unit-test` for the supported offline suite.

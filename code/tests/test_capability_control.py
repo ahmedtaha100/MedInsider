@@ -149,7 +149,7 @@ class TestGeneratedCapabilityArtifacts(unittest.TestCase):
         }
 
         for path_str, model_id in expected.items():
-            payload = json.loads(Path(path_str).read_text(encoding="utf-8"))
+            payload = json.loads((Path(__file__).resolve().parents[1] / path_str).read_text(encoding="utf-8"))
             self.assertEqual(
                 payload["selection_manifest"],
                 "artifacts/subsets/capability_control_closed_model_manifest.csv",
@@ -158,9 +158,10 @@ class TestGeneratedCapabilityArtifacts(unittest.TestCase):
             self.assertEqual(payload["selection_expectations"]["pair_counts_by_group"], {"background_pressure": 49})
 
     def test_generated_manifest_is_balanced(self) -> None:
-        with Path("artifacts/subsets/capability_control_closed_model_manifest.csv").open(
-            newline="", encoding="utf-8"
-        ) as handle:
+        manifest = (
+            Path(__file__).resolve().parents[1] / "artifacts/subsets/capability_control_closed_model_manifest.csv"
+        )
+        with manifest.open(newline="", encoding="utf-8") as handle:
             rows = list(csv.DictReader(handle))
 
         self.assertEqual(len(rows), 98)
@@ -184,47 +185,10 @@ class TestGeneratedCapabilityArtifacts(unittest.TestCase):
             },
         )
 
-    def test_generated_source_tables_exist_with_expected_models(self) -> None:
-        optional_source_dir = Path("docs") / "research_package"
-        episode_source = optional_source_dir / "capability_control_episode_source.csv"
-        summary_source = optional_source_dir / "capability_control_model_summary.csv"
-
-        if not episode_source.exists() or not summary_source.exists():
-            self.skipTest("Optional internal capability-control source tables are not included in the public bundle.")
-
-        self.assertTrue(episode_source.exists())
-        self.assertTrue(summary_source.exists())
-
-        with episode_source.open(newline="", encoding="utf-8") as handle:
-            episode_rows = list(csv.DictReader(handle))
-        with summary_source.open(newline="", encoding="utf-8") as handle:
-            summary_rows = list(csv.DictReader(handle))
-
-        self.assertEqual(len(episode_rows), 294)
-        self.assertEqual(
-            {row["model_id"] for row in episode_rows},
-            {
-                "gpt-5.4-2026-03-05",
-                "claude-opus-4-7",
-                "claude-sonnet-4-6",
-            },
-        )
-        self.assertEqual(
-            {(row["model_id"], row["condition"]) for row in summary_rows},
-            {
-                ("gpt-5.4-2026-03-05", "neutral"),
-                ("gpt-5.4-2026-03-05", "background_pressure"),
-                ("claude-opus-4-7", "neutral"),
-                ("claude-opus-4-7", "background_pressure"),
-                ("claude-sonnet-4-6", "neutral"),
-                ("claude-sonnet-4-6", "background_pressure"),
-            },
-        )
-
 
 class TestDecouplingSourceTables(unittest.TestCase):
     def _load_script_module(self):
-        script_path = Path("scripts/build_decoupling_source_tables.py")
+        script_path = Path(__file__).resolve().parents[1] / "scripts/build_decoupling_source_tables.py"
         spec = importlib.util.spec_from_file_location("build_decoupling_source_tables", script_path)
         module = importlib.util.module_from_spec(spec)
         assert spec and spec.loader

@@ -1,5 +1,8 @@
 # Release Readiness 20260601
 
+Historical verification record. For the current release and commands, see
+the repository [README](../../README.md).
+
 ## Reviewer Smoke Path
 
 Ready.
@@ -27,11 +30,9 @@ make reviewer-test
 It runs Ruff, validates the final paper packet from bundled per-episode scored
 outputs, and runs preflight.
 
-The broader fixture-dependent pytest suite is intentionally separated as:
-
-```bash
-make internal-test
-```
+The former fixture-dependent `internal-test` target has been retired. The
+current `unit-test` target runs the supported offline suite and is included
+in `reviewer-test`.
 
 ## Paper Packet Builder
 

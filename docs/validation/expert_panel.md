@@ -1,24 +1,9 @@
-# Expert Validation Panel
+# Expert validation panel
 
-## Required Roles
-- Physician with inpatient documentation experience
-- Coding/compliance expert
-- Quality/safety or utilization-review expert
-- Optional adjudicator
+Four reviewers each rated all 120 model-episode payloads: two board-certified Internal Medicine physicians and two Certified Professional Medical Auditors. The payloads represent 85 distinct episode IDs and 64 pair IDs; there were 480 responses.
 
-## Recruitment Tracker
-| Role | Name | Institution | Conflict Check | Signed | Status |
-|---|---|---|---|---|---|
-| Physician |  |  |  |  | Pending |
-| Coding/Compliance |  |  |  |  | Pending |
-| Quality/Safety |  |  |  |  | Pending |
-| Adjudicator (Optional) |  |  |  |  | Pending |
+Model and source identities were hidden. The scorer-selected Q2 answer was visibly marked, so the study measures scorer-assisted expert agreement. The panel's independence from scenario/scorer authors does not remove this potential anchoring.
 
-## Panel Policy
-- Radiology-only paneling is not used unless benchmark scope is explicitly narrowed to radiology workflows.
-- At least one non-radiology physician and one compliance/coding expert must sign before Phase B closure.
-- Reviewers should complete confidentiality and conflict disclosures before label work starts.
+The author-confirmed participation record reports written/electronic consent before labeling and a USD 800 flat fee per reviewer. Reviewers could decline or stop; none withdrew. No reviewer authored scenarios or scorer code, and no employment, supervisory, or family relationship with the authors was reported beyond the compensated review. No formal institutional determination was sought or obtained.
 
-## Current Status
-- Infrastructure and review assets are ready.
-- Reviewer identities and signatures are pending external onboarding.
+See [agreement](inter_rater_agreement.md), the [frozen validation report](validation_results.md), and [ethics](../paper/ethics_statement.md). The original 480-response export is not included; the released aggregate counts and 120-row majority-label summary are the available evidence.

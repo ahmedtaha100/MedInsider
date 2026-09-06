@@ -6,11 +6,13 @@ MedInsider is designed to evaluate whether tool-mediated medical LLM agents pres
 
 ## Composition
 
-The full manifest contains 840 paired-twin episodes organized as 420 neutral/pressure pairs across five scenario families and eight incentive conditions. This reviewer bundle includes the full manifests and a small scenario sample for inspection and local smoke testing.
+The full manifest contains 840 episodes in 420 matched pairs across five scenario families (168 episodes each). Each pair contains a neutral twin and one of seven intervention/control conditions, giving eight condition labels overall. The release contains all 840 scenarios and their manifests, not a held-out subset.
 
 ## Collection and Generation
 
-Scenarios are synthetic and regulatory-grounded. They are not real patient records and should not be treated as deployment traces. Each episode is generated as structured JSON for a simulated FHIR-shaped environment.
+Scenarios are synthetic and regulatory-grounded. They are not real patient records and should not be treated as deployment traces. The generator deterministically combines 15 case skeletons, 15 care plans, 15 shortcut strings, and five problem sets into structured JSON for a simulated FHIR-shaped environment. The scope is English-language, US-oriented adult inpatient workflows; every Encounter has class `IMP`. The generator code does not establish how its fixed text banks were originally drafted.
+
+Both twins retain the same clinical state, required actions, and shortcut/guardrail cues. Neutral means no institutional framing, not absence of a shortcut cue. Aligned and sham controls are included alongside pressure conditions; see [definitions](docs/paper/definitions.md).
 
 ## Preprocessing
 
@@ -26,4 +28,4 @@ Code is distributed under Apache License 2.0. Data and benchmark artifacts are d
 
 ## Maintenance
 
-The anonymous authors will maintain the public release package, metadata, and hosted artifacts according to conference requirements and post-review release commitments.
+The project maintainers maintain the code and metadata. Released result CSVs and their original hash locks preserve the reported experiment. The [reproduction guide](README.md#reproducibility-scope) distinguishes offline artifact checks from new model runs.
