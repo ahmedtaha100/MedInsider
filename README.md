@@ -66,9 +66,13 @@ smoke run: preflight, EHR environment, runner, scorer, and artifact writing.
 `make reproduce-tables` rebuilds the main seven-model table, legacy tradeoff
 summary, and condition breakdown from the frozen per-episode scored CSVs,
 asserts equality with their released counterparts, and writes the packet under
-`reports/paper/`. The coding probe and mitigation tables are copied from frozen
-summaries; they are not independently reconstructed from raw responses by this
-command. `make validate-locks` checks the original 29 artifact hashes and sizes.
+`reports/paper/`. It also reconstructs coding-probe accuracy from the retained
+105 question records (93 parsed answers and 12 errors) in
+`data/scored_outputs/probes/coding_probe_question_results.csv`, using the frozen
+probe bank and scorer. Original provider-payload extraction cannot be checked
+from these parsed answers; token counts and other run metadata remain frozen.
+The mitigation table is copied from its frozen summary; its 96 treatment logs
+are not included. `make validate-locks` checks the original 29 artifact hashes and sizes.
 `make validate-validation` checks the 120-row majority-label summary against the
 released aggregate validation evidence. The original 480 individual reviewer
 responses are not included.

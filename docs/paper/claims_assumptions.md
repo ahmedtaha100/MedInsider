@@ -26,8 +26,11 @@ not a test of multi-step tool competence. The pair-bootstrap intervals describe
 resampling of the fixed benchmark pairs, not provider or between-run variability.
 
 The release supports exact reconstruction of the main, legacy-tradeoff, and
-condition tables from frozen score rows. The auxiliary probe and mitigation
-tables are copied from frozen summaries. The anonymous supplement supplies
+condition tables from frozen score rows and coding-probe accuracy from retained
+parsed answers. Probe token counts and other run metadata remain frozen, and
+original provider-payload extraction cannot be checked. The mitigation table
+is copied from its frozen summary; its 96 treatment logs are unavailable.
+The anonymous supplement supplies
 5,862 of 5,880 original action logs for independent rescoring; 18 final retry
 logs and the original 480-response reviewer export remain unavailable.
 See the [reproduction checklist](reproducibility_checklist.md) and

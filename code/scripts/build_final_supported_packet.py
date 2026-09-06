@@ -11,9 +11,13 @@ from __future__ import annotations
 import argparse
 import csv
 import statistics
+import sys
 from collections import Counter, defaultdict
 from pathlib import Path
 from typing import Any
+
+sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "src"))
+from medinsider.fhir.knowledge_probe import build_fixed_probe_bank, score_probe_response  # noqa: E402
 
 OUTPUT_DIR = Path("docs/paper")
 SCORED_OUTPUT_DIR = Path("data/scored_outputs/per_episode")
@@ -60,7 +64,6 @@ MODEL_SPECS = (
 
 STATIC_CSVS = (
     "final_table3_model_caveats.csv",
-    "final_table6_coding_probe.csv",
     "final_table7_mitigation.csv",
     "final_compute_appendix_seven_model.csv",
 )
@@ -298,6 +301,63 @@ def build_condition_breakdown_rows() -> list[dict[str, Any]]:
     return generated_rows
 
 
+def build_coding_probe_rows() -> list[dict[str, Any]]:
+    """Rescore retained parsed choices; full response extraction and tokens are not replayed."""
+    bank = {probe["probe_id"]: probe for probe in build_fixed_probe_bank()}
+    source_rows = _load_csv_rows(Path("data/scored_outputs/probes/coding_probe_question_results.csv"))
+    locked_rows = _load_csv_rows(OUTPUT_DIR / "final_table6_coding_probe.csv")
+    rows_by_model: dict[str, list[dict[str, str]]] = defaultdict(list)
+    for row in source_rows:
+        rows_by_model[row["model_label"]].append(row)
+    if set(rows_by_model) != {row["model_label"] for row in locked_rows}:
+        raise ValueError("Coding probe model roster mismatch")
+    generated_rows: list[dict[str, Any]] = []
+    for locked in locked_rows:
+        model = locked["model_label"]
+        rows = rows_by_model[model]
+        if len(rows) != len(bank) or {row["probe_id"] for row in rows} != set(bank):
+            raise ValueError(f"Coding probe question coverage mismatch for {model}")
+        scores: list[int] = []
+        for row in rows:
+            probe = bank[row["probe_id"]]
+            if any(row[field] != probe[field] for field in ("scenario_family", "probe_bank_version")):
+                raise ValueError(f"Coding probe bank metadata mismatch for {model}/{row['probe_id']}")
+            if row["correct_answer"] != probe["probe"]["correct"]:
+                raise ValueError(f"Coding probe answer key mismatch for {model}/{row['probe_id']}")
+            if row["status"] == "success":
+                result = score_probe_response(probe, row["extracted_answer"])
+                if any(str(result[field]) != row[field] for field in ("correct_answer", "extracted_answer", "score")):
+                    raise ValueError(f"Coding probe score mismatch for {model}/{row['probe_id']}")
+                scores.append(result["score"])
+            elif row["status"] != "error" or row["score"] or row["extracted_answer"] or not row["error"]:
+                raise ValueError(f"Coding probe error record mismatch for {model}/{row['probe_id']}")
+        provenance = {}
+        for field in ("requested_model", "resolved_model", "agent_type"):
+            values = {row[field] for row in rows} - {""}
+            if values != {locked[field]}:
+                raise ValueError(f"Coding probe {field} mismatch for {model}")
+            provenance[field] = next(iter(values))
+        error_count = len(rows) - len(scores)
+        # Tokens and reference/provenance notes are retained metadata, not regenerated evidence.
+        generated_rows.append({
+            "model_label": model,
+            "status": "caveated" if error_count else "completed",
+            **provenance,
+            "answered_count": len(scores),
+            "total_probes": len(rows),
+            "correct_count": sum(scores),
+            "mean_score": round(statistics.fmean(scores), 4) if scores else "",
+            "background_ivr_delta_reference": locked["background_ivr_delta_reference"],
+            "blocked_reason": locked["blocked_reason"],
+            "error_count": error_count,
+            "input_tokens": locked["input_tokens"],
+            "output_tokens": locked["output_tokens"],
+            "total_tokens": locked["total_tokens"],
+        })
+    _assert_rows_match_locked(generated_rows, locked_rows, ("model_label",), "final_table6_coding_probe.csv")
+    return generated_rows
+
+
 def build_source_inventory_rows() -> list[dict[str, Any]]:
     return [
         {
@@ -414,6 +474,7 @@ def main() -> None:
     seven_model_rows = build_seven_model_results_rows()
     refusal_rows = build_refusal_partial_rows()
     condition_rows = build_condition_breakdown_rows()
+    probe_rows = build_coding_probe_rows()
     inventory_rows = build_source_inventory_rows()
 
     _write_csv(output_dir / "final_table3_seven_model_results.csv", seven_model_rows)
@@ -434,6 +495,7 @@ def main() -> None:
         condition_rows,
     )
 
+    _write_csv(output_dir / "final_table6_coding_probe.csv", probe_rows)
     copy_static_csvs(output_dir)
 
     _write_csv(output_dir / "final_supported_source_inventory.csv", inventory_rows)
