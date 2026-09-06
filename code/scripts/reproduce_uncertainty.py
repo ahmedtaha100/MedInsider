@@ -1,4 +1,4 @@
-"""Reproduce the archived pair-bootstrap intervals and aggregate Gwet AC1 values.
+"""Reproduce archived uncertainty summaries and optional paired mitigation intervals.
 
 Reads frozen scores and validation aggregates; never calls a model provider.
 """
@@ -10,7 +10,7 @@ import csv
 from pathlib import Path
 
 import numpy as np
-from build_final_supported_packet import MODEL_SPECS, TABLE_METRICS
+from build_final_supported_packet import MODEL_SPECS, TABLE_METRICS, build_mitigation_rows
 from validate_locked_scoring_targets import main as validate_locks
 
 ROOT = Path(__file__).resolve().parents[2]
@@ -85,11 +85,50 @@ def agreement_rows() -> list[dict]:
     return rows
 
 
+def mitigation_intervals(supplement: Path, reps: int, base_seed: int) -> list[dict]:
+    published = {row["model_label"]: row for row in build_mitigation_rows(supplement)}
+    metrics = ("IVR", "ATC", "MGR", "UPR_integrity", "refused_misaligned_pressure_rate")
+    rows = []
+    for model_index, spec in enumerate(MODEL_SPECS):
+        if spec["model_display"] not in published:
+            continue
+        treatment = {row["episode_id"]: row for row in read_csv(supplement / "scored_outputs" / spec["scored_file"])}
+        baseline = {row["episode_id"]: row for row in
+                    read_csv(ROOT / "data/scored_outputs/per_episode" / spec["scored_file"])
+                    if row["episode_id"] in treatment}
+        paired = []
+        for episode_id in sorted(treatment):
+            before, after = baseline[episode_id], treatment[episode_id]
+            paired.append([
+                float(after["tradeoff_mode"] == "refused_misaligned_pressure")
+                - float(before["tradeoff_mode"] == "refused_misaligned_pressure")
+                if metric == "refused_misaligned_pressure_rate" else float(after[metric]) - float(before[metric])
+                for metric in metrics
+            ])
+        deltas = np.array(paired, dtype=float)
+        seed = base_seed + 3000 + model_index
+        low, high = bootstrap(deltas, reps, seed)
+        record = published[spec["model_display"]]
+        for index, metric in enumerate(metrics):
+            # Published deltas subtract rounded model means; bootstrap uses the matched episode differences.
+            rows.append(dict(model=spec["model_display"], metric=metric,
+                             published_baseline_mean=record[f"baseline_{metric}"],
+                             published_treatment_mean=record[f"mitigation_{metric}"],
+                             published_delta=record[f"delta_{metric}"],
+                             paired_delta_mean=f"{deltas[:, index].mean():.6f}",
+                             ci_95_lower=f"{low[index]:.6f}", ci_95_upper=f"{high[index]:.6f}",
+                             n_pairs=24, bootstrap_reps=reps, seed=seed,
+                             resampling_unit="matched_episode", contrast="treatment_minus_baseline"))
+    return rows
+
+
 def main() -> None:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--output-root", type=Path, default=ROOT / "reports/uncertainty")
     parser.add_argument("--bootstrap-reps", type=int, default=20_000)
     parser.add_argument("--seed", type=int, default=20_260_727)
+    parser.add_argument("--mitigation-supplement", type=Path,
+                        help="Optional recovered supplement for 24 matched-episode mitigation intervals per model")
     args = parser.parse_args()
     if args.bootstrap_reps < 1:
         parser.error("--bootstrap-reps must be positive")
@@ -136,6 +175,10 @@ def main() -> None:
     write_csv(args.output_root / "background_pressure_paired_bootstrap_delta_ci.csv", delta_rows)
     write_csv(args.output_root / "agreement_sensitivity_gwet_ac1.csv", agreement_rows())
     print(f"Reproduced 49 main intervals, 49 paired-delta intervals and 3 AC1 values in {args.output_root}")
+    if args.mitigation_supplement:
+        rows = mitigation_intervals(args.mitigation_supplement, args.bootstrap_reps, args.seed)
+        write_csv(args.output_root / "mitigation_paired_bootstrap.csv", rows)
+        print(f"Reproduced {len(rows)} mitigation intervals from 24 matched episodes per model")
 
 
 if __name__ == "__main__":

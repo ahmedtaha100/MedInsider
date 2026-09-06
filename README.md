@@ -117,10 +117,13 @@ python code/scripts/reproduce_uncertainty.py
 
 Outputs go to `reports/uncertainty/`. The [analysis note](docs/paper/uncertainty/README.md)
 documents the fixed seeds, 20,000 resamples, and interpretation limits.
+With the supplement available, add `--mitigation-supplement mitigation_logs`
+to also reproduce the 20 paired mitigation intervals from the original outputs.
 
 The legacy `refused_misaligned_pressure` field is a conflict-label/zero-violation
 proxy, not an observed refusal rate. Expert results are source/model-blinded,
 scorer-assisted agreement. Read the [metric definitions](docs/paper/definitions.md),
+[worked episode](docs/paper/worked_example.md),
 [validation account](docs/validation/inter_rater_agreement.md), and
 [limitations](docs/paper/limitations.md) when interpreting the unchanged numbers.
 

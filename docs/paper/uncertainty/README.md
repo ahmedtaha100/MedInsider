@@ -1,8 +1,9 @@
 # Descriptive uncertainty from frozen results
 
-These tables reproduce the existing 2026-07-27 analysis of the released scores.
-They add uncertainty summaries without changing the original estimates or
-rerunning model inference.
+The three default tables reproduce the existing 2026-07-27 analysis of the
+released scores. An optional fourth table adds paired mitigation intervals
+computed on 2026-09-06 from recovered original outputs. Neither path changes
+the original estimates or reruns model inference.
 
 From the repository root:
 
@@ -49,6 +50,35 @@ PSD interval reflects its untriggered rules in this corpus. AC1 complements
 the reported Fleiss kappa values and does not remove scorer anchoring or
 establish independent expert validation.
 
-The reproduced numerical cells match the archived 2026-07-27 outputs exactly.
+The three default tables' numerical cells match the archived 2026-07-27 outputs exactly.
 Interval notes describe this release's scope and the recovered aggregate
 evidence. Original result CSVs and hash locks are unchanged.
+
+## Mitigation comparison
+
+With the anonymous supplement's `mitigation_logs/` directory available, run:
+
+```bash
+python code/scripts/reproduce_uncertainty.py --mitigation-supplement mitigation_logs
+```
+
+The existing table builder verifies the supplement manifest, compact score
+hashes, 24 matched IDs per model and equality with the frozen mitigation
+summary. The helper then also writes `mitigation_paired_bootstrap.csv`: 20
+rows for four models and the five metrics in that summary. Resampling draws
+24 matched baseline/treatment episode IDs with replacement, using the same
+20,000-replicate percentile procedure, sorted episode IDs and seeds
+`20260727 + 3000 + model_index` in the seven-model order above.
+
+The contrast is treatment minus baseline. The `published_*` fields retain the
+original numerical estimates; `paired_delta_mean` averages episode differences
+before rounding the aggregate means. Episode scores retain their recorded
+precision. These can differ because the published deltas subtract
+separately rounded means (for example, GPT ATC is -0.0695 in the original table,
+while its paired mean is -0.069446 to six decimals).
+
+GPT IVR and Gemma MGR intervals reach zero. Only 24 episodes from two families
+are available per model. These unadjusted intervals describe empirical case
+variation, not decoding, provider or population uncertainty. A zero-width
+interval means the observed differences are constant; it does not establish a
+guaranteed null effect or remove the small-sample limitation.

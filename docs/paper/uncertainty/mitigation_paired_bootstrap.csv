@@ -1,0 +1,21 @@
+model,metric,published_baseline_mean,published_treatment_mean,published_delta,paired_delta_mean,ci_95_lower,ci_95_upper,n_pairs,bootstrap_reps,seed,resampling_unit,contrast
+GPT-5.4,IVR,0.0417,0.0,-0.0417,-0.041667,-0.125000,0.000000,24,20000,20263727,matched_episode,treatment_minus_baseline
+GPT-5.4,ATC,0.5764,0.5069,-0.0695,-0.069446,-0.104175,-0.027792,24,20000,20263727,matched_episode,treatment_minus_baseline
+GPT-5.4,MGR,0.0,0.0,0.0,0.000000,0.000000,0.000000,24,20000,20263727,matched_episode,treatment_minus_baseline
+GPT-5.4,UPR_integrity,0.0,0.0,0.0,0.000000,0.000000,0.000000,24,20000,20263727,matched_episode,treatment_minus_baseline
+GPT-5.4,refused_misaligned_pressure_rate,0.9583,1.0,0.0417,0.041667,0.000000,0.125000,24,20000,20263727,matched_episode,treatment_minus_baseline
+Claude Sonnet 4.6,IVR,0.0,0.0,0.0,0.000000,0.000000,0.000000,24,20000,20263728,matched_episode,treatment_minus_baseline
+Claude Sonnet 4.6,ATC,0.5556,0.5695,0.0139,0.013896,-0.027775,0.055567,24,20000,20263728,matched_episode,treatment_minus_baseline
+Claude Sonnet 4.6,MGR,0.0,0.0,0.0,0.000000,0.000000,0.000000,24,20000,20263728,matched_episode,treatment_minus_baseline
+Claude Sonnet 4.6,UPR_integrity,0.0,0.0,0.0,0.000000,0.000000,0.000000,24,20000,20263728,matched_episode,treatment_minus_baseline
+Claude Sonnet 4.6,refused_misaligned_pressure_rate,1.0,1.0,0.0,0.000000,0.000000,0.000000,24,20000,20263728,matched_episode,treatment_minus_baseline
+DeepSeek V3.2,IVR,0.0,0.0,0.0,0.000000,0.000000,0.000000,24,20000,20263732,matched_episode,treatment_minus_baseline
+DeepSeek V3.2,ATC,0.5,0.5,0.0,0.000000,-0.034729,0.027783,24,20000,20263732,matched_episode,treatment_minus_baseline
+DeepSeek V3.2,MGR,0.0,0.0,0.0,0.000000,0.000000,0.000000,24,20000,20263732,matched_episode,treatment_minus_baseline
+DeepSeek V3.2,UPR_integrity,0.0,0.0,0.0,0.000000,0.000000,0.000000,24,20000,20263732,matched_episode,treatment_minus_baseline
+DeepSeek V3.2,refused_misaligned_pressure_rate,1.0,1.0,0.0,0.000000,0.000000,0.000000,24,20000,20263732,matched_episode,treatment_minus_baseline
+Gemma 4,IVR,0.0,0.0,0.0,0.000000,0.000000,0.000000,24,20000,20263733,matched_episode,treatment_minus_baseline
+Gemma 4,ATC,0.3819,0.3958,0.0139,0.013887,-0.020846,0.048621,24,20000,20263733,matched_episode,treatment_minus_baseline
+Gemma 4,MGR,0.0833,0.0,-0.0833,-0.083333,-0.208333,0.000000,24,20000,20263733,matched_episode,treatment_minus_baseline
+Gemma 4,UPR_integrity,0.0,0.0,0.0,0.000000,0.000000,0.000000,24,20000,20263733,matched_episode,treatment_minus_baseline
+Gemma 4,refused_misaligned_pressure_rate,0.9167,1.0,0.0833,0.083333,0.000000,0.208333,24,20000,20263733,matched_episode,treatment_minus_baseline
