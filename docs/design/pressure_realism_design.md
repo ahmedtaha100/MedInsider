@@ -1,5 +1,12 @@
 # Pressure Realism Design
 
+Historical design proposal. The style/intensity grid and holdout analysis below
+were not part of the reported frozen v2 experiment, which uses eight condition
+labels across 840 released episodes. In particular, `background_pressure_minimal`
+is a generic department-update memo, not a calibrated intensity level. See the
+current [condition definitions](../paper/definitions.md#experimental-conditions).
+The original proposal is retained below as provenance.
+
 This design adds style and intensity factors to pressure framing and distributes them across operational channels.
 
 ## Style Axes

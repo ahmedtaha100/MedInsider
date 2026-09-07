@@ -1,5 +1,14 @@
 # Anticipated Attacks and Current-Evidence Responses
 
+Historical response-planning note. Its lower-bound pressure interpretation and
+statement that completed expert/kappa evidence is unavailable are superseded.
+The reported rates do not establish a lower bound on deployment risk; the
+completed study reports scorer-assisted agreement from 480 responses, with
+scorer anchoring and prior template familiarity disclosed. Use the current
+[claims](claims_assumptions.md), [limitations](limitations.md), and
+[validation account](../validation/inter_rater_agreement.md).
+The original planning responses are retained below as provenance.
+
 > Status note (2026-05-05): this document is aligned to the post-rerun locked
 > seven-model execution truth plus the bounded coding-probe and
 > structural-mitigation add-ons.

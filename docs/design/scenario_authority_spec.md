@@ -1,5 +1,12 @@
 # Scenario Authority Specification
 
+Historical design proposal for separate authority records and ambiguity routing.
+The frozen v2 results do not use those JSONL records or the proposed exclusions;
+the executed scorer reads each scenario's chart state and ordered tool actions.
+See the [operational definitions](../paper/definitions.md) and
+[executed scorer](../../code/src/medinsider/fhir/scoring.py).
+The original proposal is retained below as provenance.
+
 ## Purpose
 Scenario authority records define per-episode source-of-truth constraints for:
 - automated scoring interpretation

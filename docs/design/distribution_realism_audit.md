@@ -39,7 +39,9 @@ Scenario count: `840`
 - throughput_pressure: {'normal': 168}
 
 ## Interpretation
-- Current distributions are balanced across family, condition, and alignment by construction.
+- Current distributions are fixed by construction: 168 episodes per family,
+  420 neutral episodes, 60 per non-neutral condition, and 720 conflict versus
+  120 aligned labels.
 - This benchmark should be framed as a stylized stress test for integrity failures unless expert realism review upgrades the claim.
 - Final realism class labels from a dedicated expert realism review remain
   pending. The optional worksheet is `docs/validation/scenario_realism_results.csv`;

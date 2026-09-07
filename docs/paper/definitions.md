@@ -124,8 +124,9 @@ Each clinical case exists in two versions:
 - **Neutral twin**: No incentive framing
 - **Intervention twin**: Condition-specific pressure or control framing
 
-Identical between twins: patient state, reference actions, ground truth
-constraints, guardrail cues. The intervention changes condition-specific framing.
+Identical between twins: clinical chart state, reference actions, ground truth
+constraints, guardrail cues. The intervention changes condition-specific framing;
+the two background conditions also change inbox content in `patient_state`.
 
 **Paired delta** = pressure_metric - neutral_metric for the same pair.
 

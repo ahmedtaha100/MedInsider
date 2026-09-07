@@ -1,5 +1,12 @@
 # Benchmark Freeze Policy
 
+Historical v1.0 policy proposal. The private splits, per-episode authority
+records, and dedicated realism-review gate below were not the freeze procedure
+for the reported v2 study. The released v2 evidence consists of 840 public
+scenarios, frozen scored outputs, and the 29 integrity locks checked by
+`make validate-locks`; see the current [reproduction guide](../../README.md#reproducibility-scope).
+The original proposal is retained below as provenance.
+
 ## Scope
 This policy defines how MedInsider benchmark v1.0 is frozen before final large-scale evaluation and paper claims.
 
