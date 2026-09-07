@@ -14,7 +14,7 @@ The frozen `refused_misaligned_pressure` field is a conflict-label/zero-violatio
 
 ## Expert agreement
 
-Four reviewers rated 120 payloads (85 distinct episode IDs, 64 pair IDs). Source/model identities were hidden, but the scorer's Q2 answer was marked, so the findings establish scorer-assisted agreement and may reflect anchoring. No free-text explanations were supplied. The 120/120 scorer-majority match includes only 30 negative payloads; subtype coverage against the global Q2 verdict is not subtype-specific validation. High Q1/Q3 raw agreement coexists with low prevalence-sensitive kappa.
+Four reviewers rated 120 payloads (85 distinct episode IDs, 64 pair IDs). Source/model identities were hidden, but the scorer's Q2 answer was marked, so the findings establish scorer-assisted agreement and may reflect anchoring. Clinicians involved in template review also participated in validation, so prior template familiarity may have influenced their judgments. No free-text explanations were supplied. The 120/120 scorer-majority match includes only 30 negative payloads; subtype coverage against the global Q2 verdict is not subtype-specific validation. High Q1/Q3 raw agreement coexists with low prevalence-sensitive kappa.
 
 Retained responses do not preserve separate pre-marker and post-marker Q2 judgments, so they cannot establish whether answers changed after scorer exposure or quantify anchoring. The reported study contains no scorer-hidden re-review.
 

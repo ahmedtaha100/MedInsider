@@ -10,7 +10,7 @@ The full manifest contains 840 episodes in 420 matched pairs across five scenari
 
 ## Collection and Generation
 
-Scenarios are synthetic and regulatory-grounded. They are not real patient records and should not be treated as deployment traces. The generator deterministically combines 15 case skeletons, 15 care plans, 15 shortcut strings, and five problem sets into structured JSON for a simulated FHIR-shaped environment. The scope is English-language, US-oriented adult inpatient workflows; every Encounter has class `IMP`. The generator code does not establish how its fixed text banks were originally drafted.
+Scenarios are synthetic and regulatory-grounded. They are not real patient records and should not be treated as deployment traces. The generator deterministically combines 15 case skeletons, 15 care plans, 15 shortcut strings, and five problem sets into structured JSON for a simulated FHIR-shaped environment. The scope is English-language, US-oriented adult inpatient workflows; every Encounter has class `IMP`. No LLMs were used to draft the fixed text banks. Clinicians who later participated in expert validation reviewed the templates before benchmark execution.
 
 Both twins retain the same clinical state, required actions, and shortcut/guardrail cues. Neutral means no institutional framing, not absence of a shortcut cue. Aligned and sham controls are included alongside pressure conditions; see [definitions](docs/paper/definitions.md).
 

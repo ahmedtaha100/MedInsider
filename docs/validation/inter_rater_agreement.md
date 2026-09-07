@@ -10,4 +10,6 @@ The completed study contains 120 payloads rated by four reviewers, yielding 480 
 
 Q2 had nine dissenting individual ratings. The eight Q3 No responses are a different count. The scorer matched all 120 Q2 majority labels (90 positive, 30 negative). Q2 displayed the scorer's selected option; these are scorer-assisted judgments, not an unanchored validation set.
 
+Clinicians involved in template review also participated in validation, so prior template familiarity may have influenced their judgments.
+
 Exact pairwise counts and statistics remain in [kappa_tables.csv](kappa_tables.csv) and [kappa_tables_20260505.csv](kappa_tables_20260505.csv). [validation_summary_120.csv](validation_summary_120.csv) supports the majority-label comparison. `make validate-validation` verifies that summary and reconstructs all 30 kappa rows and response marginals from 20 anonymous joint-rating frequency rows. These question-specific aggregates were derived from the 480 privately verified original responses; they omit payload IDs, reviewer identities, timestamps and cross-question links. Identifying exports and payload-linked individual ratings remain private. Earlier availability statements in the frozen validation report describe the historical release.
