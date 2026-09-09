@@ -1,70 +1,38 @@
-# Claims, Assumptions, and Limitations for Current Evidence
+# Claims and evidence limits
 
-> Status note (2026-06-01): this document is aligned to the submitted
-> code-and-benchmark bundle, the final seven-model paper tables, the bundled
-> per-episode scored outputs, and the validation summaries. It is not a
-> statement of older internal restore trees or missing research-package files.
+Updated 2026-09-06 for the ML4H Findings manuscript. The original result values
+remain frozen; these interpretations apply to the executed study.
 
-## Claims That Remain Supported Now
-
-| # | Claim | Evidence | Status |
-|---|---|---|---|
-| C1 | The benchmark measures integrity under institutional pressure in tool-mediated FHIR workflows. | `docs/protocol/PROTOCOL.md`, `docs/scoring/formal_scoring_spec_v1.md`, `data/manifests/v2_manifest.csv`, `data/scored_outputs/per_episode/` | Supported now |
-| C2 | The current package supports run-level analysis across the fixed seven-model execution roster, with all main-benchmark lanes complete. | `docs/paper/final_table3_seven_model_results.csv`, `docs/paper/final_table3_model_caveats.csv`, `data/scored_outputs/per_episode/` | Supported now |
-| C3 | The submitted paper-table layer is backed by shipped CSVs and per-episode scored outputs. | `docs/paper/final_supported_source_inventory.csv`, `docs/paper/`, `data/scored_outputs/per_episode/` | Supported now |
-| C4 | The benchmark distinguishes compliance failures from integrity failures. | `docs/scoring/formal_scoring_spec_v1.md`, `docs/paper/definitions.md`, `data/scored_outputs/per_episode/` | Supported now |
-| C5 | ATC is a co-primary metric inside the integrity package. | `docs/scoring/formal_scoring_spec_v1.md`, `docs/paper/final_table3_seven_model_results.csv` | Supported now |
-| C6 | Within the submitted v2/FHIR corpus, task-completion and integrity-clean behavior differ descriptively on the same local tasks. | `docs/paper/final_table3_seven_model_results.csv`, `docs/paper/final_table5_condition_breakdown.csv`, `data/scored_outputs/per_episode/` | Supported now |
-| C7 | A bounded standalone coding-knowledge probe exists for the fixed roster. | `docs/paper/final_table6_coding_probe.csv` | Supported now as an auxiliary bounded probe |
-| C8 | One bounded dedicated structural mitigation experiment exists. | `docs/paper/final_table7_mitigation.csv`, `data/manifests/subsets/v2_mitigation_compliance_gate_background_manifest.csv` | Supported now as an auxiliary bounded experiment |
-| C9 | Expert validation summaries and agreement tables are included. | `docs/validation/validation_results.md`, `docs/validation/kappa_tables.csv`, `docs/validation/validation_summary_120.csv` | Supported now at the summary-table level |
-
-## Claims That Must Be Narrowed
-
-| Old claim | Safe narrowed version |
-|---|---|
-| The benchmark measures integrity under pressure, not just capability. | The benchmark measures integrity under pressure and records ATC as a co-primary; the current package also supports a narrower internal workflow-capability versus integrity analysis on a closed-model subset. |
-| Capability and integrity can be decoupled. | Within the submitted v2/FHIR corpus, task-completion and integrity-clean behavior differ descriptively on the same local tasks. |
-| Frontier models differ on integrity under pressure. | The fixed seven-model execution roster differs descriptively on integrity-under-pressure outcomes in the post-rerun locked scored outputs. |
-| The project includes a coding probe. | The project includes a bounded fixed-bank coding probe for the fixed roster; treat it as auxiliary, not as a broad capability benchmark. |
-| The project includes a structural mitigation experiment. | The project includes one bounded `compliance_check_tool` experiment on the billing-and-quality `background_pressure` slice for four executed models; do not describe it as a broad mitigation suite. |
-
-## Claims That Are Not Supported Yet
-
-| Claim | Why not |
-|---|---|
-| Figure 1 cross-benchmark capability rank versus integrity rank | no MedAgentBench-backed or other external capability package exists locally |
-| Broad unqualified decoupling headline | the current evidence is within-benchmark and closed-model only |
-| Full uncaveated panel-wide auxiliary experiments | the main seven-model execution roster is evidenced now, but the coding probe and mitigation add-ons remain bounded |
-| Ranking-distinctness against adjacent benchmarks | no adjacent-benchmark result layer exists locally |
-| Uncaveated coding-knowledge capability claims | the current probe is a fixed 15-question auxiliary bank |
-| Raw 480-response validation release claims | validation summaries and agreement tables are included, but raw reviewer submissions are not included until separately packaged |
-| MIMIC-IV-FHIR anchor claims | no current real-chart subset artifacts are packaged |
-| Broader mitigation-suite claims | only one bounded `compliance_check_tool` study plus the honesty-system-prompt condition are evidenced |
-
-## Assumptions That Still Apply
-
-| # | Assumption | Current handling |
+| Claim | Evidence | Scope |
 |---|---|---|
-| A1 | Pressure framing is a stylized lower-bound proxy for deployment pressure. | Keep explicitly as a limitation. |
-| A2 | Synthetic scenarios can still support a valid integrity-under-pressure benchmark. | Keep explicitly as a limitation. |
-| A3 | Deterministic scoring plus preserved action logs are sufficient for current run-level analysis. | Supported for the audited package. |
-| A4 | The internal capability subset is a within-benchmark workflow-capability surface, not an external capability benchmark. | Must be stated every time Figure 2 or CLM2 appears. |
+| Documentation discrepancies can be operationalized without inferring intent. | Frozen scorer, scenario state, tool-action logs, and [metric definitions](definitions.md). | Literal rules over a synthetic EHR simulation; no inference of intent or clinical deployment safety. |
+| Task completion and documentation integrity diverge in the seven-model panel. | `final_table3_seven_model_results.csv` and the seven per-episode score tables. | Descriptive within-benchmark comparison, not cross-benchmark capability rankings or population failure rates. |
+| A compliance gate reduces discrepancies on the tested subset. | `final_table7_mitigation.csv`. | Four models, 24 background-pressure episodes each, two families, with model-specific completion tradeoffs. |
+| Scorer-assisted expert review supports aggregate integrity labels on sampled payloads. | [Majority labels](../validation/validation_summary_120.csv), [kappas](../validation/kappa_tables.csv), and [validation account](../validation/inter_rater_agreement.md). | 120 payloads, 85 unique episode IDs, 64 pair IDs; scorer choice was visible. Agreement is not independent accuracy validation. |
 
-## Self-Sufficiency Check for Current Paper Text
+Pressure framing is a stylized contextual manipulation. There is no evidence
+that it is a lower bound on deployment pressure or real-world misconduct.
+Neutral twins retain the shared shortcut cue. The non-neutral conditions also
+include controls and integrity-supporting interventions.
 
-| Item | Current status |
-|---|---|
-| closed-model integrity-under-pressure story | supported now |
-| seven-model execution inventory | supported now |
-| FHIR-native tool-mediated benchmark description | supported now |
-| compliance-versus-integrity distinction | supported now |
-| ATC as co-primary | supported now |
-| narrowed internal Figure 2 | partially supported now |
-| bounded coding-knowledge probe | partially supported now |
-| bounded structural mitigation experiment | partially supported now |
-| Figure 1 cross-benchmark decoupling | not supported yet |
-| fully regenerated seven-model paper packet | supported at the shipped CSV/output level; cold-clone regeneration depends on the packet builder path |
-| ranking-distinctness study | not supported yet |
-| expert-validation kappa summaries | supported now |
-| raw validation response release | not supported yet |
+The legacy `refused_misaligned_pressure` label is a conflict-label/zero-flag
+proxy. It does not establish refusal or resistance. PSD is structurally
+untriggered, AEOR and CDR flag the same episode sets, and UPR-integrity has only
+three positive outputs. Report ATC alongside integrity rates because no-action
+and no-opportunity zeros can obscure incomplete work.
+
+The 15-item coding probe is an auxiliary knowledge check with unanswered items,
+not a test of multi-step tool competence. The pair-bootstrap intervals describe
+resampling of the fixed benchmark pairs, not provider or between-run variability.
+
+The release supports exact reconstruction of the main, legacy-tradeoff, and
+condition tables from frozen score rows and coding-probe accuracy from retained
+parsed answers. Probe token counts and other run metadata remain frozen, and
+original provider-payload extraction cannot be checked. The anonymous supplement
+supplies all 5,880 main-run and 96 mitigation action logs for frozen rescoring;
+the mitigation replay also reconstructs its table from the original scored rows.
+Twenty anonymous joint-rating frequency rows, derived from the 480 original
+reviewer responses, reproduce all 30 kappa rows and response marginals.
+Identifying exports and payload-linked individual ratings remain private.
+See the [reproduction checklist](reproducibility_checklist.md) and
+[limitations](limitations.md).

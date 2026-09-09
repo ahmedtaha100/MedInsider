@@ -1,0 +1,4 @@
+# Preserve released artifact bytes (including their original line endings) for SHA-256 checks.
+*.csv -text
+*.json -text
+/docs/validation/*.md -text

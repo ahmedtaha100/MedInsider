@@ -1,5 +1,11 @@
 # Contamination And Versioning Policy
 
+Historical policy proposal. The frozen v2 release publishes all 840 scenarios;
+the protected hidden-test split, gated release tiers, and periodic drift studies
+described below were not implemented for the reported experiment. See the current
+[datasheet](../../DATASHEET.md) and [reproduction scope](../../README.md#reproducibility-scope).
+The original proposal is retained below as provenance.
+
 ## Risk statement
 Public benchmark artifacts can become training-contaminated over time as future models ingest released content.
 

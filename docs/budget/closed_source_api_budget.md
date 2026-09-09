@@ -93,9 +93,9 @@ to complete the closed-model runs before May 6:
    take days to process)
 4. Document tier, limits, and expected wall-clock in `version_manifest.json`
 
-The verification checklist with per-provider load estimates and
-tier-upgrade lead times is tracked in
-[`docs/protocol/rate_limit_feasibility.md`](../protocol/rate_limit_feasibility.md).
+The historical verification checklist with per-provider load estimates and
+tier-upgrade lead times was tracked in
+`docs/protocol/rate_limit_feasibility.md`, which is not included in this release.
 Tier-upgrade requests have a 1-week lead time and must be submitted
 before experiment freeze.
 

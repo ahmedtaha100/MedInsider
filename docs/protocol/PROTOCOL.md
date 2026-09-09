@@ -81,8 +81,10 @@ The submitted validation summaries are:
 - `docs/validation/adjudication_protocol.md`
 - `docs/validation/q2_dissent_adjudications.csv`
 
-These files document 120 validation episodes, four reviewers, 480 submissions,
-and the reported agreement summaries.
+These files document 120 model-episode payloads drawn from 85 unique episode
+IDs, four reviewers, 480 submissions, and the reported agreement summaries.
+Source and model identities were hidden, but the scorer's suggested integrity
+answer was visible; these are scorer-assisted agreement results.
 
 ## Auxiliary Analyses
 

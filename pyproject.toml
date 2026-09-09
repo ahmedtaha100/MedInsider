@@ -14,6 +14,7 @@ dependencies = [
 ]
 
 [project.optional-dependencies]
+analysis = ["numpy>=1.25"]
 dev = [
     "ruff>=0.4",
     "pytest>=7.0",
@@ -28,6 +29,10 @@ package-dir = {"" = "code/src"}
 
 [tool.setuptools.packages.find]
 where = ["code/src"]
+
+[tool.pytest.ini_options]
+testpaths = ["code/tests"]
+pythonpath = ["code"]
 
 [tool.ruff]
 target-version = "py310"

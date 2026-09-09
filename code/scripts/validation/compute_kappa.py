@@ -7,17 +7,16 @@ import math
 import os
 import time
 from collections import Counter, defaultdict
-from datetime import UTC, datetime
+from datetime import datetime, timezone
 from itertools import combinations
 from pathlib import Path
+from statistics import mean
 from typing import Iterable
-
-import httpx
-from huggingface_hub import HfApi, hf_hub_download
 
 DEFAULT_REPO = "ANON-AUTHOR/medinsider-validation-responses"
 DEFAULT_DATA_DIR = "validation_data"
-COMMON_PATH = Path(__file__).resolve().parents[2] / "validation" / "medinsider_validation_space" / "common.py"
+BUNDLE_ROOT = Path(__file__).resolve().parents[3]
+COMMON_PATH = BUNDLE_ROOT / "validation" / "medinsider_validation_space" / "common.py"
 HF_RETRIES = 5
 HF_BACKOFF = 2.0
 
@@ -35,6 +34,8 @@ REVIEWERS, Q2_CATEGORIES, Q3_CATEGORIES = load_common_constants()
 
 
 def retry_hf_call(operation_name: str, fn):
+    import httpx
+
     last_error: Exception | None = None
     for attempt in range(HF_RETRIES):
         try:
@@ -101,6 +102,8 @@ def majority(values: list[str]) -> str | None:
 
 
 def download_response_rows(repo_id: str, data_dir: str, token: str | None) -> list[dict[str, str]]:
+    from huggingface_hub import HfApi, hf_hub_download
+
     api = HfApi(token=token)
     files = retry_hf_call(
         "response file listing",
@@ -121,6 +124,93 @@ def download_response_rows(repo_id: str, data_dir: str, token: str | None) -> li
         )
         rows.extend(read_csv(Path(local_path)))
     return rows
+
+
+def compute_pattern_report(pattern_path: Path, output_dir: Path) -> Path:
+    """Reproduce agreement from question-specific joint-rating frequencies, without item identities."""
+    questions = {"Q1": "Scenario validity", "Q2": "Integrity violation", "Q3": "Scorer agreement"}
+    patterns: dict[str, list[tuple[list[str], int]]] = defaultdict(list)
+    for row in read_csv(pattern_path):
+        question = row["question"]
+        values = [row[reviewer] for reviewer in REVIEWERS]
+        allowed = {"Yes", "No", "Scorer hidden" if question == "Q3" else "Unclear"}
+        count = int(row["count"])
+        if question not in questions or not set(values) <= allowed or not 1 <= count <= 120:
+            raise ValueError("Invalid question, rating, or count in aggregate patterns")
+        patterns[question].append((values, count))
+    if set(patterns) != set(questions) or any(sum(n for _, n in rows) != 120 for rows in patterns.values()):
+        raise ValueError("Expected 120 four-rater patterns per question")
+
+    kappa_rows: list[dict] = []
+    marginal_rows: list[dict] = []
+    for question, label in questions.items():
+        # Each question is expanded independently; no cross-question item linkage is available.
+        matrix = [values for values, count in patterns[question] for _ in range(count)]
+        categories = ["Yes", "No"] if question == "Q3" else ["Yes", "No", "Unclear"]
+
+        def append_row(comparison_type, comparison, group, kappa, n, count, agreement,
+                       *, question=question, label=label):
+            if kappa is None:
+                raise ValueError(f"Undefined kappa for {question}/{comparison}")
+            bands = [(0, "Poor"), (0.2, "Slight"), (0.4, "Fair"), (0.6, "Moderate"),
+                     (0.8, "Substantial"), (float("inf"), "Almost perfect")]
+            kappa_rows.append({
+                "question": question, "question_label": label, "comparison_type": comparison_type,
+                "comparison": comparison, "reviewer_group": group, "kappa": f"{kappa:.3f}",
+                "landis_koch": next(name for bound, name in bands if kappa <= bound),
+                "n_episodes": n, "agreement_count": count, "agreement_rate": f"{agreement:.6f}",
+                "agreement_pct": f"{agreement * 100:.1f}%",
+            })
+
+        pairs = {}
+        for left, right in combinations(range(len(REVIEWERS)), 2):
+            values = [(row[left], row[right]) for row in matrix
+                      if row[left] in categories and row[right] in categories]
+            n = len(values)
+            count = sum(a == b for a, b in values)
+            kappa = cohen_kappa([a for a, _ in values], [b for _, b in values], categories)
+            comparison = f"{REVIEWERS[left]}-{REVIEWERS[right]}"
+            pairs[comparison] = (kappa, n, count, count / n)
+            append_row("pairwise", comparison, "pair", *pairs[comparison])
+        complete = [row for row in matrix if all(value in categories for value in row)]
+        count = sum(sum(a == b for a, b in combinations(row, 2)) for row in complete)
+        append_row("fleiss", "all_4_reviewers", "all", fleiss_kappa(complete, categories),
+                   len(complete), count, count / (len(complete) * 6))
+        for comparison, group in [("R1-R2", "IM-IM"), ("R3-R4", "CPMA-CPMA")]:
+            append_row("intra_profession", comparison, group, *pairs[comparison])
+        cross_names = ["R1-R3", "R1-R4", "R2-R3", "R2-R4"]
+        cross = [pairs[name] for name in cross_names]
+        append_row("inter_profession_average", ";".join(cross_names), "IM-vs-CPMA mean",
+                   mean(row[0] for row in cross), mean(float(row[1]) for row in cross), "",
+                   mean(row[3] for row in cross))
+        for index, reviewer in enumerate((*REVIEWERS, "all")):
+            counts = Counter(row[index] for row in matrix) if reviewer != "all" else Counter(
+                value for row in matrix for value in row)
+            marginal_rows.append({"question": question, "reviewer_group": reviewer,
+                                  **{value: counts[value] for value in ("Yes", "No", "Unclear", "Scorer hidden")},
+                                  "total": sum(counts.values())})
+
+    locked = read_csv(BUNDLE_ROOT / "docs/validation/kappa_tables.csv")
+    if len(kappa_rows) != len(locked):
+        raise ValueError("Agreement table row count differs from the frozen table")
+    numeric = {"kappa", "n_episodes", "agreement_count", "agreement_rate", "agreement_pct"}
+    for actual, expected in zip(kappa_rows, locked, strict=True):
+        for field, value in expected.items():
+            observed = str(actual[field])
+            if field in numeric and observed and value:
+                matches = float(observed.removesuffix("%")) == float(value.removesuffix("%"))
+            else:
+                matches = observed == value
+            if not matches:
+                raise ValueError(f"Frozen agreement mismatch: {expected['question']}/{expected['comparison']}/{field}")
+
+    output_dir.mkdir(parents=True, exist_ok=True)
+    for filename, rows in [("kappa_tables.csv", kappa_rows), ("response_marginals.csv", marginal_rows)]:
+        with (output_dir / filename).open("w", newline="", encoding="utf-8") as handle:
+            writer = csv.DictWriter(handle, fieldnames=list(rows[0]), lineterminator="\n")
+            writer.writeheader()
+            writer.writerows(rows)
+    return output_dir / "kappa_tables.csv"
 
 
 def compute_report(repo_id: str, data_dir: str, manifest_path: Path, output_dir: Path) -> Path:
@@ -150,7 +240,7 @@ def compute_report(repo_id: str, data_dir: str, manifest_path: Path, output_dir:
     lines = [
         "# MedInsider Validation Kappa Report",
         "",
-        f"Generated UTC: {datetime.now(UTC).isoformat()}",
+        f"Generated UTC: {datetime.now(timezone.utc).isoformat()}",
         f"HF response repo: `{repo_id}`",
         f"Double-labeled target episodes: {len(double_episode_ids)}",
         f"Downloaded double-labeled response rows: {len(responses)}",
@@ -232,22 +322,26 @@ def compute_report(repo_id: str, data_dir: str, manifest_path: Path, output_dir:
     )
 
     output_dir.mkdir(parents=True, exist_ok=True)
-    date = datetime.now(UTC).strftime("%Y%m%d")
+    date = datetime.now(timezone.utc).strftime("%Y%m%d")
     output_path = output_dir / f"kappa_report_{date}.md"
     output_path.write_text("\n".join(lines), encoding="utf-8")
     return output_path
 
 
 def main() -> None:
-    parser = argparse.ArgumentParser(description="Compute MedInsider reviewer agreement from HF response exports.")
+    parser = argparse.ArgumentParser(description="Compute MedInsider agreement from aggregate patterns or HF exports.")
+    parser.add_argument("--pattern-counts", type=Path, help="Offline question-specific joint-rating count CSV")
     parser.add_argument("--repo-id", default=DEFAULT_REPO)
     parser.add_argument("--data-dir", default=DEFAULT_DATA_DIR)
     parser.add_argument("--manifest", type=Path, default=Path("artifacts/subsets/medinsider_validation_manifest.csv"))
-    parser.add_argument("--output-dir", type=Path, default=Path("docs/validation"))
+    parser.add_argument("--output-dir", type=Path,
+                        help="Defaults to reports/validation for patterns, docs/validation for HF")
     args = parser.parse_args()
+    output_dir = args.output_dir or Path("reports/validation" if args.pattern_counts else "docs/validation")
     try:
-        output = compute_report(args.repo_id, args.data_dir, args.manifest, args.output_dir)
-    except RuntimeError as exc:
+        output = (compute_pattern_report(args.pattern_counts, output_dir) if args.pattern_counts else
+                  compute_report(args.repo_id, args.data_dir, args.manifest, output_dir))
+    except (RuntimeError, ValueError) as exc:
         raise SystemExit(f"error: {exc}") from None
     print(output)
 

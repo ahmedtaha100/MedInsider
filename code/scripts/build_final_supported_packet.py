@@ -10,10 +10,16 @@ from __future__ import annotations
 
 import argparse
 import csv
+import hashlib
+import json
 import statistics
+import sys
 from collections import Counter, defaultdict
 from pathlib import Path
 from typing import Any
+
+sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "src"))
+from medinsider.fhir.knowledge_probe import build_fixed_probe_bank, score_probe_response  # noqa: E402
 
 OUTPUT_DIR = Path("docs/paper")
 SCORED_OUTPUT_DIR = Path("data/scored_outputs/per_episode")
@@ -60,7 +66,6 @@ MODEL_SPECS = (
 
 STATIC_CSVS = (
     "final_table3_model_caveats.csv",
-    "final_table6_coding_probe.csv",
     "final_table7_mitigation.csv",
     "final_compute_appendix_seven_model.csv",
 )
@@ -298,6 +303,107 @@ def build_condition_breakdown_rows() -> list[dict[str, Any]]:
     return generated_rows
 
 
+def build_coding_probe_rows() -> list[dict[str, Any]]:
+    """Rescore retained parsed choices; full response extraction and tokens are not replayed."""
+    bank = {probe["probe_id"]: probe for probe in build_fixed_probe_bank()}
+    source_rows = _load_csv_rows(Path("data/scored_outputs/probes/coding_probe_question_results.csv"))
+    locked_rows = _load_csv_rows(OUTPUT_DIR / "final_table6_coding_probe.csv")
+    rows_by_model: dict[str, list[dict[str, str]]] = defaultdict(list)
+    for row in source_rows:
+        rows_by_model[row["model_label"]].append(row)
+    if set(rows_by_model) != {row["model_label"] for row in locked_rows}:
+        raise ValueError("Coding probe model roster mismatch")
+    generated_rows: list[dict[str, Any]] = []
+    for locked in locked_rows:
+        model = locked["model_label"]
+        rows = rows_by_model[model]
+        if len(rows) != len(bank) or {row["probe_id"] for row in rows} != set(bank):
+            raise ValueError(f"Coding probe question coverage mismatch for {model}")
+        scores: list[int] = []
+        for row in rows:
+            probe = bank[row["probe_id"]]
+            if any(row[field] != probe[field] for field in ("scenario_family", "probe_bank_version")):
+                raise ValueError(f"Coding probe bank metadata mismatch for {model}/{row['probe_id']}")
+            if row["correct_answer"] != probe["probe"]["correct"]:
+                raise ValueError(f"Coding probe answer key mismatch for {model}/{row['probe_id']}")
+            if row["status"] == "success":
+                result = score_probe_response(probe, row["extracted_answer"])
+                if any(str(result[field]) != row[field] for field in ("correct_answer", "extracted_answer", "score")):
+                    raise ValueError(f"Coding probe score mismatch for {model}/{row['probe_id']}")
+                scores.append(result["score"])
+            elif row["status"] != "error" or row["score"] or row["extracted_answer"] or not row["error"]:
+                raise ValueError(f"Coding probe error record mismatch for {model}/{row['probe_id']}")
+        provenance = {}
+        for field in ("requested_model", "resolved_model", "agent_type"):
+            values = {row[field] for row in rows} - {""}
+            if values != {locked[field]}:
+                raise ValueError(f"Coding probe {field} mismatch for {model}")
+            provenance[field] = next(iter(values))
+        error_count = len(rows) - len(scores)
+        # Tokens and reference/provenance notes are retained metadata, not regenerated evidence.
+        generated_rows.append({
+            "model_label": model,
+            "status": "caveated" if error_count else "completed",
+            **provenance,
+            "answered_count": len(scores),
+            "total_probes": len(rows),
+            "correct_count": sum(scores),
+            "mean_score": round(statistics.fmean(scores), 4) if scores else "",
+            "background_ivr_delta_reference": locked["background_ivr_delta_reference"],
+            "blocked_reason": locked["blocked_reason"],
+            "error_count": error_count,
+            "input_tokens": locked["input_tokens"],
+            "output_tokens": locked["output_tokens"],
+            "total_tokens": locked["total_tokens"],
+        })
+    _assert_rows_match_locked(generated_rows, locked_rows, ("model_label",), "final_table6_coding_probe.csv")
+    return generated_rows
+
+
+def build_mitigation_rows(supplement: Path) -> list[dict[str, Any]]:
+    """Reconstruct the bounded mitigation table from recovered treatment scores."""
+    manifest = json.loads((supplement / "manifest.json").read_text(encoding="utf-8"))
+    if manifest["format_version"] != 1 or manifest.get("study") != "structural_mitigation":
+        raise ValueError("Expected a structural-mitigation supplement manifest")
+    selected = _load_csv_rows(Path("data/manifests/subsets/v2_mitigation_compliance_gate_background_manifest.csv"))
+    episode_ids = {row["episode_id"] for row in selected}
+    if len(selected) != 24 or len(episode_ids) != 24:
+        raise ValueError("Expected 24 unique mitigation selection IDs")
+    locked_rows = _load_csv_rows(OUTPUT_DIR / "final_table7_mitigation.csv")
+    specs = {spec["model_display"]: spec for spec in MODEL_SPECS}
+    generated_rows: list[dict[str, Any]] = []
+    for locked in locked_rows:
+        spec = specs[locked["model_label"]]
+        path = supplement / "scored_outputs" / spec["scored_file"]
+        expected_hash = manifest["scored_files"].get(path.relative_to(supplement).as_posix())
+        if expected_hash != hashlib.sha256(path.read_bytes()).hexdigest():
+            raise ValueError(f"Mitigation scored-file hash mismatch: {path.name}")
+        treatment = _load_csv_rows(path)
+        if len(treatment) != 24 or {row["episode_id"] for row in treatment} != episode_ids:
+            raise ValueError(f"Mitigation treatment coverage mismatch: {path.name}")
+        if any(row["status"] != "success" for row in treatment):
+            raise ValueError(f"Mitigation treatment contains unsuccessful episodes: {path.name}")
+        baseline = [row for row in _scored_rows_for_model(spec) if row["episode_id"] in episode_ids]
+        if len(baseline) != 24 or {row["episode_id"] for row in baseline} != episode_ids:
+            raise ValueError(f"Mitigation baseline coverage mismatch: {path.name}")
+        # Preserve the frozen model/scope notes; regenerate status and all 17 numeric fields.
+        generated: dict[str, Any] = {
+            **locked, "status": "completed",
+            "baseline_episode_count": len(baseline), "mitigation_episode_count": len(treatment),
+        }
+        for metric in ("IVR", "ATC", "MGR", "UPR_integrity", "refused_misaligned_pressure_rate"):
+            if metric == "refused_misaligned_pressure_rate":
+                before, after = _refusal_rate(baseline), _refusal_rate(treatment)
+            else:
+                before, after = _mean_metric(baseline, metric), _mean_metric(treatment, metric)
+            generated[f"baseline_{metric}"] = before
+            generated[f"mitigation_{metric}"] = after
+            generated[f"delta_{metric}"] = round(after - before, 4)
+        generated_rows.append(generated)
+    _assert_rows_match_locked(generated_rows, locked_rows, ("model_label",), "final_table7_mitigation.csv")
+    return generated_rows
+
+
 def build_source_inventory_rows() -> list[dict[str, Any]]:
     return [
         {
@@ -387,10 +493,12 @@ def build_source_inventory_rows() -> list[dict[str, Any]]:
     ]
 
 
-def copy_static_csvs(output_dir: Path) -> None:
+def copy_static_csvs(output_dir: Path, skip_mitigation: bool = False) -> None:
     if output_dir.resolve() == OUTPUT_DIR.resolve():
         return
     for file_name in STATIC_CSVS:
+        if skip_mitigation and file_name == "final_table7_mitigation.csv":
+            continue
         rows = _load_csv_rows(OUTPUT_DIR / file_name)
         _write_csv(output_dir / file_name, rows)
 
@@ -408,12 +516,16 @@ def main() -> None:
         default=str(OUTPUT_DIR),
         help="Output directory for materialized CSVs.",
     )
+    parser.add_argument("--mitigation-supplement", type=Path,
+                        help="Optional recovered mitigation supplement; regenerate its table instead of copying it.")
     args = parser.parse_args()
     output_dir = Path(args.output_root)
 
     seven_model_rows = build_seven_model_results_rows()
     refusal_rows = build_refusal_partial_rows()
     condition_rows = build_condition_breakdown_rows()
+    probe_rows = build_coding_probe_rows()
+    mitigation_rows = build_mitigation_rows(args.mitigation_supplement) if args.mitigation_supplement else None
     inventory_rows = build_source_inventory_rows()
 
     _write_csv(output_dir / "final_table3_seven_model_results.csv", seven_model_rows)
@@ -434,7 +546,10 @@ def main() -> None:
         condition_rows,
     )
 
-    copy_static_csvs(output_dir)
+    _write_csv(output_dir / "final_table6_coding_probe.csv", probe_rows)
+    copy_static_csvs(output_dir, skip_mitigation=mitigation_rows is not None)
+    if mitigation_rows is not None:
+        _write_csv(output_dir / "final_table7_mitigation.csv", mitigation_rows)
 
     _write_csv(output_dir / "final_supported_source_inventory.csv", inventory_rows)
     _write_markdown_table(

@@ -1,7 +1,11 @@
 # MedInsider Judge Rubric v1
 
 ## Scope
-This rubric is used only when automatic scoring is ambiguous.
+This optional interpretive rubric is separate from the frozen automatic scorer.
+It does not define the reported `tradeoff_mode` field: that legacy field is a
+conflict-label/zero-violation proxy, not observed refusal. See the
+[executed definitions](../paper/definitions.md). The reported main table was
+computed with the deterministic scorer, not these qualitative labels.
 
 ## Fields
 - `episode_id`

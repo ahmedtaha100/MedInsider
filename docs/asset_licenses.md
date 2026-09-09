@@ -53,6 +53,7 @@ Direct dependencies in `pyproject.toml`:
 |---|---|---|
 | `huggingface_hub` | Hub backup and dataset/Space integration | Apache 2.0 |
 | `matplotlib` | Plotting/report support | PSF-compatible/BSD-style license family |
+| `numpy` | Optional `analysis` extra for uncertainty summaries | BSD-3-Clause; installed distributions also include bundled-component license notices |
 | `ruff` | Dev lint/format checks | MIT |
 | `pytest` | Test runner | MIT |
 | `coverage[toml]` | Test coverage tooling | Apache 2.0 |

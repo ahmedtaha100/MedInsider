@@ -1,0 +1,50 @@
+model,metric,estimate,ci_95_lower,ci_95_upper,n_pairs,n_episodes,bootstrap_reps,seed,resampling_unit,interpretation
+GPT-5.4,ATC,0.704482,0.687100,0.721427,420,840,20000,20260727,neutral_pressure_pair,co-primary task completion
+GPT-5.4,IVR,0.014286,0.005952,0.023810,420,840,20000,20260727,neutral_pressure_pair,diagnostic subtype
+GPT-5.4,MGR,0.004762,0.001190,0.009524,420,840,20000,20260727,neutral_pressure_pair,diagnostic subtype
+GPT-5.4,UPR_integrity,0.000000,0.000000,0.000000,420,840,20000,20260727,neutral_pressure_pair,diagnostic subtype
+GPT-5.4,AEOR,0.065476,0.045238,0.088095,420,840,20000,20260727,neutral_pressure_pair,diagnostic subtype
+GPT-5.4,PSD,0.000000,0.000000,0.000000,420,840,20000,20260727,neutral_pressure_pair,structurally non-informative in v2: generated initial states do not seed a diagnosis code covered by CONTRAINDICATION_RULES
+GPT-5.4,CDR,0.065476,0.045238,0.088095,420,840,20000,20260727,neutral_pressure_pair,diagnostic subtype
+Claude Sonnet 4.6,ATC,0.673298,0.661196,0.685244,420,840,20000,20260728,neutral_pressure_pair,co-primary task completion
+Claude Sonnet 4.6,IVR,0.000000,0.000000,0.000000,420,840,20000,20260728,neutral_pressure_pair,diagnostic subtype
+Claude Sonnet 4.6,MGR,0.000000,0.000000,0.000000,420,840,20000,20260728,neutral_pressure_pair,diagnostic subtype
+Claude Sonnet 4.6,UPR_integrity,0.000000,0.000000,0.000000,420,840,20000,20260728,neutral_pressure_pair,diagnostic subtype
+Claude Sonnet 4.6,AEOR,0.000000,0.000000,0.000000,420,840,20000,20260728,neutral_pressure_pair,diagnostic subtype
+Claude Sonnet 4.6,PSD,0.000000,0.000000,0.000000,420,840,20000,20260728,neutral_pressure_pair,structurally non-informative in v2: generated initial states do not seed a diagnosis code covered by CONTRAINDICATION_RULES
+Claude Sonnet 4.6,CDR,0.000000,0.000000,0.000000,420,840,20000,20260728,neutral_pressure_pair,diagnostic subtype
+Claude Opus 4.7,ATC,0.694799,0.680316,0.708886,420,840,20000,20260729,neutral_pressure_pair,co-primary task completion
+Claude Opus 4.7,IVR,0.002381,0.000000,0.005952,420,840,20000,20260729,neutral_pressure_pair,diagnostic subtype
+Claude Opus 4.7,MGR,0.000000,0.000000,0.000000,420,840,20000,20260729,neutral_pressure_pair,diagnostic subtype
+Claude Opus 4.7,UPR_integrity,0.000000,0.000000,0.000000,420,840,20000,20260729,neutral_pressure_pair,diagnostic subtype
+Claude Opus 4.7,AEOR,0.000000,0.000000,0.000000,420,840,20000,20260729,neutral_pressure_pair,diagnostic subtype
+Claude Opus 4.7,PSD,0.000000,0.000000,0.000000,420,840,20000,20260729,neutral_pressure_pair,structurally non-informative in v2: generated initial states do not seed a diagnosis code covered by CONTRAINDICATION_RULES
+Claude Opus 4.7,CDR,0.000000,0.000000,0.000000,420,840,20000,20260729,neutral_pressure_pair,diagnostic subtype
+Kimi 2.6,ATC,0.597299,0.581029,0.613450,420,840,20000,20260730,neutral_pressure_pair,co-primary task completion
+Kimi 2.6,IVR,0.007143,0.002381,0.013095,420,840,20000,20260730,neutral_pressure_pair,diagnostic subtype
+Kimi 2.6,MGR,0.001190,0.000000,0.003571,420,840,20000,20260730,neutral_pressure_pair,diagnostic subtype
+Kimi 2.6,UPR_integrity,0.000000,0.000000,0.000000,420,840,20000,20260730,neutral_pressure_pair,diagnostic subtype
+Kimi 2.6,AEOR,0.108333,0.080952,0.138095,420,840,20000,20260730,neutral_pressure_pair,diagnostic subtype
+Kimi 2.6,PSD,0.000000,0.000000,0.000000,420,840,20000,20260730,neutral_pressure_pair,structurally non-informative in v2: generated initial states do not seed a diagnosis code covered by CONTRAINDICATION_RULES
+Kimi 2.6,CDR,0.108333,0.080952,0.138095,420,840,20000,20260730,neutral_pressure_pair,diagnostic subtype
+GLM-5,ATC,0.653768,0.637776,0.669641,420,840,20000,20260731,neutral_pressure_pair,co-primary task completion
+GLM-5,IVR,0.001786,0.000000,0.004762,420,840,20000,20260731,neutral_pressure_pair,diagnostic subtype
+GLM-5,MGR,0.000000,0.000000,0.000000,420,840,20000,20260731,neutral_pressure_pair,diagnostic subtype
+GLM-5,UPR_integrity,0.002381,0.000000,0.005952,420,840,20000,20260731,neutral_pressure_pair,diagnostic subtype
+GLM-5,AEOR,0.088095,0.065476,0.113095,420,840,20000,20260731,neutral_pressure_pair,diagnostic subtype
+GLM-5,PSD,0.000000,0.000000,0.000000,420,840,20000,20260731,neutral_pressure_pair,structurally non-informative in v2: generated initial states do not seed a diagnosis code covered by CONTRAINDICATION_RULES
+GLM-5,CDR,0.088095,0.065476,0.113095,420,840,20000,20260731,neutral_pressure_pair,diagnostic subtype
+DeepSeek V3.2,ATC,0.616788,0.602146,0.631391,420,840,20000,20260732,neutral_pressure_pair,co-primary task completion
+DeepSeek V3.2,IVR,0.013095,0.005952,0.021429,420,840,20000,20260732,neutral_pressure_pair,diagnostic subtype
+DeepSeek V3.2,MGR,0.008333,0.002381,0.015476,420,840,20000,20260732,neutral_pressure_pair,diagnostic subtype
+DeepSeek V3.2,UPR_integrity,0.001190,0.000000,0.003571,420,840,20000,20260732,neutral_pressure_pair,diagnostic subtype
+DeepSeek V3.2,AEOR,0.077381,0.054762,0.101190,420,840,20000,20260732,neutral_pressure_pair,diagnostic subtype
+DeepSeek V3.2,PSD,0.000000,0.000000,0.000000,420,840,20000,20260732,neutral_pressure_pair,structurally non-informative in v2: generated initial states do not seed a diagnosis code covered by CONTRAINDICATION_RULES
+DeepSeek V3.2,CDR,0.077381,0.054762,0.101190,420,840,20000,20260732,neutral_pressure_pair,diagnostic subtype
+Gemma 4,ATC,0.505908,0.494518,0.517458,420,840,20000,20260733,neutral_pressure_pair,co-primary task completion
+Gemma 4,IVR,0.000000,0.000000,0.000000,420,840,20000,20260733,neutral_pressure_pair,diagnostic subtype
+Gemma 4,MGR,0.020238,0.009524,0.033333,420,840,20000,20260733,neutral_pressure_pair,diagnostic subtype
+Gemma 4,UPR_integrity,0.000000,0.000000,0.000000,420,840,20000,20260733,neutral_pressure_pair,diagnostic subtype
+Gemma 4,AEOR,0.138095,0.107143,0.170238,420,840,20000,20260733,neutral_pressure_pair,diagnostic subtype
+Gemma 4,PSD,0.000000,0.000000,0.000000,420,840,20000,20260733,neutral_pressure_pair,structurally non-informative in v2: generated initial states do not seed a diagnosis code covered by CONTRAINDICATION_RULES
+Gemma 4,CDR,0.138095,0.107143,0.170238,420,840,20000,20260733,neutral_pressure_pair,diagnostic subtype

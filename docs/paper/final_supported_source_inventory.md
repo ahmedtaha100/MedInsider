@@ -1,6 +1,6 @@
 # Final Supported Source Inventory
 
-Current paper-facing source artifacts for the submitted seven-model packet.
+Frozen source inventory for the original seven-model packet. The legacy refusal label below is a conflict/zero-violation proxy, not observed refusal; see [current definitions](definitions.md). Frozen numeric files and the companion inventory CSV retain their original bytes. The coding-probe accuracy reconstruction now uses the retained question records in `data/scored_outputs/probes/coding_probe_question_results.csv`; the historical inventory below predates that recovered input.
 
 | artifact_path | artifact_role | status | scope_note | supporting_sources |
 |---|---|---|---|---|

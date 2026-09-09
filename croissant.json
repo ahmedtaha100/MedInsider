@@ -2,8 +2,48 @@
   "@context": {
     "@language": "en",
     "@vocab": "https://schema.org/",
+    "citeAs": "cr:citeAs",
+    "column": "cr:column",
+    "conformsTo": "dct:conformsTo",
     "cr": "http://mlcommons.org/croissant/",
-    "rai": "http://mlcommons.org/croissant/RAI/"
+    "rai": "http://mlcommons.org/croissant/RAI/",
+    "data": {
+      "@id": "cr:data",
+      "@type": "@json"
+    },
+    "dataType": {
+      "@id": "cr:dataType",
+      "@type": "@vocab"
+    },
+    "dct": "http://purl.org/dc/terms/",
+    "examples": {
+      "@id": "cr:examples",
+      "@type": "@json"
+    },
+    "extract": "cr:extract",
+    "field": "cr:field",
+    "fileProperty": "cr:fileProperty",
+    "fileObject": "cr:fileObject",
+    "fileSet": "cr:fileSet",
+    "format": "cr:format",
+    "includes": "cr:includes",
+    "isLiveDataset": "cr:isLiveDataset",
+    "jsonPath": "cr:jsonPath",
+    "key": "cr:key",
+    "md5": "cr:md5",
+    "parentField": "cr:parentField",
+    "path": "cr:path",
+    "recordSet": "cr:recordSet",
+    "references": "cr:references",
+    "regex": "cr:regex",
+    "repeated": "cr:repeated",
+    "replace": "cr:replace",
+    "sc": "https://schema.org/",
+    "separator": "cr:separator",
+    "source": "cr:source",
+    "subField": "cr:subField",
+    "transform": "cr:transform",
+    "wd": "https://www.wikidata.org/wiki/"
   },
   "@type": "sc:Dataset",
   "name": "MedInsider",
@@ -16,7 +56,7 @@
       "name": "Anonymous Authors"
     }
   ],
-  "citeAs": "Anonymous Authors. MedInsider: A FHIR-Compatible Benchmark for Integrity Under Institutional Pressure in Medical LLM Agents. Anonymous submission.",
+  "citeAs": "Anonymous Authors. MedInsider: A Benchmark for Documentation Integrity in Medical LLM Agents Under Institutional Pressure. Anonymous submission.",
   "keywords": [
     "medical agents",
     "benchmark",
@@ -30,22 +70,21 @@
       "@id": "v2_manifest",
       "name": "v2_manifest.csv",
       "contentUrl": "data/manifests/v2_manifest.csv",
-      "encodingFormat": "text/csv"
+      "encodingFormat": "text/csv",
+      "sha256": "ad0dad8c7dea1ea7c46e5771b7b6d2e1c98de77dc1ff9febc014c7b44b21322e"
     },
     {
       "@type": "cr:FileObject",
       "@id": "v2_full_run_manifest",
       "name": "v2_full_run_manifest.csv",
       "contentUrl": "data/manifests/subsets/v2_full_run_manifest.csv",
-      "encodingFormat": "text/csv"
+      "encodingFormat": "text/csv",
+      "sha256": "823a32bf9f1c692dda400859f489897da95403ef05bafc60cb1e48e7e9ff3e34"
     },
     {
       "@type": "cr:FileSet",
       "@id": "full_scenarios",
       "name": "full scenario JSON files",
-      "containedIn": {
-        "@id": "reviewer_bundle"
-      },
       "encodingFormat": "application/json",
       "includes": "data/scenarios/phase2_v2/generated/*.json"
     }
@@ -146,7 +185,7 @@
   ],
   "rai:dataCollection": "Synthetic scenario generation; no real patient records are included.",
   "rai:dataCollectionType": "synthetic",
-  "rai:personalSensitiveInformation": "No real patient data or human-subject records are included.",
+  "rai:personalSensitiveInformation": "No real patient records are included; the scenario corpus is synthetic.",
   "rai:contentWarning": "Scenarios include clinical documentation pressure and integrity-failure opportunities for evaluation only.",
   "rai:useCases": "Benchmark review, method inspection, local smoke testing, and research on integrity evaluation.",
   "rai:limitations": "Synthetic, descriptive, and not a deployment-realism or human-validated certification dataset.",
@@ -155,5 +194,5 @@
   "rai:knownLimitations": "The corpus is synthetic, scoped to documentation-integrity failure modes, and descriptive over the executed model panel. It does not include real patient records, direct-care safety validation, or full deployment-realism coverage.",
   "rai:misuseRisks": "Potential misuse includes treating synthetic benchmark results as clinical certification, using pressure prompts as operational guidance, or overgeneralizing model rankings beyond the documented scenario families and conditions.",
   "rai:sensitiveDataStatus": "No real patient records, protected health information, or human-subject clinical records are included. Scenario chart states are synthetic.",
-  "rai:dataCollectionMethodology": "Scenario chart states and paired pressure conditions were template-authored for MedInsider and packaged with deterministic manifests. The reviewer bundle contains manifests and sample scenarios for local inspection and smoke testing."
+  "rai:dataCollectionMethodology": "Scenario chart states and paired pressure conditions were template-authored for MedInsider and packaged with deterministic manifests. The reviewer bundle contains manifests and all 840 scenarios for local inspection and smoke testing."
 }

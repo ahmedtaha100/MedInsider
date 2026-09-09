@@ -1,5 +1,8 @@
 # Environment Setup Verification 20260601
 
+Historical verification record. For current setup and commands, see the
+repository [README](../../README.md).
+
 ## Dependency Manifest
 
 The canonical Python dependency manifest is `pyproject.toml`.
@@ -66,9 +69,10 @@ Verified results:
 | Paper packet builder | Passed |
 | Provider-free smoke run | 2 / 2 successful scored episodes |
 
-## Internal Suite
+## Current Tests
 
-The full pytest suite is intentionally separated because it includes historical
-and fixture-dependent tests that are not part of the public reviewer bundle.
+The supported offline unit suite runs with `make unit-test` and is included
+in `make reviewer-test`. Obsolete tests for unpublished legacy fixtures are
+excluded from the current release.
 
 Use `reproduce` and `reviewer-test` for clean-clone reviewer verification.

@@ -1,5 +1,10 @@
 # Splits And Freeze Manifest
 
+Historical v1.0 split proposal. The public-dev, public-validation, and private
+hidden-test partitions below were not used for the frozen v2 results. All 840
+v2 scenarios are released; see the current [datasheet](../../DATASHEET.md) and
+[manifests](../../README.md#what-to-inspect). The original proposal is retained below.
+
 ## Split policy
 MedInsider v1.0 uses three splits:
 - `public_dev`

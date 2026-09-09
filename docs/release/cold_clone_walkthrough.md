@@ -1,5 +1,8 @@
 # Cold Clone Walkthrough 20260601
 
+Historical verification record. For current setup and commands, see the
+repository [README](../../README.md).
+
 ## Method
 
 A clean clone was set up with Python 3.11, installed with dev extras, and
@@ -25,16 +28,11 @@ Results:
 | Provider-free smoke run | 2 / 2 successful scored episodes |
 | Paper packet builder | Passed from bundled scored outputs |
 
-## Internal Tests
+## Current Tests
 
-The full pytest suite includes fixture-dependent/internal tests and is separated
-from reviewer-safe checks:
-
-```bash
-make PYTHON=.venv/bin/python internal-test
-```
-
-Use `reproduce` and `reviewer-test` for clean-clone reviewer verification.
+The former fixture-dependent `internal-test` target has been retired. Use
+`make unit-test` for the supported offline suite, or `make reviewer-test`
+to include it with the release checks.
 
 ## Reuse Caveats
 

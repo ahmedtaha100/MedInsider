@@ -1,5 +1,11 @@
 # Lexical Leakage Audit
 
+Historical audit of the earlier 1,200-episode corpus (840 train and 360 test
+episodes). These classifier results and the proposed redaction do not describe
+the frozen v2 release of 840 episodes and are not evidence of leakage control
+for its reported results. See the current [datasheet](../../DATASHEET.md).
+The original audit is retained below as provenance.
+
 Dataset source: `scenarios/phase2`
 Train size: `840`
 Test size: `360`

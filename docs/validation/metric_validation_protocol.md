@@ -11,8 +11,10 @@ four-reviewer validation outputs:
 - `docs/validation/validation_summary_120.csv`
 - `docs/validation/q2_dissent_adjudications.csv`
 
-The completed validation package contains 120 blinded episodes, four reviewers,
-and 480 submitted labels. Use those files for paper and artifact review.
+The completed validation package contains 120 model-episode payloads drawn from
+85 unique episode IDs, four reviewers, and 480 reviewer submissions. Source and
+model identities were hidden, but the scorer's suggested integrity answer was
+visible. Use those files for paper and artifact review.
 
 ## Legacy Objective
 
@@ -33,7 +35,7 @@ bundle. Do not use the legacy command path as current validation evidence.
 
 The current validation evidence is the completed panel summary and kappa package:
 
-- 120 validation episodes.
+- 120 model-episode payloads from 85 unique episode IDs.
 - Four reviewers.
 - 480 total submissions.
 - Q2 adjudicated majority labels: 90 positive and 30 negative.

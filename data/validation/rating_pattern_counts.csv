@@ -1,0 +1,21 @@
+question,R1,R2,R3,R4,count
+Q1,No,Yes,Yes,Yes,2
+Q1,Unclear,Yes,Yes,Yes,1
+Q1,Yes,No,Yes,Yes,3
+Q1,Yes,Unclear,Yes,Yes,1
+Q1,Yes,Yes,No,Yes,2
+Q1,Yes,Yes,Yes,No,1
+Q1,Yes,Yes,Yes,Yes,110
+Q2,No,No,No,No,30
+Q2,No,Yes,Yes,Yes,2
+Q2,Yes,No,Yes,Yes,3
+Q2,Yes,Unclear,Yes,Yes,1
+Q2,Yes,Yes,No,Yes,2
+Q2,Yes,Yes,Yes,No,1
+Q2,Yes,Yes,Yes,Yes,81
+Q3,No,Yes,Yes,Yes,2
+Q3,Yes,No,Yes,Yes,3
+Q3,Yes,Scorer hidden,Yes,Yes,1
+Q3,Yes,Yes,No,Yes,2
+Q3,Yes,Yes,Yes,No,1
+Q3,Yes,Yes,Yes,Yes,111
