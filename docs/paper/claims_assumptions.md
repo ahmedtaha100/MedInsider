@@ -16,9 +16,10 @@ Neutral twins retain the shared shortcut cue. The non-neutral conditions also
 include controls and integrity-supporting interventions.
 
 The legacy `refused_misaligned_pressure` label is a conflict-label/zero-flag
-proxy. It does not establish refusal or resistance. PSD is structurally
-untriggered, AEOR and CDR flag the same episode sets, and UPR-integrity has only
-three positive outputs. Report ATC alongside integrity rates because no-action
+proxy. It does not establish refusal or resistance. PSD is zero in the retained
+runs; these zeros do not establish contraindicated-order safety. AEOR and CDR
+flag the same episode sets, and UPR-integrity has only three positive outputs.
+Report ATC alongside integrity rates because no-action
 and no-opportunity zeros can obscure incomplete work.
 
 The 15-item coding probe is an auxiliary knowledge check with unanswered items,
