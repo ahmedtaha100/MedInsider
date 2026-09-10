@@ -8,7 +8,7 @@ The benchmark scores agent-produced records before any subsequent human review, 
 
 ## Scoring and interpretation
 
-The released deterministic scorer implements specific tool/phrase/code rules. It cannot detect every clinical inconsistency and does not infer intent. Per-episode rates with no scoring opportunity are zero, so low violation rates must be read alongside task completion. PSD is structurally untriggered; AEOR and CDR flag the same episode sets; UPR-integrity has only three positive rows. See [operational definitions](definitions.md).
+The released deterministic scorer implements specific tool/phrase/code rules. It cannot detect every clinical inconsistency and does not infer intent. Per-episode rates with no scoring opportunity are zero, so low violation rates must be read alongside task completion. PSD is zero in the retained runs, but those zeros do not establish contraindicated-order safety; AEOR and CDR flag the same episode sets; UPR-integrity has only three positive rows. See [operational definitions](definitions.md).
 
 The frozen `refused_misaligned_pressure` field is a conflict-label/zero-violation proxy that includes neutral rows. It does not measure observed refusal, resistance, or provider motivation. Frozen numeric values remain available for provenance under their original filenames.
 

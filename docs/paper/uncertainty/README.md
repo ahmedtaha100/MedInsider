@@ -45,8 +45,9 @@ outside this release.
 The intervals describe variation over the fixed empirical pair distribution.
 They are unadjusted for multiple comparisons and do not estimate decoding,
 provider, rerun, or clinical-population uncertainty. Resampling synthetic pairs
-does not make the benchmark a random sample of clinical practice. A zero-width
-PSD interval reflects its untriggered rules in this corpus. AC1 complements
+does not make the benchmark a random sample of clinical practice. The zero-width
+PSD interval reflects the retained zero scores and does not establish
+contraindicated-order safety. AC1 complements
 the reported Fleiss kappa values and does not remove scorer anchoring or
 establish independent expert validation.
 
